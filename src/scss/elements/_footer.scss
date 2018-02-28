@@ -1,0 +1,58 @@
+footer{ background: white; display: flex; width: 100vw; max-width: 100%;
+  @media #{$medium-down}{ display: none; }
+  .row{ padding: 0px grid(.25); margin: 60px auto 0; flex-wrap: wrap; }
+  .footer{
+    &_head, &_bottom{ width: 100%; display: flex; justify-content: space-between; margin-bottom: 60px;
+      h2{ font-size: rem(18); line-height: 21px; letter-spacing: 0.2px; color: $black; font-weight: $font-semibold; text-transform: none; margin-bottom: 5px; }
+      a{ font-size: rem(14); line-height: 24px; letter-spacing: 0.1px; color: $black; transition: $transition; padding: 10px 0; font-weight: $font-regular;
+        &:hover{ color: $feelgood; }
+      }
+      &-sub{ display: flex; flex-direction: column; }
+      &-social{
+        .footer_bottom-sub{
+          .footer-logs{ display: flex; flex-direction: row; }
+          li{ padding: 0 10px;
+            &:first-of-type{ padding-left: 0; }
+            a{ text-indent: -9999px; display: block; size: 30px; border-radius: 50%; position: relative; transition: $transition;
+              &:before{ content: 'c'; font-family: $social-font; position: absolute; text-transform: none; padding-left: 0px; text-align: center; width: 100%; height: 100%; top: 4px; font-size: rem(11); display: inline-block; text-indent: 0; left: 1px; color: white; }
+              &.facebook{ background: #3b5998;
+                &:hover{ background: darken(#3b5998, 4%); }
+                &:before{ content: 'c'; }
+              }
+              &.instagram{ background: #5975b2;
+                &:hover{ background: darken(#5975b2, 4%); }
+                &:before{ content: 'd'; }
+              }
+              &.twitter{ background: #5392cb;
+                &:hover{ background: darken(#5392cb, 4%); }
+                &:before{ content: 'b'; }
+              }
+            }
+          }
+        }
+      }
+      &-news{
+        .footer_bottom-sub{ position: relative;
+          label{ display: none; }
+          input{ width: 100%; border: none; background: $background; height: 40px; line-height: 40px; padding: 0px 15px; margin: 0; color: $black; font-size: rem(16); line-height: 21px; letter-spacing: 0.1px; border-radius: 5px 5px 0 0; margin-top: 5px;
+            &::placeholder{ color: #979797; }
+            &:not(:placeholder-shown) + label{ top: -80px; color: $black; }
+          }
+          button{ display: block; line-height: 25px; border-radius: 0 0 5px 5px; background-color: $feelgood; color: #fdfdfd; font-weight: $font-regular; letter-spacing: 0px; font-size: rem(12); text-align: center; position: relative; transition: $transition; padding: 5px 15px; text-transform: uppercase;  box-shadow: none; border: none; margin: 0px; cursor: pointer;
+            &:hover{ background: darken($feelgood, 4%); }
+            &.facebook{ background: #4267b2;
+              &:hover{ background: darken(#4267b2, 4%); }
+            }
+          }
+        }
+      }
+    }
+  }
+  .extra_info{ width: 100%; display: flex; justify-content: space-between; border-top: 2px solid $white-grey; height: 60px; align-items: center;
+    &-sub{ display: flex; flex-direction: row; height: 60px; align-items: center;
+      &_item{ display: block; padding: 0px 10px; font-size: rem(12); font-weight: font-light; color: $grey-black; letter-spacing: .1px;
+        &:first-of-type{ padding-left: 0; }
+      }
+    }
+  }
+}

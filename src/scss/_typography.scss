@@ -1,0 +1,51 @@
+$main-font-weights: (
+	"SemiBold": 600,
+	"Light": 300,
+  "Medium": 500,
+);
+
+$font-semibold: map-get($main-font-weights,Semibold);
+$font-light: map-get($main-font-weights,Light);
+$font-regular: map-get($main-font-weights,Medium);
+
+// Base font
+/*
+	Use font-include for single fonts
+	and font-list for a list using the $*-font-weights list
+*/
+$main-font: "Montserrat";
+$main-font-name: "Montserrat-";
+$main-font-family: #{$main-font},sans-serif;
+// include main font
+@include font-list($main-font,$main-font-name,$main-font-weights,normal);
+
+// headers
+h1,h2,h3,h4,h5,h6{ font-family: $main-font-family; text-align: left; padding: 0; margin: 0; font-weight: $font-regular; color: $grey-black; }
+h1{ font-size: rem(32); line-height: 21px; letter-spacing: 0.3px; font-weight: $font-semibold; }
+h2{ font-size: rem(18); display: inline-block; line-height: 21px; letter-spacing: 0.2px; font-weight: $font-semibold; }
+h3,h5,h6,h4{ font-size: rem(16); line-height: 32px; font-weight: $font-regular; }
+
+// make fontweight classes
+@each $weight in $main-font-weights{
+	.font-#{nth($weight,1)}{ font-weight: #{nth($weight,2)}; }
+}
+
+$social-font: "fontgood";
+$social-font-name: "fontgood";
+$social-font-family: #{$social-font},sans-serif;
+// include main font
+@include font-include($social-font,$social-font-name,normal,normal);
+
+//general fontstyle
+p , input , button , label , fieldset , ul , ol , li , select, a, span{ margin: 0; padding: 0; font-size: rem(14); line-height: 21px; color: $grey-black; font-family: $main-font-family; font-weight: $font-regular; }
+strong{ font-weight: $font-semibold; }
+
+blockquote{ margin: 40px;
+	p{ font-style: italic; font-size: rem(24); line-height: 32px;
+		&:before , &:after{ content:"''"; font-size: rem(24); color:color(overlay); }
+	}
+}
+.button{ display: block; line-height: 21px; border-radius: 5px; background-color: $feelgood; color: #fdfdfd; font-weight: $font-regular; letter-spacing: 0px; font-size: rem(12); text-align: center; position: relative; transition: $transition; padding: 5px 15px; text-transform: uppercase;  box-shadow: 0 1px 10.8px 1.2px #f3997b66;
+  &:hover{ background: darken($feelgood, 4%); }
+}
+p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: left; padding: 0; margin: 0 auto; }

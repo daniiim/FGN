@@ -1,0 +1,28 @@
+
+.featured_profile{
+  .row, .row-small{
+    .title{ font-size: rem(18); text-align: center; font-weight: $font-semibold; line-height: 21px; letter-spacing: 0.2px; color: $black; display: block; width: 100%; }
+    p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: center; padding: 20px grid(.25); margin: 0 auto; }
+    .featured_profile-account{ padding: grid(.25); position: relative;
+      @media #{$medium-only}{ padding: grid(.5); }
+      @media #{$small-only}{ padding: grid(.5) grid(1); }
+      &-container{ background: #FFF; display: flex; flex-direction: column; align-items: center; border-radius: 5px; }
+      &-image{ size: 100px; display: block; background: #f1f1f1; border-radius: 50%; margin-top: 30px; position: relative;
+        &-number{ size: 35px; background: $zorg; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
+      }
+      &-name{ font-size: rem(18); margin-top: 10px; font-weight: $font-semibold; color: $black; letter-spacing: .2px; line-height: 21px; }
+      &-accountInfo{ display: flex; flex-wrap: nowrap;
+        p{ padding: 0; font-size: rem(12); line-height: 20px; letter-spacing: 0.1px; color: #565656;
+          a{ text-decoration: underline; }
+        }
+      }
+      &-infoText{
+        p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: center; padding: 20px grid(.4); margin: 0 auto; }
+      }
+      &-url{ margin: 20px 0px 20px; font-size: rem(12); letter-spacing: 0.1px; color: #979797; font-weight: $font-regular; transition: $transition;
+        &:hover{ text-decoration: underline; }
+      }
+    }
+  }
+  .all_profiles{ margin: 15px auto 40px; }
+}

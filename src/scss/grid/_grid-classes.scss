@@ -1,0 +1,103 @@
+@mixin createGridClasses($child: false){
+	$childClass: "";
+	@if $child == true{
+		$childClass: " .column";
+	}
+	@for $a from 0 through $grid-columns{
+		$percentage: percentage($a/$grid-columns); $column: #{$a}#{$childClass};
+		&.column-#{$column}{
+			width: #{$percentage};
+		}
+		&.offset-#{$column}{
+			margin-left: #{$percentage};
+		}
+		&.push-#{$column}{
+			margin-right: #{$percentage};
+		}
+		&.pull-#{$column}{
+			margin-left: -#{$percentage};
+		}
+	}
+
+
+	$min-width: 0;
+	@each $bp-name,$bp-value in $grid-breakpoints{
+		$mq-only: "#{$grid-screen} and (min-width: #{$min-width}px) and (max-width: #{$bp-value}px)"; $mq: "#{$grid-screen} and (min-width: #{$min-width}px)"; $min-width: $bp-value + 1;
+		@each $part,$percentage in $grid-parts{
+			&.#{$part}#{$childClass}{
+				width: percentage($percentage);
+			}
+		}
+		@media #{$mq-only}{
+			&.#{$bp-name}-only-0#{$childClass}{
+				width: 0; display: none;
+			}
+			@each $part,$percentage in $grid-parts{
+				&.#{$bp-name}-only-#{$part}#{$childClass}{
+					width: percentage($percentage);
+				}
+			}
+			@for $a from 1 through $grid-columns{
+				$percentage: percentage($a/$grid-columns);
+				&.#{$bp-name}-only-#{$a}#{$childClass}{
+					width: $percentage;
+				}
+				&.offset-#{$bp-name}-only-#{$a}#{$childClass}{
+					margin-left: $percentage;
+				}
+				&.push-#{$bp-name}-only-#{$a}#{$childClass}{
+					margin-right: $percentage;
+				}
+				&.pull-#{$bp-name}-only-#{$a}#{$childClass}{
+					margin-left: -#{$percentage};
+				}
+			}
+		}
+		@media #{$mq}{
+			&.#{$bp-name}-0#{$childClass}{
+				width: 0; display: none;
+			}
+			@each $part,$percentage in $grid-parts{
+				&.#{$bp-name}-#{$part}#{$childClass}{
+					width: percentage($percentage);
+				}
+			}
+			@for $a from 1 through $grid-columns{
+				$percentage: percentage($a/$grid-columns);
+
+				&.#{$bp-name}-#{$a}#{$childClass}{
+					width: $percentage;
+				}
+				&.offset-#{$bp-name}-#{$a}#{$childClass}{
+					margin-left: $percentage;
+				}
+				&.push-#{$bp-name}-#{$a}#{$childClass}{
+					margin-right: $percentage;
+				}
+				&.pull-#{$bp-name}-#{$a}#{$childClass}{
+					margin-left: -#{$percentage};
+				}
+			}
+		}
+	}
+}
+
+
+.row{
+	max-width: $grid-row-width; width: 100%; margin: auto; display: flex; justify-content: flex-start; flex-flow: row wrap; @include createGridClasses(true);
+	&.center{
+		justify-content: center;
+	}
+}
+
+%col{
+	box-sizing: border-box !important;
+	.content{
+		padding: grid(0.25); font-family: inherit;
+	}
+}
+//@include wildcard('col-'){ @extend %col; }
+.col, .column, .columns{
+	@extend %col;
+	@include createGridClasses(false);
+}

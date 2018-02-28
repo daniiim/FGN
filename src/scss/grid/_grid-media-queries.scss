@@ -1,0 +1,12 @@
+$small-only: mq(0,map-get($grid-breakpoints,"small"));  //
+$small-up: mq(0,map-get($grid-breakpoints,"small"));  //
+$small-down: mq(0,map-get($grid-breakpoints,"small"));  //
+$medium-only: mq(0,map-get($grid-breakpoints,"medium"));  //
+$medium-up: mq(0,map-get($grid-breakpoints,"medium"));  //
+$medium-down: mq(0,map-get($grid-breakpoints,"medium"));  //
+$large-down: mq(0,map-get($grid-breakpoints,"large"));  //
+$large-up: mq(0,map-get($grid-breakpoints,"large"));  //
+$large-only: mq(0,map-get($grid-breakpoints,"large"));  //
+$mobile: mq(0,map-get($grid-breakpoints,"small")); //
+$landscape: "#{$grid-screen} and (orientation: landscape)"; //
+$portrait: "#{$grid-screen} and (orientation: portrait)";
