@@ -19,6 +19,7 @@ section{ overflow: hidden;
   &.light{ background: #FFF; }
   &.dark{ background: #efefef; }
 }
+
 main{ margin-top: 65px; width: 100vw; overflow: hidden; max-width: 100%; }
 .landingPage{ width: 100vw; height: 75vh; background: linear-gradient(rgba(67, 67, 67, 0.4), rgba(67, 67, 67, 0.4)), url('../images/Bannerfoto.jpg'); background-position: center center; background-size: cover; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 0;
   .title{ font-size: rem(40); font-weight: $font-light; letter-spacing: 0.4px; color: #FFF; line-height: 40px; text-align: center; }
