@@ -4,6 +4,7 @@ $typeHandle = $page->getCollectionTypeHandle();
 $pageID = $page->getCollectionID();
 $pageName = $c->getCollectionName();
 $path = str_replace("/concrete/concrete", "/concrete", $this->getThemePath());
+$pageName = strtolower(str_replace(' ', '_', $pageName));
 global $u;
 if ($u->isLoggedIn()) {
 	$ih = loader::helper('image');

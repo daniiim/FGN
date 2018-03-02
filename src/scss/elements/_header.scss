@@ -268,7 +268,7 @@ body header{ height: 65px; background: #FFF; width: 100%; position: fixed; top: 
   }
 }
 body{
-  &.Home{
+  &.home, &.over_feelgood_nederland{
     main{ margin-top: 0; }
     header{ background: none; box-shadow: none; transition: $transition;
       @media #{$medium-down}{ background: #FFF; }

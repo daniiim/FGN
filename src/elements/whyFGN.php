@@ -4,12 +4,16 @@ defined('C5_EXECUTE') or die("Access Denied.");
 
 <section class="whyFGN dark">
   <div class="row">
-    <div class="intro">
-      <h4>Waarom FeelGood Nederland?</h4>
-      <p>
-        FeelGoodNederland is dé online etalage waarop je kennis en ervaring kunt aanbieden aan klanten. Via FGN creëer je eigen betaald werk met je eigen specialisme. Met of zonder diploma's en certificaten. Capaciteiten zijn immers aangeleerd en een opleiding is op ons platform dan ook ondergeschikt.
-      </p>
-      <a href="#" class="read_more">Meer lezen</a>
+    <div class="row-intro">
+      <div class="intro">
+        <div class="intro_container">
+          <h4>Waarom FeelGood Nederland?</h4>
+          <p>
+            FeelGoodNederland is dé online etalage waarop je kennis en ervaring kunt aanbieden aan klanten. Via FGN creëer je eigen betaald werk met je eigen specialisme. Met of zonder diploma's en certificaten. Capaciteiten zijn immers aangeleerd en een opleiding is op ons platform dan ook ondergeschikt.
+          </p>
+          <a href="#" class="read_more">Meer lezen</a>
+        </div>
+      </div>
     </div>
     <div class="subText">
       <h3>Waar voel jij je goed bij?</h3>
