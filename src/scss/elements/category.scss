@@ -10,6 +10,7 @@ section.discover{
     h2{ font-size: rem(26); line-height: 1; letter-spacing: .3px; color: #4e4e4e; }
   }
   .row.category{
+    &.no-margin{ margin-top: 0; margin-bottom: 0; }
     .side, .item{ padding: grid(.25);
       @media #{$medium-only}{ padding: grid(.5); }
       @media #{$small-only}{ padding: grid(1); }
@@ -30,7 +31,7 @@ section.discover{
       }
       .category-view{ background: white; height: 100%; padding: 20px; display: flex; flex-direction: column;
         h3{ font-size: rem(18); line-height: 21px; color: $black; letter-spacing: .2px; font-weight: $font-semibold; margin-bottom: 10px; }
-        a{ font-size: rem(12); font-weight: $font-light; color: #545454; letter-spacing: .1px; padding: 5px 0 5px 20px; transition: $transition; 
+        a{ font-size: rem(12); font-weight: $font-light; color: #545454; letter-spacing: .1px; padding: 5px 0 5px 20px; transition: $transition;
           &:hover{ color: $feelgood; }
         }
       }

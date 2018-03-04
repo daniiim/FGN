@@ -41,6 +41,7 @@ main{ margin-top: 65px; width: 100vw; overflow: hidden; max-width: 100%; }
 }
 
 .row, .row-small{ margin: 60px auto;
+  &.no-margin{ margin-top: 0; margin-bottom: 0; }
   @media #{$medium-down}{ margin: 30px auto; }
   .title{ font-size: rem(18); text-align: center; font-weight: $font-semibold; line-height: 21px; letter-spacing: 0.2px; color: $black; display: block; width: 100%; }
 }

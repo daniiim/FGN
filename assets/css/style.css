@@ -6991,32 +6991,32 @@ ul.breadcrumbs {
   .joinFGN .row .joinFGN-categorie:nth-of-type(3) .joinFGN-categorie_image, .joinFGN .row-small .joinFGN-categorie:nth-of-type(3) .joinFGN-categorie_image {
     background-image: url("../images/Bannerfoto3.jpg"); }
 
-section.recentAdds .full_url {
+section.recentAdds .full_url, section.recentAdds-discover .full_url {
   position: absolute;
   left: 0;
   top: 0;
   size: 100%;
   z-index: 1;
   transition: .2s ease-in-out; }
-  section.recentAdds .full_url:hover {
+  section.recentAdds .full_url:hover, section.recentAdds-discover .full_url:hover {
     box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.19); }
 
-section.recentAdds .row {
+section.recentAdds .row, section.recentAdds-discover .row {
   display: flex;
   flex-direction: column;
   align-items: center; }
 
-section.recentAdds .recentAdds-container {
+section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container {
   padding: 1.0416666667vw;
   position: relative; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
-    section.recentAdds .recentAdds-container {
+    section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container {
       padding: 2.0833333333vw; } }
   @media screen and (min-width: 0px) and (max-width: 800px) {
-    section.recentAdds .recentAdds-container {
+    section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container {
       padding: 2.0833333333vw 4.1666666667vw; } }
 
-section.recentAdds .recentAdds-element {
+section.recentAdds .recentAdds-element, section.recentAdds-discover .recentAdds-element {
   background: #FFF;
   box-shadow: none;
   border-radius: 10px;
@@ -7027,19 +7027,19 @@ section.recentAdds .recentAdds-element {
   transition: .3s ease-in-out;
   position: relative; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
-    section.recentAdds .recentAdds-element {
+    section.recentAdds .recentAdds-element, section.recentAdds-discover .recentAdds-element {
       padding: 2.0833333333vw; } }
   @media screen and (min-width: 0px) and (max-width: 800px) {
-    section.recentAdds .recentAdds-element {
+    section.recentAdds .recentAdds-element, section.recentAdds-discover .recentAdds-element {
       padding: 4.1666666667vw; } }
-  section.recentAdds .recentAdds-element_image {
+  section.recentAdds .recentAdds-element_image, section.recentAdds-discover .recentAdds-element_image {
     size: 100px;
     display: block;
     background: #f1f1f1;
     border-radius: 50%;
     margin-top: 30px;
     position: relative; }
-    section.recentAdds .recentAdds-element_image-number {
+    section.recentAdds .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_image-number {
       size: 35px;
       background: #81c784;
       border-radius: 50%;
@@ -7053,7 +7053,7 @@ section.recentAdds .recentAdds-element {
       color: #fdfdfd;
       font-weight: 500;
       font-size: 0.875rem; }
-  section.recentAdds .recentAdds-element_info {
+  section.recentAdds .recentAdds-element_info, section.recentAdds-discover .recentAdds-element_info {
     position: relative;
     display: block;
     width: calc(100% - 100px);
@@ -7062,7 +7062,7 @@ section.recentAdds .recentAdds-element {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start; }
-    section.recentAdds .recentAdds-element_info-header-top span {
+    section.recentAdds .recentAdds-element_info-header-top span, section.recentAdds-discover .recentAdds-element_info-header-top span {
       background: #65a0bd;
       border-radius: 10px;
       height: 23px;
@@ -7076,36 +7076,36 @@ section.recentAdds .recentAdds-element {
       top: -2px;
       display: inline-block; }
       @media screen and (min-width: 0px) and (max-width: 960px) {
-        section.recentAdds .recentAdds-element_info-header-top span {
+        section.recentAdds .recentAdds-element_info-header-top span, section.recentAdds-discover .recentAdds-element_info-header-top span {
           margin-bottom: 5px; } }
-    section.recentAdds .recentAdds-element_info-header-top h2 {
+    section.recentAdds .recentAdds-element_info-header-top h2, section.recentAdds-discover .recentAdds-element_info-header-top h2 {
       line-height: 23px;
       font-size: 1.125rem;
       letter-spacing: 0.2px;
       color: #282828;
       padding: 5px 5px; }
       @media screen and (min-width: 0px) and (max-width: 960px) {
-        section.recentAdds .recentAdds-element_info-header-top h2 {
+        section.recentAdds .recentAdds-element_info-header-top h2, section.recentAdds-discover .recentAdds-element_info-header-top h2 {
           padding: 0;
           display: block;
           width: 100%; } }
-    section.recentAdds .recentAdds-element_info-header p {
+    section.recentAdds .recentAdds-element_info-header p, section.recentAdds-discover .recentAdds-element_info-header p {
       padding: 0;
       font-size: 0.75rem;
       line-height: 20px;
       letter-spacing: 0.1px;
       color: #565656; }
-      section.recentAdds .recentAdds-element_info-header p a {
+      section.recentAdds .recentAdds-element_info-header p a, section.recentAdds-discover .recentAdds-element_info-header p a {
         text-decoration: underline; }
-    section.recentAdds .recentAdds-element_info-text {
+    section.recentAdds .recentAdds-element_info-text, section.recentAdds-discover .recentAdds-element_info-text {
       margin-top: 5px; }
-      section.recentAdds .recentAdds-element_info-text_information {
+      section.recentAdds .recentAdds-element_info-text_information, section.recentAdds-discover .recentAdds-element_info-text_information {
         padding: 0;
         font-size: 0.75rem;
         line-height: 20px;
         letter-spacing: 0.1px;
         color: #282828; }
-      section.recentAdds .recentAdds-element_info-text_date {
+      section.recentAdds .recentAdds-element_info-text_date, section.recentAdds-discover .recentAdds-element_info-text_date {
         padding: 0;
         font-size: 0.75rem;
         line-height: 20px;
@@ -7113,6 +7113,13 @@ section.recentAdds .recentAdds-element {
         color: #282828;
         font-weight: 300;
         color: #565656; }
+
+section.recentAdds-discover .row:last-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 60px; }
 
 .all_profiles {
   margin-top: 20px; }
@@ -7240,6 +7247,10 @@ section.discover .header {
     letter-spacing: .3px;
     color: #4e4e4e; }
 
+section.discover .row.category.no-margin {
+  margin-top: 0;
+  margin-bottom: 0; }
+
 section.discover .row.category .side, section.discover .row.category .item {
   padding: 1.0416666667vw; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
@@ -7323,6 +7334,41 @@ section.discover .row.category .side, section.discover .row.category .item {
         color: #f3997b; }
   section.discover .row.category .side.first .category_single, section.discover .row.category .item.first .category_single {
     height: 350px; }
+
+.featured_profile-header {
+  padding: 0 1.0416666667vw; }
+  .featured_profile-header_container {
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 1.0416666667vw; }
+  @media screen and (min-width: 0px) and (max-width: 960px) {
+    .featured_profile-header {
+      padding: 0 2.0833333333vw; } }
+  @media screen and (min-width: 0px) and (max-width: 800px) {
+    .featured_profile-header {
+      padding: 0 4.1666666667vw; } }
+  .featured_profile-header p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+  .featured_profile-header a {
+    font-size: 0.75rem;
+    line-height: 21px;
+    letter-spacing: 0.1px;
+    color: #555555; }
+    .featured_profile-header a:after {
+      content: 'k';
+      font-family: "fontgood";
+      position: relative;
+      text-transform: none;
+      padding-left: 5px;
+      top: 2px;
+      font-size: 0.75rem;
+      color: inherit; }
 
 .featured_profile .row .title, .featured_profile .row-small .title {
   font-size: 1.125rem;
@@ -7497,6 +7543,9 @@ main {
 
 .row, .row-small {
   margin: 60px auto; }
+  .row.no-margin, .row-small.no-margin {
+    margin-top: 0;
+    margin-bottom: 0; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
     .row, .row-small {
       margin: 30px auto; } }
