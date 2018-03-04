@@ -34,6 +34,7 @@ $total_requests = $categories_home_page->getAttribute('nr_requests');
 ?>
 <section class="discover">
   <?php  $this->inc('elements/breadcrumbs.php'); ?>
+  <img class="FGN_image" src="<?php echo $this->getThemePath();?>/assets/images/icoon-pi.svg" alt="logo"/>
   <div class="row header no-margin">
     <a href="<?php echo $this->url('/mijn_fgn/advertenties/advertentie_categorie');?>">Advertentie</a>
     <h2>Ontdekken in <?php echo $title; ?></h2>

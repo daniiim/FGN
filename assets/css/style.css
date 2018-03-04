@@ -7335,41 +7335,6 @@ section.discover .row.category .side, section.discover .row.category .item {
   section.discover .row.category .side.first .category_single, section.discover .row.category .item.first .category_single {
     height: 350px; }
 
-.featured_profile-header {
-  padding: 0 1.0416666667vw; }
-  .featured_profile-header_container {
-    background: white;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 1.0416666667vw; }
-  @media screen and (min-width: 0px) and (max-width: 960px) {
-    .featured_profile-header {
-      padding: 0 2.0833333333vw; } }
-  @media screen and (min-width: 0px) and (max-width: 800px) {
-    .featured_profile-header {
-      padding: 0 4.1666666667vw; } }
-  .featured_profile-header p {
-    display: inline;
-    margin: 0;
-    padding: 0;
-    text-align: left; }
-  .featured_profile-header a {
-    font-size: 0.75rem;
-    line-height: 21px;
-    letter-spacing: 0.1px;
-    color: #555555; }
-    .featured_profile-header a:after {
-      content: 'k';
-      font-family: "fontgood";
-      position: relative;
-      text-transform: none;
-      padding-left: 5px;
-      top: 2px;
-      font-size: 0.75rem;
-      color: inherit; }
-
 .featured_profile .row .title, .featured_profile .row-small .title {
   font-size: 1.125rem;
   text-align: center;
@@ -7387,6 +7352,41 @@ section.discover .row.category .side, section.discover .row.category .item {
   text-align: center;
   padding: 20px 1.0416666667vw;
   margin: 0 auto; }
+
+.featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+  padding: 0 1.0416666667vw; }
+  .featured_profile .row .featured_profile-header_container, .featured_profile .row-small .featured_profile-header_container {
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 1.0416666667vw; }
+  @media screen and (min-width: 0px) and (max-width: 960px) {
+    .featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+      padding: 0 2.0833333333vw; } }
+  @media screen and (min-width: 0px) and (max-width: 800px) {
+    .featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+      padding: 0 4.1666666667vw; } }
+  .featured_profile .row .featured_profile-header p, .featured_profile .row-small .featured_profile-header p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+  .featured_profile .row .featured_profile-header a, .featured_profile .row-small .featured_profile-header a {
+    font-size: 0.75rem;
+    line-height: 21px;
+    letter-spacing: 0.1px;
+    color: #555555; }
+    .featured_profile .row .featured_profile-header a:after, .featured_profile .row-small .featured_profile-header a:after {
+      content: 'k';
+      font-family: "fontgood";
+      position: relative;
+      text-transform: none;
+      padding-left: 5px;
+      top: 2px;
+      font-size: 0.75rem;
+      color: inherit; }
 
 .featured_profile .row .featured_profile-account, .featured_profile .row-small .featured_profile-account {
   padding: 1.0416666667vw;
@@ -7461,6 +7461,41 @@ section.discover .row.category .side, section.discover .row.category .item {
 
 .featured_profile .all_profiles {
   margin: 15px auto 40px; }
+
+.featured_profile-header {
+  padding: 0 1.0416666667vw; }
+  .featured_profile-header_container {
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 1.0416666667vw; }
+  @media screen and (min-width: 0px) and (max-width: 960px) {
+    .featured_profile-header {
+      padding: 0 2.0833333333vw; } }
+  @media screen and (min-width: 0px) and (max-width: 800px) {
+    .featured_profile-header {
+      padding: 0 4.1666666667vw; } }
+  .featured_profile-header p {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    text-align: left; }
+  .featured_profile-header a {
+    font-size: 0.75rem;
+    line-height: 21px;
+    letter-spacing: 0.1px;
+    color: #555555; }
+    .featured_profile-header a:after {
+      content: 'k';
+      font-family: "fontgood";
+      position: relative;
+      text-transform: none;
+      padding-left: 5px;
+      top: 2px;
+      font-size: 0.75rem;
+      color: inherit; }
 
 section {
   overflow: hidden;
@@ -7546,6 +7581,8 @@ main {
   .row.no-margin, .row-small.no-margin {
     margin-top: 0;
     margin-bottom: 0; }
+    .row.no-margin.header, .row-small.no-margin.header {
+      margin-top: 60px; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
     .row, .row-small {
       margin: 30px auto; } }
