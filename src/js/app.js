@@ -57,3 +57,8 @@ $('.second-menu-back').on('click', function(){
   $('.navigation li').removeClass('active');
   this.classList.remove('active');
 });
+
+$('.go-back').on('click', function(e){
+  e.preventDefault();
+  window.history.back();
+});

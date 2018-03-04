@@ -10,10 +10,12 @@
 @import
   "elements/header",
   "elements/footer",
+  "elements/breadcrumbs",
   "elements/whyFGN",
   "elements/joinFGN",
   "elements/recent-adds",
   "elements/vision",
+  "elements/category",
   "elements/featured-profile";
 
 section{ overflow: hidden; background: $background;
