@@ -5728,6 +5728,13 @@ h3, h5, h6, h4 {
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: "category";
+  src: url("../fonts/category.eot?#iefix") format("embedded-opentype"), url("../fonts/category.woff") format("woff"), url("../fonts/category.ttf") format("truetype"), url("../fonts/category.svg#category") format("svg");
+  /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal; }
+
 p, input, button, label, fieldset, ul, ol, li, select, a, span {
   margin: 0;
   padding: 0;
@@ -7199,10 +7206,11 @@ section .subText {
     max-width: 150px;
     margin: 40px auto; }
 
-section.discover img {
+section.discover svg {
   size: 60px;
   margin: 0 auto;
-  display: block; }
+  display: block;
+  fill: #41668a; }
 
 section.discover .header {
   display: flex;
@@ -7290,6 +7298,53 @@ section.discover .row.category .side, section.discover .row.category .item {
         display: block;
         width: 40px;
         height: 100%; }
+        section.discover .row.category .side .category_single-footer_icon span, section.discover .row.category .item .category_single-footer_icon span {
+          display: flex;
+          position: relative;
+          size: 100%;
+          align-items: center; }
+          section.discover .row.category .side .category_single-footer_icon span:after, section.discover .row.category .item .category_single-footer_icon span:after {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 90%;
+            color: #f3997b;
+            content: 'a';
+            font-family: "category";
+            font-size: 2.5rem;
+            line-height: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center; }
+        section.discover .row.category .side .category_single-footer_icon.sport_beweging span:after, section.discover .row.category .item .category_single-footer_icon.sport_beweging span:after {
+          content: 'x';
+          color: #65a0bd; }
+        section.discover .row.category .side .category_single-footer_icon.techniek_creatie span:after, section.discover .row.category .item .category_single-footer_icon.techniek_creatie span:after {
+          content: 'D';
+          color: #41668a; }
+        section.discover .row.category .side .category_single-footer_icon.zorg_welzijn span:after, section.discover .row.category .item .category_single-footer_icon.zorg_welzijn span:after {
+          content: 'm';
+          color: #81c784; }
+        section.discover .row.category .side .category_single-footer_icon.body_mind span:after, section.discover .row.category .item .category_single-footer_icon.body_mind span:after {
+          content: 'm';
+          color: #a49688; }
+        section.discover .row.category .side .category_single-footer_icon.kunst_cultuur span:after, section.discover .row.category .item .category_single-footer_icon.kunst_cultuur span:after {
+          content: 'c';
+          color: #7b685a; }
+        section.discover .row.category .side .category_single-footer_icon.cursus_workshop span:after, section.discover .row.category .item .category_single-footer_icon.cursus_workshop span:after {
+          content: 'e';
+          color: #55636a; }
+        section.discover .row.category .side .category_single-footer_icon.rezen_recreatie span:after, section.discover .row.category .item .category_single-footer_icon.rezen_recreatie span:after {
+          content: 'P';
+          color: #f3bb6c; }
+        section.discover .row.category .side .category_single-footer_icon.sociaal_entertainment span:after, section.discover .row.category .item .category_single-footer_icon.sociaal_entertainment span:after {
+          content: 'M';
+          color: #c93b37; }
+        section.discover .row.category .side .category_single-footer_icon.fashion_styling span:after, section.discover .row.category .item .category_single-footer_icon.fashion_styling span:after {
+          content: 'C';
+          color: #af60a2; }
       section.discover .row.category .side .category_single-footer-text, section.discover .row.category .item .category_single-footer-text {
         padding-left: 20px; }
         section.discover .row.category .side .category_single-footer-text-title, section.discover .row.category .item .category_single-footer-text-title {
@@ -7311,6 +7366,24 @@ section.discover .row.category .side, section.discover .row.category .item {
             top: 2px;
             font-size: 0.6875rem;
             color: inherit; }
+          section.discover .row.category .side .category_single-footer-text-url.sport_beweging, section.discover .row.category .item .category_single-footer-text-url.sport_beweging {
+            color: #65a0bd; }
+          section.discover .row.category .side .category_single-footer-text-url.techniek_creatie, section.discover .row.category .item .category_single-footer-text-url.techniek_creatie {
+            color: #41668a; }
+          section.discover .row.category .side .category_single-footer-text-url.zorg_welzijn, section.discover .row.category .item .category_single-footer-text-url.zorg_welzijn {
+            color: #81c784; }
+          section.discover .row.category .side .category_single-footer-text-url.body_mind, section.discover .row.category .item .category_single-footer-text-url.body_mind {
+            color: #a49688; }
+          section.discover .row.category .side .category_single-footer-text-url.kunst_cultuur, section.discover .row.category .item .category_single-footer-text-url.kunst_cultuur {
+            color: #7b685a; }
+          section.discover .row.category .side .category_single-footer-text-url.cursus_workshop, section.discover .row.category .item .category_single-footer-text-url.cursus_workshop {
+            color: #55636a; }
+          section.discover .row.category .side .category_single-footer-text-url.rezen_recreatie, section.discover .row.category .item .category_single-footer-text-url.rezen_recreatie {
+            color: #f3bb6c; }
+          section.discover .row.category .side .category_single-footer-text-url.sociaal_entertainment, section.discover .row.category .item .category_single-footer-text-url.sociaal_entertainment {
+            color: #c93b37; }
+          section.discover .row.category .side .category_single-footer-text-url.fashion_styling, section.discover .row.category .item .category_single-footer-text-url.fashion_styling {
+            color: #af60a2; }
   section.discover .row.category .side .category-view, section.discover .row.category .item .category-view {
     background: white;
     height: 100%;

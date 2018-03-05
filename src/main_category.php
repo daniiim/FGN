@@ -34,7 +34,19 @@ $total_requests = $categories_home_page->getAttribute('nr_requests');
 ?>
 <section class="discover">
   <?php  $this->inc('elements/breadcrumbs.php'); ?>
-  <img class="FGN_image" src="<?php echo $this->getThemePath();?>/assets/images/icoon-pi.svg" alt="logo"/>
+	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 254.1 254.1" style="enable-background:new 0 0 254.1 254.1;" xml:space="preserve">
+	<g id="Laag_2">
+		<g id="Laag_1-2">
+			<path class="st0" d="M127,0C56.9,0,0,56.9,0,127s56.9,127,127,127s127-56.9,127-127S197.1,0,127,0z M76.7,105H40.9v17.9h32.8v13.7
+				H40.9v27.5H24.5V91.4h52.2L76.7,105z M120.9,150.5c4.4,0,9.6-1.6,14.2-3.9v-19.1h14.2v27.9c-7.7,5.6-19.4,9.4-29.5,9.4
+				c-22,0-38.7-16-38.7-37.1s17-36.9,39.7-36.9c10.8,0,21.8,4.2,29.2,10.6l-9.2,11.7c-5.4-5-12.5-7.9-19.9-8.1
+				c-12.5-0.2-22.9,9.7-23.1,22.3c-0.2,12.5,9.7,22.9,22.3,23.1C120.3,150.5,120.6,150.5,120.9,150.5L120.9,150.5z M214.6,164.1
+				l-35.2-46.6v46.6h-15.7V91.4h15l35.3,46.7V91.4h15.6v72.7L214.6,164.1z"/>
+		</g>
+	</g>
+	</svg>
+
+
   <div class="row header no-margin">
     <a href="<?php echo $this->url('/mijn_fgn/advertenties/advertentie_categorie');?>">Advertentie</a>
     <h2>Ontdekken in <?php echo $title; ?></h2>

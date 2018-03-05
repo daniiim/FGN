@@ -36,6 +36,12 @@ $social-font-family: #{$social-font},sans-serif;
 // include main font
 @include font-include($social-font,$social-font-name,normal,normal);
 
+$category-font: "category";
+$category-font-name: "category";
+$category-font-family: #{$category-font},sans-serif;
+// include main font
+@include font-include($category-font,$category-font-name,normal,normal);
+
 //general fontstyle
 p , input , button , label , fieldset , ul , ol , li , select, a, span{ margin: 0; padding: 0; font-size: rem(14); line-height: 21px; color: $grey-black; font-family: $main-font-family; font-weight: $font-regular; }
 strong{ font-weight: $font-semibold; }

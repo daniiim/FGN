@@ -1,5 +1,5 @@
 section.discover{
-  img{ size: 60px; margin: 0 auto; display: block; }
+  svg{ size: 60px; margin: 0 auto; display: block; fill: $techniek; }
   .header{ display: flex; justify-content: space-between; align-items: center; padding: 0 grid(.25);
     @media #{$medium-only}{ padding: 0 grid(.5); }
     @media #{$small-only}{ padding: 0 grid(1); }
@@ -20,11 +20,69 @@ section.discover{
         }
         &-image{ width: 100%; height: 65%; background-size: cover; background-position: center center; display: block; }
         &-footer{ display: flex; align-items: center; height: 35%; padding: 0px 30px;
-          &_icon{ display: block; width: 40px; height: 100%; }
+          &_icon{ display: block; width: 40px; height: 100%;
+            span{ display: flex; position: relative; size: 100%; align-items: center;
+              &:after{ position: absolute; left: 0; top: 0; width: 100%; height: 90%; color: $feelgood; content: 'a'; font-family: $category-font; font-size: rem(40); line-height: 40px; text-align: center; display: flex; align-items: center; justify-content: center; }
+            }
+            &.sport_beweging{
+              span:after{ content: 'x'; color: $sport; }
+            }
+            &.techniek_creatie{
+              span:after{ content: 'D'; color: $techniek; }
+            }
+            &.zorg_welzijn{
+              span:after{ content: 'm'; color: $zorg; }
+            }
+            &.body_mind{
+              span:after{ content: 'm'; color: $body; }
+            }
+            &.kunst_cultuur{
+              span:after{ content: 'c'; color: $kunst; }
+            }
+            &.cursus_workshop{
+              span:after{ content: 'e'; color: $cursus; }
+            }
+            &.rezen_recreatie{
+              span:after{ content: 'P'; color: $reizen; }
+            }
+            &.sociaal_entertainment{
+              span:after{ content: 'M'; color: $sociaal; }
+            }
+            &.fashion_styling{
+              span:after{ content: 'C'; color: $fashion; }
+            }
+          }
           &-text{ padding-left: 20px;
             &-title{ font-size: rem(18); line-height: 21px; color: $black; letter-spacing: .2px; font-weight: $font-semibold; }
             &-url{ font-size: rem(12); letter-spacing: .1px; line-height: 21px; color: $feelgood;
               &:after{ content: 'k'; font-family: $social-font; position: relative; text-transform: none; padding-left: 5px; top: 2px; font-size: rem(11); color: inherit; }
+              &.sport_beweging{
+                &{ color: $sport; }
+              }
+              &.techniek_creatie{
+                &{ color: $techniek; }
+              }
+              &.zorg_welzijn{
+                &{ color: $zorg; }
+              }
+              &.body_mind{
+                &{ color: $body; }
+              }
+              &.kunst_cultuur{
+                &{ color: $kunst; }
+              }
+              &.cursus_workshop{
+                &{ color: $cursus; }
+              }
+              &.rezen_recreatie{
+                &{ color: $reizen; }
+              }
+              &.sociaal_entertainment{
+                &{color: $sociaal; }
+              }
+              &.fashion_styling{
+                &{ color: $fashion; }
+              }
             }
           }
         }
