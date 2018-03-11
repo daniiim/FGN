@@ -7406,7 +7406,7 @@ section.discover .row.category .side, section.discover .row.category .item {
       section.discover .row.category .side .category-view a:hover, section.discover .row.category .item .category-view a:hover {
         color: #f3997b; }
   section.discover .row.category .side.first .category_single, section.discover .row.category .item.first .category_single {
-    height: 350px; }
+    height: 100%; }
 
 .featured_profile .row .title, .featured_profile .row-small .title {
   font-size: 1.125rem;

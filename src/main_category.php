@@ -2,6 +2,7 @@
 defined('C5_EXECUTE') or die("Access Denied.");
 $this->inc('elements/header.php');
 $ih = Loader::helper('image');
+$nh = Loader::helper('navigation');
 $title = $c->getCollectionName();
 $path = $c->getCollectionPath();
 if ($c->getCollectionAttributeValue('category_description')) {
@@ -30,7 +31,9 @@ if($img){
 $categories_home_page = page::getByID(997);
 $total_adds 	= $categories_home_page->getAttribute('nr_adds');
 $total_requests = $categories_home_page->getAttribute('nr_requests');
-
+$page = Page::getCurrentPage();
+$page->getCollectionID();
+$children = $page->getCollectionChildrenArray();
 ?>
 <section class="discover">
   <?php  $this->inc('elements/breadcrumbs.php'); ?>
@@ -72,9 +75,11 @@ $total_requests = $categories_home_page->getAttribute('nr_requests');
     <div class="side small-full medium-third columns hide-small">
       <div class="category-view">
         <h3>Rubrieken in <?php echo $title; ?></h3>
-        <?php for ($i = 0; $i < 6; $i++){
+        <?php foreach ($children as $childId) {
+          $child = Page::getByID($childId);
+          $urlChild  = $nh->getLinkToCollection($child);
           ?>
-          <a href="#" class="category-view_url">Therapie</a>
+          <a href="<?php echo $urlChild; ?>" class="category-view_url"><?php echo $child->getCollectionName(); ?></a>
           <?php
         }?>
       </div>

@@ -14,7 +14,7 @@ section.discover{
     .side, .item{ padding: grid(.25);
       @media #{$medium-only}{ padding: grid(.5); }
       @media #{$small-only}{ padding: grid(1); }
-      .category_single{ background: white; border-radius: 5px;  height: 250px; position: relative;
+      .category_single{ background: white; border-radius: 5px; height: 250px; position: relative;
         .full_url{ position: absolute; left: 0; top: 0; display: block; z-index: 1; size: 100%; box-shadow: none; transition: $transition;
           &:hover{ box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); }
         }
@@ -94,7 +94,7 @@ section.discover{
         }
       }
       &.first{
-        .category_single{ height: 350px; }
+        .category_single{ height: 100%; }
       }
     }
   }
