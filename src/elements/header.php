@@ -40,6 +40,9 @@ if ($u->isLoggedIn()) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <link href="<?php echo $path; ?>/assets/css/style.css" rel="stylesheet">
 <link rel="shortcut icon" href="<?php echo $path; ?>/assets/images/favicon.ico">
+<script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.1.js"></script>
+<script src="<?php echo $path; ?>/js/jquery.browser.min.js"></script>
 <?php
 Loader::element('header_required');
 ?>
