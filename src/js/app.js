@@ -62,3 +62,7 @@ $('.go-back').on('click', function(e){
   e.preventDefault();
   window.history.back();
 });
+$('.close-error').on('click', function(e){
+  e.preventDefault();
+  $('.error-popup').addClass('inactive');
+})

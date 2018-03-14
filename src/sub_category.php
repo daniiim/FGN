@@ -14,14 +14,39 @@ $nr_of_requests = $c->getAttribute('category_nr_requests');
 <?php
 $a = new GlobalArea('Sub Categorieën Hoofd');
 $a->display();
-?>
-<!--
-<?php
+$cPage = Page::getCurrentPage();
+$categoryPageId = $cPage->getCollectionParentID();
+$categoryPage = page::getByID($categoryPageId);
+$children = $categoryPage->getCollectionChildrenArray();
+$array = array();
+$uh = Loader::helper('url');
+foreach ($children as $key) {
+  $subPage = page::getByID($key);
+  $childrenSubPage = $subPage->getCollectionChildrenArray();
+  foreach ($childrenSubPage as $subChildren) {
+    $subChildrenPage = page::getByID($subChildren);
+    $ownerID = $subChildrenPage->getCollectionUserID();
+    $ui = UserInfo::getByID($ownerID);
+    $smallArray = array(
+      "title" => $subChildrenPage->getCollectionName(),
+      "key" => $subChildrenPage->getAttribute('add_or_request'),
+      "userName" => $ui->getAttribute('first_name'),
+      "sirName" => $ui->getAttribute('sir_name'),
+      "userBirth" => date('d/m/Y', strtotime($ui->getAttribute('birth'))),
+      "description" => $subChildrenPage->getAttribute('product_long_description'),
+
+    );
+    array_push($array, $smallArray);
+  }
+}
+print_r($array);
+
+
 if (!$_GET['search_type'] || $_GET['search_type'] == 'adds') {
 	$default_tab = 'adds-tab-select';
 } else if ($_GET['search_type'] == 'request') {
 	$default_tab = 'request-tab-select';
 }
-?> -->
+?>
 
 <?php  $this->inc('elements/footer.php'); ?>
