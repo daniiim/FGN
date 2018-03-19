@@ -70,7 +70,6 @@ $bg_src = $ih->getThumbnail($bg, 1920, 9999, true);
             </p>
           </div>
         </div>
-      </a>
       </div>
     </div>
   <?php } ?>

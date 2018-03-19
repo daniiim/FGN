@@ -113,3 +113,55 @@ section{ width: 100vw; max-width: 100%;
   p{ padding: 0; }
   .close-error{ position: absolute; right: 20px; top: 20px; font-size: rem(22); font-weight: $font-semibold; color: black; z-index: 2;}
 }
+
+
+.row{
+  section{ background: transparent;
+    &.filter{ max-width: 320px; width: 100%; padding: 0 grid(.25);
+      @media #{$medium-down}{ padding: 0 grid(.5); }
+      @media #{$small-only}{ padding: 0 grid(1); }
+      .filter-container{ background: white; display: flex; flex-direction: column; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);  border-radius: 10px;
+        .filter-header{ display: flex; justify-content: space-between; align-items: center; padding: 0px 20px; height: 50px;
+          h4{ font-size: rem(16); font-weight: $font-light; color: $grey-black; letter-spacing: .1px; line-height: 21px; padding: 15px 0; }
+          button{ background: transparent; border: none; color: $sport; text-transform: uppercase; font-size: rem(12); letter-spacing: .1px; line-height: 21px; }
+        }
+        form{
+          fieldset{ border: none; border-top: 1px solid $white-grey; padding: 45px 30px 20px; position: relative;
+            legend{ position: absolute; top: 15px; font-size: rem(14); font-weight: $font-light; letter-spacing: .1px; color: $grey-black; line-height: 21px; }
+            .fieldset_container{ display: flex; flex-direction: column; padding-left: 15px;
+              label{ font-size: rem(12); line-height: 30px; letter-spacing: .1px; color: #979797; display: inline-block; position: relative; cursor: pointer; }
+              input[type="checkbox"]{
+                + label{
+                  &:before{ content: ''; display: inline-block; size: 20px; background: $background; position: relative; top: 4px; margin-right: 10px; color: black; text-align: center;}
+                  &:after{ content: 'm'; display: block; position: absolute; left: 0; top: 4px; size: 20px; font-family: $social-font; color: black; text-align: center; top: -1px; opacity: 0; font-size: rem(12); transition: $transition; }
+                }
+                &:checked{
+                  +label:after{ opacity: 1; }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  div.results{ width: calc(100% - 320px); padding: 0px grid(.25);
+    @media #{$medium-down}{ padding: 0 grid(.5); }
+    @media #{$small-only}{ padding: 0 grid(1); }
+    &-header{ display: flex; height: 50px; justify-content: space-between; align-items: center; width: 100%;
+      .navigation-results{ height: 100%; background: white; display: flex; align-items: center; justify-content: flex-start; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);
+        a{ display: flex; font-size: rem(12); letter-spacing: .1px; color: $grey-black; font-weight: $font-light; padding: 0 15px; height: 100%; position: relative; align-items: center;
+          &:after{ content: ''; display: block; position: absolute; bottom: 0; width: calc(100%); height: 4px; background-color: $sport; left: 0; height: 0; transition: $transition; }
+          &.active{ height: 4px; }
+          &:hover{
+            &:after{ height: 4px; background: $feelgood; }
+          }
+        }
+      }
+    }
+  }
+}
+
+html.sub_category{
+  main{ background: $background; }
+}

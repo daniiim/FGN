@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
        files: ['src/js/*.js'],
-       tasks: ['uglify', 'copy:theme'],
+       tasks: ['uglify', 'copy:js'],
        options: {
          spawn: false,
        },
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
      dev: {
        options: {
          files: [
-           'C:/MAMP/htdocs/concrete/themes/fgn/**/*/*',
+           'C:/MAMP/htdocs/concrete/themes/fgn/**/*',
          ],
           port: '3000',
           open: 'local',
@@ -92,16 +92,17 @@ module.exports = function(grunt) {
      images: {
        files: [{
          expand: true,
-         cwd: 'assets/img/',
+         cwd: 'src/assets/images',
          src: [
            '**.jpg',
            '**.jpeg',
            '**.png',
            '**.gif',
            '**.svg',
-           '**.ico'
+           '**.ico',
+           '**/*.*'
          ],
-         dest: 'C:/MAMP/htdocs/concrete/themes/fgn/assets/img'
+         dest: 'C:/MAMP/htdocs/concrete/themes/fgn/assets/images'
        }]
      },
     //  css: {
@@ -117,12 +118,13 @@ module.exports = function(grunt) {
      fonts: {
        files: [{
          expand: true,
+         cwd: 'src/assets/fonts',
          src: [
-           'fonts/**.eot',
-           'fonts/**.ttf',
-           'fonts/**.otf',
-           'fonts/**.svg',
-           'fonts/**.woff'
+           '**.eot',
+           '**.ttf',
+           '**.otf',
+           '**.svg',
+           '**.woff'
          ],
          dest: 'C:/MAMP/htdocs/concrete/themes/fgn/assets/fonts'
        }]
@@ -133,10 +135,40 @@ module.exports = function(grunt) {
          spawn: false,
          cwd: 'src/',
          src: [
-           '**/*',
+           '**/*.php',
            '!scss/**',
            '!fonts/**',
            '!img/**'
+         ],
+         dest: 'C:/MAMP/htdocs/concrete/themes/fgn'
+       }]
+     },
+     js: {
+       files: [{
+         expand: true,
+         spawn: false,
+         cwd: 'src/',
+         src: [
+           '**/*.js',
+           '!scss/**',
+           '!fonts/**',
+           '!img/**'
+         ],
+         dest: 'C:/MAMP/htdocs/concrete/themes/fgn'
+       }]
+     },
+     all: {
+       files: [{
+         expand: true,
+         spawn: false,
+         cwd: 'src/',
+         src: [
+           '**/*.',
+           '!scss/**',
+           '!fonts/**',
+           '!img/**',
+           '!**/*.php',
+           '!**/*.js'
          ],
          dest: 'C:/MAMP/htdocs/concrete/themes/fgn'
        }]
