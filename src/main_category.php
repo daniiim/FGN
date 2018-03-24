@@ -33,7 +33,7 @@ $total_adds 	= $categories_home_page->getAttribute('nr_adds');
 $total_requests = $categories_home_page->getAttribute('nr_requests');
 $page = Page::getCurrentPage();
 $page->getCollectionID();
-$children = $page->getCollectionChildrenArray();
+$children = $page->getCollectionChildrenArray(1);
 ?>
 <section class="discover">
   <?php  $this->inc('elements/breadcrumbs.php'); ?>

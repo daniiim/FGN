@@ -7131,6 +7131,9 @@ section.recentAdds-discover .row:last-of-type {
   align-items: flex-start;
   margin-bottom: 60px; }
 
+section.add_section .recentAdds-element_container .recentAdds-element_image {
+  border-radius: 10px; }
+
 .all_profiles {
   margin-top: 20px; }
 
@@ -7415,7 +7418,7 @@ section.discover .row.category .side, section.discover .row.category .item {
   section.discover .row.category .side.first .category_single-footer, section.discover .row.category .item.first .category_single-footer {
     height: 150px; }
 
-.featured_profile .row .title, .featured_profile .row-small .title {
+.featured_profile .title {
   font-size: 1.125rem;
   text-align: center;
   line-height: 21px;
@@ -7424,7 +7427,7 @@ section.discover .row.category .side, section.discover .row.category .item {
   display: block;
   width: 100%; }
 
-.featured_profile .row p, .featured_profile .row-small p {
+.featured_profile p {
   font-size: 0.75rem;
   line-height: 21px;
   letter-spacing: 0.1px;
@@ -7433,32 +7436,32 @@ section.discover .row.category .side, section.discover .row.category .item {
   padding: 20px 1.0416666667vw;
   margin: 0 auto; }
 
-.featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+.featured_profile .featured_profile-header {
   padding: 0 1.0416666667vw; }
-  .featured_profile .row .featured_profile-header_container, .featured_profile .row-small .featured_profile-header_container {
+  .featured_profile .featured_profile-header_container {
     background: white;
-    border-radius: 5px;
+    border-radius: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 1.0416666667vw; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
-    .featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+    .featured_profile .featured_profile-header {
       padding: 0 2.0833333333vw; } }
   @media screen and (min-width: 0px) and (max-width: 800px) {
-    .featured_profile .row .featured_profile-header, .featured_profile .row-small .featured_profile-header {
+    .featured_profile .featured_profile-header {
       padding: 0 4.1666666667vw; } }
-  .featured_profile .row .featured_profile-header p, .featured_profile .row-small .featured_profile-header p {
+  .featured_profile .featured_profile-header p {
     display: inline;
     margin: 0;
     padding: 0;
     text-align: left; }
-  .featured_profile .row .featured_profile-header a, .featured_profile .row-small .featured_profile-header a {
+  .featured_profile .featured_profile-header a {
     font-size: 0.75rem;
     line-height: 21px;
     letter-spacing: 0.1px;
     color: #555555; }
-    .featured_profile .row .featured_profile-header a:after, .featured_profile .row-small .featured_profile-header a:after {
+    .featured_profile .featured_profile-header a:after {
       content: 'k';
       font-family: "fontgood";
       position: relative;
@@ -7468,29 +7471,31 @@ section.discover .row.category .side, section.discover .row.category .item {
       font-size: 0.75rem;
       color: inherit; }
 
-.featured_profile .row .featured_profile-account, .featured_profile .row-small .featured_profile-account {
+.featured_profile .featured_profile-account {
   padding: 1.0416666667vw;
   position: relative; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
-    .featured_profile .row .featured_profile-account, .featured_profile .row-small .featured_profile-account {
+    .featured_profile .featured_profile-account {
       padding: 2.0833333333vw; } }
   @media screen and (min-width: 0px) and (max-width: 800px) {
-    .featured_profile .row .featured_profile-account, .featured_profile .row-small .featured_profile-account {
+    .featured_profile .featured_profile-account {
       padding: 2.0833333333vw 4.1666666667vw; } }
-  .featured_profile .row .featured_profile-account-container, .featured_profile .row-small .featured_profile-account-container {
+  .featured_profile .featured_profile-account-container {
     background: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 5px; }
-  .featured_profile .row .featured_profile-account-image, .featured_profile .row-small .featured_profile-account-image {
+  .featured_profile .featured_profile-account-image {
     size: 100px;
     display: block;
     background: #f1f1f1;
     border-radius: 50%;
     margin-top: 30px;
-    position: relative; }
-    .featured_profile .row .featured_profile-account-image-number, .featured_profile .row-small .featured_profile-account-image-number {
+    position: relative;
+    background-position: center center;
+    background-size: cover; }
+    .featured_profile .featured_profile-account-image-number {
       size: 35px;
       background: #81c784;
       border-radius: 50%;
@@ -7504,24 +7509,24 @@ section.discover .row.category .side, section.discover .row.category .item {
       color: #fdfdfd;
       font-weight: 500;
       font-size: 0.875rem; }
-  .featured_profile .row .featured_profile-account-name, .featured_profile .row-small .featured_profile-account-name {
+  .featured_profile .featured_profile-account-name {
     font-size: 1.125rem;
     margin-top: 10px;
     color: #282828;
     letter-spacing: .2px;
     line-height: 21px; }
-  .featured_profile .row .featured_profile-account-accountInfo, .featured_profile .row-small .featured_profile-account-accountInfo {
+  .featured_profile .featured_profile-account-accountInfo {
     display: flex;
     flex-wrap: nowrap; }
-    .featured_profile .row .featured_profile-account-accountInfo p, .featured_profile .row-small .featured_profile-account-accountInfo p {
+    .featured_profile .featured_profile-account-accountInfo p {
       padding: 0;
       font-size: 0.75rem;
       line-height: 20px;
       letter-spacing: 0.1px;
       color: #565656; }
-      .featured_profile .row .featured_profile-account-accountInfo p a, .featured_profile .row-small .featured_profile-account-accountInfo p a {
+      .featured_profile .featured_profile-account-accountInfo p a {
         text-decoration: underline; }
-  .featured_profile .row .featured_profile-account-infoText p, .featured_profile .row-small .featured_profile-account-infoText p {
+  .featured_profile .featured_profile-account-infoText p {
     font-size: 0.75rem;
     line-height: 21px;
     letter-spacing: 0.1px;
@@ -7529,14 +7534,14 @@ section.discover .row.category .side, section.discover .row.category .item {
     text-align: center;
     padding: 20px 1.6666666667vw;
     margin: 0 auto; }
-  .featured_profile .row .featured_profile-account-url, .featured_profile .row-small .featured_profile-account-url {
+  .featured_profile .featured_profile-account-url {
     margin: 20px 0px 20px;
     font-size: 0.75rem;
     letter-spacing: 0.1px;
     color: #979797;
     font-weight: 500;
     transition: 0.3s; }
-    .featured_profile .row .featured_profile-account-url:hover, .featured_profile .row-small .featured_profile-account-url:hover {
+    .featured_profile .featured_profile-account-url:hover {
       text-decoration: underline; }
 
 .featured_profile .all_profiles {
@@ -8017,19 +8022,20 @@ section {
 
 .row div.results {
   width: calc(100% - 320px);
-  padding: 0px 1.0416666667vw; }
-  @media screen and (min-width: 0px) and (max-width: 960px) {
-    .row div.results {
-      padding: 0 2.0833333333vw; } }
-  @media screen and (min-width: 0px) and (max-width: 800px) {
-    .row div.results {
-      padding: 0 4.1666666667vw; } }
+  position: relative; }
   .row div.results-header {
     display: flex;
     height: 50px;
     justify-content: space-between;
     align-items: center;
-    width: 100%; }
+    width: 100%;
+    padding: 0px 1.0416666667vw; }
+    @media screen and (min-width: 0px) and (max-width: 960px) {
+      .row div.results-header {
+        padding: 0 2.0833333333vw; } }
+    @media screen and (min-width: 0px) and (max-width: 800px) {
+      .row div.results-header {
+        padding: 0 4.1666666667vw; } }
     .row div.results-header .navigation-results {
       height: 100%;
       background: white;
@@ -8054,15 +8060,113 @@ section {
           bottom: 0;
           width: calc(100%);
           height: 4px;
-          background-color: #65a0bd;
+          background-color: #f3997b;
           left: 0;
           height: 0;
           transition: 0.3s; }
-        .row div.results-header .navigation-results a.active {
+        .row div.results-header .navigation-results a.active:after {
           height: 4px; }
         .row div.results-header .navigation-results a:hover:after {
           height: 4px;
           background: #f3997b; }
+    .row div.results-header .add_something {
+      display: block;
+      line-height: 25px;
+      border-radius: 5px;
+      background-color: #f3997b;
+      color: #fdfdfd;
+      font-weight: 500;
+      letter-spacing: 0px;
+      font-size: 0.75rem;
+      text-align: center;
+      position: relative;
+      transition: 0.3s;
+      padding: 5px 15px;
+      text-transform: uppercase;
+      box-shadow: none;
+      border: none;
+      cursor: pointer;
+      display: none; }
+      .row div.results-header .add_something:before {
+        content: '+';
+        position: relative;
+        text-transform: none;
+        padding: 0 10px 0 0;
+        font-size: 1.1rem;
+        top: 2px; }
+      .row div.results-header .add_something:hover {
+        background: #f18b68; }
+      .row div.results-header .add_something.active {
+        display: block; }
+  .row div.results section {
+    position: absolute;
+    top: 51px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    display: none; }
+    .row div.results section.no-result {
+      padding: 1.0416666667vw; }
+      @media screen and (min-width: 0px) and (max-width: 960px) {
+        .row div.results section.no-result {
+          padding: 2.0833333333vw; } }
+      @media screen and (min-width: 0px) and (max-width: 800px) {
+        .row div.results section.no-result {
+          padding: 4.1666666667vw; } }
+      .row div.results section.no-result h1 {
+        line-height: 1; }
+    .row div.results section.active {
+      z-index: 1;
+      opacity: 1;
+      pointer-events: all;
+      display: flex;
+      flex-wrap: wrap; }
+    .row div.results section article {
+      padding: 0 1.0416666667vw 1.0416666667vw;
+      display: none; }
+      .row div.results section article.active {
+        display: block; }
+      .row div.results section article.recentAdds-element {
+        background: transparent;
+        border-radius: 0;
+        width: 100%;
+        padding: 0 1.0416666667vw; }
+        @media screen and (min-width: 0px) and (max-width: 960px) {
+          .row div.results section article.recentAdds-element {
+            padding: 0 2.0833333333vw; } }
+        @media screen and (min-width: 0px) and (max-width: 800px) {
+          .row div.results section article.recentAdds-element {
+            padding: 0 4.1666666667vw; } }
+        .row div.results section article.recentAdds-element .recentAdds-element_container {
+          width: 100%;
+          background: white;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          position: relative;
+          padding: 1.0416666667vw;
+          border-top: 1px solid #d2d2d2; }
+          @media screen and (min-width: 0px) and (max-width: 960px) {
+            .row div.results section article.recentAdds-element .recentAdds-element_container {
+              padding: 2.0833333333vw; } }
+          @media screen and (min-width: 0px) and (max-width: 800px) {
+            .row div.results section article.recentAdds-element .recentAdds-element_container {
+              padding: 2.0833333333vw 4.1666666667vw; } }
+        .row div.results section article.recentAdds-element:first-of-type .recentAdds-element_container {
+          border: none;
+          border-radius: 0 10px 0 0; }
+        .row div.results section article.recentAdds-element:last-of-type .recentAdds-element_container {
+          border-radius: 0 0 10px 10px; }
+      @media screen and (min-width: 0px) and (max-width: 960px) {
+        .row div.results section article {
+          padding: 0 2.0833333333vw 2.0833333333vw; } }
+      @media screen and (min-width: 0px) and (max-width: 800px) {
+        .row div.results section article {
+          padding: 0 4.1666666667vw 4.1666666667vw; } }
 
 html.sub_category main {
   background: #f7f7f7; }
+
+button {
+  cursor: pointer; }
