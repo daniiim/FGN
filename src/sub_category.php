@@ -26,6 +26,8 @@ function debug($data){
 }
 $allCategory = array();
 $dontInclude = array();
+$totalReq = 0;
+$totalAdd = 0;
 foreach ($children as $key) {
   $subPage = page::getByID($key);
   $childrenSubPage = $subPage->getCollectionChildrenArray();
@@ -105,9 +107,11 @@ foreach ($children as $key) {
     );
     if ($subChildrenPage->getAttribute('add_or_request') == 'Advertentie'){
       $addsTotal = $addsTotal + 1;
+      $totalAdd++;
     }
     elseif($subChildrenPage->getAttribute('add_or_request') == 'Opdracht'){
       $reqTotal = $reqTotal + 1;
+      $totalReq++;
     }
     array_push($array, $smallArray);
     if($subChildrenPage->getAttribute('add_or_request') === 'Opdracht'){
@@ -194,9 +198,9 @@ foreach ($values as $key) {
   <div class="results">
     <div class="results-header">
       <div class="navigation-results">
-        <a href="#" class="profiles active">Profielen</a>
-        <a href="#" class="request">Opdrachten</a>
-        <a href="#" class="adds">Advertentie</a>
+        <a href="#" class="profiles active">Profielen (<?php echo $totalAdd; ?>)</a>
+        <a href="#" class="request">Opdrachten (<?php echo $totalReq; ?>)</a>
+        <a href="#" class="adds">Advertentie (<?php echo $totalAdd; ?>)</a>
       </div>
       <a class="active add_add add_something" href="<?php echo $this->url('/mijn_fgn/advertenties/advertentie_categorie');?>">Advertentie</a>
       <a class="req_add add_something" href="<?php echo $this->url('/mijn_fgn/opdrachten/opdracht_categorie');?>">Opdracht</a>
@@ -218,7 +222,12 @@ foreach ($values as $key) {
               <h3 class="featured_profile-account-name"><?php echo $keyUser['user']['userName']; echo ' '; echo $keyUser['user']['sirName']; ?></h3>
               <div class="featured_profile-account-infoText">
                 <p>
-                  <?php echo $keyUser['description']; ?>
+                  <?php $text = $keyUser['description'];
+                  if(strlen($text) > 150){
+                    $text = substr($text, 0, 150) . '...';
+                  }
+                  echo $text;
+                  ?>
                 </p>
               </div>
               <a href="<?php echo $keyUser['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>

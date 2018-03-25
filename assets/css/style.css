@@ -7485,7 +7485,8 @@ section.discover .row.category .side, section.discover .row.category .item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 5px; }
+    border-radius: 5px;
+    height: 100%; }
   .featured_profile .featured_profile-account-image {
     size: 100px;
     display: block;
@@ -7526,21 +7527,25 @@ section.discover .row.category .side, section.discover .row.category .item {
       color: #565656; }
       .featured_profile .featured_profile-account-accountInfo p a {
         text-decoration: underline; }
-  .featured_profile .featured_profile-account-infoText p {
-    font-size: 0.75rem;
-    line-height: 21px;
-    letter-spacing: 0.1px;
-    color: #555555;
-    text-align: center;
-    padding: 20px 1.6666666667vw;
-    margin: 0 auto; }
+  .featured_profile .featured_profile-account-infoText {
+    margin-bottom: 40px; }
+    .featured_profile .featured_profile-account-infoText p {
+      font-size: 0.75rem;
+      line-height: 21px;
+      letter-spacing: 0.1px;
+      color: #555555;
+      text-align: center;
+      padding: 20px 1.6666666667vw;
+      margin: 0 auto; }
   .featured_profile .featured_profile-account-url {
     margin: 20px 0px 20px;
     font-size: 0.75rem;
     letter-spacing: 0.1px;
     color: #979797;
     font-weight: 500;
-    transition: 0.3s; }
+    transition: 0.3s;
+    position: absolute;
+    bottom: 30px; }
     .featured_profile .featured_profile-account-url:hover {
       text-decoration: underline; }
 

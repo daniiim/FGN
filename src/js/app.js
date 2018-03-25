@@ -69,157 +69,175 @@ $('.close-error').on('click', function(e){
 
 $(document).on('ready', function(){
   if(typeof currentPageCategory !== 'undefined'){
-    var filterButton = document.querySelectorAll('.mobile a');
-    filterButton.forEach(function(button){
-      button.addEventListener('click', function(item){
-        var form = document.querySelector('.filter form');
-        form.classList.toggle('open');
-        filterButton.forEach(function(e){
-          e.classList.add('active');
-        });
-        item.target.classList.remove('active');
-      });
-    });
-    var rubriekenFilters = document.querySelectorAll('.fieldset_container input');
-    var currentPageCategoryWithUnderscore = currentPageCategory.split(' ').join('_');
-    var inputSelected = document.querySelectorAll("#" + currentPageCategoryWithUnderscore);
-    uncheckAllInput(rubriekenFilters);
-    inputSelected.forEach(function(e){
-      e.checked = true;
-    });
-    var allInput = document.querySelectorAll('input');
-    rubriekenFilter(allInput);
-    allInput.forEach(function(el){
-      el.addEventListener('change', function(e){
-        rubriekenFilter(allInput);
-      });
-    });
-    var resetButton = document.querySelector('button.reset-filter');
-    resetButton.addEventListener('click', function(){
-      uncheckAllInput(allInput);
-      rubriekenFilter(allInput);
-    });
-
-    var toggleButtons = document.querySelectorAll('.navigation-results a');
-    toggleButtons.forEach(function(item){
-      item.addEventListener('click', function(e){
-        e.preventDefault();
-
-        removeActiveToggle();
-        var className = e.target.classList[0];
-        e.target.classList.add('active');
-        var sections = document.querySelectorAll('.results section');
-        sections.forEach(function(s){
-          if(!s.classList.contains('no-result')){
-            s.classList.remove('active');
+    var filterSystem = {
+      init: function(){
+        this.findActiveToggle();
+        this.mobileVersion();
+        this.loadFirstFilter();
+        this.resetFilter();
+        var tabNavigation = document.querySelectorAll('.navigation-results a');
+        for(var i = 0; i < tabNavigation.length; i++){
+          tabNavigation[i].addEventListener('click', function(e){
+            e.preventDefault();
+            filterSystem.removeActive(tabNavigation);
+            e.target.classList.add('active');
+            filterSystem.findActiveToggle();
+          });
+        }
+      },
+      findActiveToggle: function(){
+        var tabNavigation = document.querySelectorAll('.navigation-results a');
+        for(var i = 0; i < tabNavigation.length; i++){
+          if(tabNavigation[i].classList.contains('active')){
+            this.activeToggle = tabNavigation[i].classList[0];
           }
-        });
-        var selected;
-        var inputSel;
-        switch (className) {
-          case "request":
-          selected = document.querySelector('section.request_section');
-          inputSel = document.querySelectorAll('label .req');
+        }
+        var sectionSelected;
+        var labels;
+        switch (this.activeToggle) {
+          case 'profiles':
+            sectionSelected = document.querySelector('.results .featured_profile');
+            labels = document.querySelectorAll('.rubic label .add');
             break;
-          case "profiles":
-          selected = document.querySelector('section.featured_profile');
-          inputSel = document.querySelectorAll('label .add');
+          case 'request':
+            sectionSelected = document.querySelector('.results .request_section');
+            labels = document.querySelectorAll('.rubic label .req');
             break;
-          case "adds":
-          selected = document.querySelector('section.add_section');
-          inputSel = document.querySelectorAll('label .add');
+          case 'adds':
+            sectionSelected = document.querySelector('.results .add_section');
+            labels = document.querySelectorAll('.rubic label .add');
             break;
         }
-        selected.classList.add('active');
-        rubriekenFilter(allInput);
-        var allLabels = document.querySelectorAll('label span');
-        allLabels.forEach(function(la){
-          la.classList.remove('active');
+        var allSections = document.querySelectorAll('.results section');
+        filterSystem.removeActive(allSections);
+        var allLabels = document.querySelectorAll('.rubic label span');
+        filterSystem.removeActive(allLabels);
+
+        labels.forEach(function(label){
+          label.classList.add('active');
         });
-        inputSel.forEach(function(inp){
-          inp.classList.add('active');
+
+        sectionSelected.classList.add('active');
+        filterSystem.rubriekenFilter();
+      },
+      loadFirstFilter: function(){
+        var rubriekenFilters = document.querySelectorAll('.fieldset_container input');
+        this.uncheckAllInput(rubriekenFilters);
+        var currentPageCategoryWithUnderscore = currentPageCategory.split(' ').join('_');
+        var inputSelected = document.querySelectorAll("#" + currentPageCategoryWithUnderscore);
+        inputSelected.forEach(function(e){
+            e.checked = true;
         });
-      });
-    });
+        var allInputFields = document.querySelectorAll('.rubic input');
+        for(var i = 0; i < allInputFields.length; i++){
+          allInputFields[i].addEventListener('change', function(){
+            filterSystem.rubriekenFilter();
+          });
+        }
+        this.rubriekenFilter();
+      },
+      rubriekenFilter: function(){
+        var allInputFields = document.querySelectorAll('.rubic input');
+        var activeInputFields = [];
+        for(var i = 0; i < allInputFields.length; i++){
+          if(allInputFields[i].checked){
+            activeInputFields.push(allInputFields[i]);
+          }
+        }
+        var activeArticles = [];
+        var keyWord;
+        switch (this.activeToggle) {
+          case 'profiles':
+            keyWord = 'Advertentie';
+            break;
+          case 'request':
+            keyWord = 'Opdracht';
+            break;
+          case 'adds':
+            keyWord = 'Advertentie';
+            break;
+        }
+        if(activeInputFields.length > 0){
+          for(var l = 0; l < allDataCategory.length; l++){
+            var element = allDataCategory[l];
+            if(keyWord == element.key){
+              var categorySplitted = element.category.split(' ').join('_');
+              activeInputFields.forEach(function(active){
+                if(active.id == categorySplitted){
+                  activeArticles.push(element.id);
+                }
+              });
+            }
+          }
+          var allArticles = document.querySelectorAll('article');
+          this.removeActive(allArticles);
+          if(activeArticles.length > 0){
+            var noResult = document.querySelector('.no-result');
+            noResult.classList.remove('active');
+            for(var i = 0; i < activeArticles.length; i++){
+              var id = activeArticles[i];
+              var element = document.querySelectorAll('.id' + id);
+              element.forEach(function(e){
+                e.classList.add('active');
+              });
+            }
+          }
+          else{
+            var noResult = document.querySelector('.no-result');
+            noResult.classList.add('active');
+          }
+        }
+        else{
+          var noResult = document.querySelector('.no-result');
+          noResult.classList.remove('active');
+          var allArticles = document.querySelectorAll('article');
+          for(var i = 0; i < allArticles.length; i++){
+            allArticles[i].classList.add('active');
+          }
+        }
+      },
+      toggleSections: function(){
+
+        this.rubriekenFilter();
+      },
+      resetFilter: function(){
+        var resetButton = document.querySelector('.reset-filter');
+        var self = this;
+        var allInput = document.querySelectorAll('input');
+        resetButton.addEventListener('click', function(e){
+          e.preventDefault();
+          self.uncheckAllInput(allInput);
+          self.rubriekenFilter();
+        })
+      },
+      removeActive: function(elements){
+        for (var i = 0; i < elements.length; i++){
+          elements[i].classList.remove('active');
+        }
+      },
+      addActive: function(element){
+        element.classList.add('active');
+      },
+      uncheckAllInput: function(inputs){
+        for(var i = 0; i < inputs.length; i++){
+          inputs[i].checked = false;
+        }
+      },
+      mobileVersion: function(){
+        var filterButton = document.querySelectorAll('.mobile a');
+        filterButton.forEach(function(button){
+          button.addEventListener('click', function(item){
+            var form = document.querySelector('.filter form');
+            form.classList.toggle('open');
+            filterButton.forEach(function(e){
+              e.classList.add('active');
+            });
+            item.target.classList.remove('active');
+          });
+        });
+      },
+      activeToggle: '',
+    }
+    filterSystem.init();
   }
 });
-function removeActiveToggle(){
-  var toggleSections = document.querySelectorAll('.navigation-results a');
-  for(var i = 0; i < toggleSections.length; i++){
-    toggleSections[i].classList.remove('active');
-  }
-}
-function uncheckAllInput(inputs){
-  for(var i = 0; i < inputs.length; i++){
-    inputs[i].checked = false;
-  }
-}
-function removeAllSections(){
-  var sections = document.querySelectorAll('.results article');
-  sections.forEach(function(e){
-    e.classList.remove('active');
-  });
-}
-function rubriekenFilter(elements){
-  var allChecked = [];
-  elements.forEach(function(e){
-    if(e.checked === true){
-      allChecked.push(e);
-    }
-  });
-  var selectedElements = [];
-  var toggleSections = document.querySelectorAll('.navigation-results a');
-  allDataCategory.forEach(function(item){
-    var name = item.category.split(' ').join('_');
-    allChecked.forEach(function(checked){
-      if(checked.id == name){
-        toggleSections.forEach(function(toggle){
-          var toggleClass = toggle.classList;
-          var activeToggle;
-          toggleClass.forEach(function(toggleC){
-            if(toggleC === 'active'){
-              activeToggle = toggle.classList[0];
-            }
-          });
-          var newFilter;
-          switch (activeToggle) {
-            case "request":
-            newFilter = "Opdracht";
-              break;
-            case "profiles":
-            newFilter = "Advertentie";
-              break;
-            case "adds":
-            newFilter = "Advertentie";
-              break;
-          }
-          if(newFilter === item.key){
-            selectedElements.push(item.id);
-          }
-        });
-      }
-    });
-  });
-  removeAllSections();
-  var noResult = document.querySelector('.no-result');
-  if(selectedElements.length < 1){
-    if(allChecked.length < 1){
-      var allSection = document.querySelectorAll('.results article');
-      allSection.forEach(function(item){
-        item.classList.add('active');
-      });
-    }
-    else{
-      noResult.classList.add('active');
-    }
-  }
-  else{
-    noResult.classList.remove('active');
-  }
-  selectedElements.forEach(function(el){
-    var element = document.querySelectorAll('.id' + el);
-    element.forEach(function(item){
-      item.classList.add('active');
-    });
-  });
-}
