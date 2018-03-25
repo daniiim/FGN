@@ -118,22 +118,38 @@ section{ width: 100vw; max-width: 100%;
 .row{
   section{ background: transparent;
     &.filter{ max-width: 320px; width: 100%; padding: 0 grid(.25);
-      @media #{$medium-down}{ padding: 0 grid(.5); }
+      @media #{$medium-down}{ padding: 0 grid(.5); width: 100%; max-width: 100vw; }
       @media #{$small-only}{ padding: 0 grid(1); }
       .filter-container{ background: white; display: flex; flex-direction: column; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);  border-radius: 10px;
         .filter-header{ display: flex; justify-content: space-between; align-items: center; padding: 0px 20px; height: 50px;
           h4{ font-size: rem(16); font-weight: $font-light; color: $grey-black; letter-spacing: .1px; line-height: 21px; padding: 15px 0; }
           button{ background: transparent; border: none; color: $sport; text-transform: uppercase; font-size: rem(12); letter-spacing: .1px; line-height: 21px; }
         }
+        .mobile{ height: 50px; width: 100%; display: flex; align-items: center; justify-content: center; border-top: 1px solid $white-grey; display: none;
+          @media #{$medium-down}{ display: block; }
+          a{ font-size: rem(16); font-weight: $font-semibold; color: $sport; letter-spacing: .1px; line-height: 21px; padding: 15px 0; text-align: center; display: block; width: 100%; display: none;
+            &.active{ display: block; }
+          }
+        }
         form{
+          @media #{$medium-down}{ max-height: 0; transition: .6s ease-in-out; overflow: hidden;
+            &.open{ max-height: 9999px; }
+          }
           fieldset{ border: none; border-top: 1px solid $white-grey; padding: 45px 30px 20px; position: relative;
             legend{ position: absolute; top: 15px; font-size: rem(14); font-weight: $font-light; letter-spacing: .1px; color: $grey-black; line-height: 21px; }
             .fieldset_container{ display: flex; flex-direction: column; padding-left: 15px;
-              label{ font-size: rem(12); line-height: 30px; letter-spacing: .1px; color: #979797; display: inline-block; position: relative; cursor: pointer; }
+              label{ font-size: rem(12); line-height: 30px; letter-spacing: .1px; color: #979797; display: inline-block; position: relative; cursor: pointer;
+                span{ font-size: rem(12); line-height: 30px; letter-spacing: .1px; color: #979797; display: none;
+                  &.active{ display: inline-block; }
+                }
+                &:hover{ color: $feelgood;
+                  span{ color: $feelgood; }
+                }
+              }
               input[type="checkbox"]{
-                + label{
-                  &:before{ content: ''; display: inline-block; size: 20px; background: $background; position: relative; top: 4px; margin-right: 10px; color: black; text-align: center;}
-                  &:after{ content: 'm'; display: block; position: absolute; left: 0; top: 4px; size: 20px; font-family: $social-font; color: black; text-align: center; top: -1px; opacity: 0; font-size: rem(12); transition: $transition; }
+                + label{ width: calc(100% - 30px); left: 30px; position: relative; display: block;
+                  &:before{ content: ''; display: inline-block; size: 20px; background: $background; position: absolute; top: 4px; margin-right: 10px; color: black; text-align: center; left: -30px; }
+                  &:after{ content: 'm'; display: block; position: absolute; left: -30px; top: 4px; size: 20px; font-family: $social-font; color: black; text-align: center; top: -1px; opacity: 0; font-size: rem(12); transition: $transition; }
                 }
                 &:checked{
                   +label:after{ opacity: 1; }
@@ -146,6 +162,7 @@ section{ width: 100vw; max-width: 100%;
     }
   }
   div.results{ width: calc(100% - 320px); position: relative;
+    @media #{$medium-down}{ width: 100%; }
     &-header{ display: flex; height: 50px; justify-content: space-between; align-items: center; width: 100%; padding: 0px grid(.25);
       @media #{$medium-down}{ padding: 0 grid(.5); }
       @media #{$small-only}{ padding: 0 grid(1); }
@@ -164,14 +181,15 @@ section{ width: 100vw; max-width: 100%;
         &.active{ display: block; }
       }
     }
-    section{ position: absolute; top: 51px; z-index: -1; opacity: 0; pointer-events: none; display: none;
+    section{ position: relative; top: 1px; z-index: -1; opacity: 0; pointer-events: none; display: none;
       &.no-result{ padding: grid(.25);
         @media #{$medium-down}{ padding: grid(.5); }
         @media #{$small-only}{ padding: grid(1); }
         h1{ line-height: 1; }
       }
       &.active{ z-index: 1; opacity: 1; pointer-events: all; display: flex; flex-wrap: wrap; }
-      article{ padding: 0 grid(.25) grid(.25); display: none;
+      article{ padding: grid(.25); display: none;
+        &:nth-of-type(1), &:nth-of-type(2){ padding-top: 0; }
         &.active{ display: block; }
         &.recentAdds-element{ background: transparent; border-radius: 0; width: 100%; padding: 0 grid(.25);
           @media #{$medium-down}{ padding: 0 grid(.5); }

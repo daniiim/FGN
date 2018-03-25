@@ -69,6 +69,17 @@ $('.close-error').on('click', function(e){
 
 $(document).on('ready', function(){
   if(typeof currentPageCategory !== 'undefined'){
+    var filterButton = document.querySelectorAll('.mobile a');
+    filterButton.forEach(function(button){
+      button.addEventListener('click', function(item){
+        var form = document.querySelector('.filter form');
+        form.classList.toggle('open');
+        filterButton.forEach(function(e){
+          e.classList.add('active');
+        });
+        item.target.classList.remove('active');
+      });
+    });
     var rubriekenFilters = document.querySelectorAll('.fieldset_container input');
     var currentPageCategoryWithUnderscore = currentPageCategory.split(' ').join('_');
     var inputSelected = document.querySelectorAll("#" + currentPageCategoryWithUnderscore);
@@ -104,19 +115,30 @@ $(document).on('ready', function(){
           }
         });
         var selected;
+        var inputSel;
         switch (className) {
           case "request":
           selected = document.querySelector('section.request_section');
+          inputSel = document.querySelectorAll('label .req');
             break;
           case "profiles":
           selected = document.querySelector('section.featured_profile');
+          inputSel = document.querySelectorAll('label .add');
             break;
           case "adds":
           selected = document.querySelector('section.add_section');
+          inputSel = document.querySelectorAll('label .add');
             break;
         }
         selected.classList.add('active');
         rubriekenFilter(allInput);
+        var allLabels = document.querySelectorAll('label span');
+        allLabels.forEach(function(la){
+          la.classList.remove('active');
+        });
+        inputSel.forEach(function(inp){
+          inp.classList.add('active');
+        });
       });
     });
   }
@@ -156,7 +178,6 @@ function rubriekenFilter(elements){
           var activeToggle;
           toggleClass.forEach(function(toggleC){
             if(toggleC === 'active'){
-              console.log(toggle.classList[0]);
               activeToggle = toggle.classList[0];
             }
           });

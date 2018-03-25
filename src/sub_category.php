@@ -30,6 +30,8 @@ foreach ($children as $key) {
   $subPage = page::getByID($key);
   $childrenSubPage = $subPage->getCollectionChildrenArray();
   $category = $subPage->getCollectionName();
+  $i = 0;
+  $l = 0;
   foreach ($childrenSubPage as $subChildren) {
     $subChildrenPage = page::getByID($subChildren);
     $ownerID = $subChildrenPage->getCollectionUserID();
@@ -108,8 +110,19 @@ foreach ($children as $key) {
       $reqTotal = $reqTotal + 1;
     }
     array_push($array, $smallArray);
+    if($subChildrenPage->getAttribute('add_or_request') === 'Opdracht'){
+      $i++;
+    }
+    else{
+      $l++;
+    }
   }
-  array_push($allCategory, $category);
+  $categoryArray = array(
+    "req" => $i,
+    "add" => $l,
+    "name" => $category,
+  );
+  array_push($allCategory, $categoryArray);
 }
 $cak = CollectionAttributeKey::getByHandle('product_career_level');
 $at = AttributeType::getByHandle('select');
@@ -136,10 +149,10 @@ foreach ($values as $key) {
           </legend>
           <div class="fieldset_container">
             <?php foreach ($allCategory as $key){
-              $name = str_replace(' ', '_', $key);
+              $name = str_replace(' ', '_', $key['name']);
               ?>
               <input id="<?php echo $name; ?>" type="checkbox" />
-              <label for="<?php echo $name; ?>"><?php echo $key; ?></label>
+              <label for="<?php echo $name; ?>"><?php echo $key['name']; ?> (<span class="add active"><?php echo $key['add']; ?></span><span class="req"><?php echo $key['req']; ?></span>)</label>
           <?php } ?>
           </div>
         </fieldset>
@@ -172,6 +185,10 @@ foreach ($values as $key) {
           </div>
         </fieldset> -->
       </form>
+      <div class="mobile">
+        <a href="#" class="uitklap active">Zie alle filters</a>
+        <a href="#" class="inklap">Verberg all filters</a>
+      </div>
     </div>
   </section>
   <div class="results">
@@ -192,7 +209,7 @@ foreach ($values as $key) {
       foreach ($array as $keyUser) {
         if($keyUser['key'] == 'Advertentie'){
           ?>
-          <article class="user small-full medium-half featured_profile-account columns id<?php echo $keyUser['id']; ?>">
+          <article class="user small-full medium-full large-half featured_profile-account columns id<?php echo $keyUser['id']; ?>">
             <div class="featured_profile-account-container">
               <a href="<?php echo $keyUser['user']['url']; ?>" class="user_url-full"></a>
               <div class="featured_profile-account-image" style="background-image: url('<?php echo $keyUser['user']['image']->src; ?>')">
