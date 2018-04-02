@@ -80,13 +80,20 @@ foreach ($children as $key) {
     }
     $imgProduct = $aih->getFirstImageInSet($subChildren);
     $thumbProduct = $ih->getThumbnail($imgProduct, 9999, 9999, false);
+    $fullName = $ui->getAttribute('first_name') . ' ';
+    if($ui->getAttribute('name_extra')){
+      $fullName .= $ui->getAttribute('name_extra') . ' ';
+    }
+    $fullName .= $ui->getAttribute('sir_name');
     $smallArray = array(
       "title" => $subChildrenPage->getCollectionName(),
       "key" => $subChildrenPage->getAttribute('add_or_request'),
       "id" => $subChildren,
       "user" => array(
         "userName" => $ui->getAttribute('first_name'),
+        "tussen" => $ui->getAttribute('name_extra'),
         "sirName" => $ui->getAttribute('sir_name'),
+        "fullName" => $fullName,
         "userBirth" => date('d/m/Y', strtotime($ui->getAttribute('birth'))),
         "info" => $ui->getAttribute('user_about'),
         "image" => $ih->getThumbnail($uiImage, 9999, 9999, false),
@@ -104,6 +111,7 @@ foreach ($children as $key) {
       "categoryTop" => $categoryTopName,
       "image" => $thumbProduct,
       "careerLvl" => $carreerValues,
+      "url" => $nh->getLinkToCollection($subChildrenPage),
     );
     if ($subChildrenPage->getAttribute('add_or_request') == 'Advertentie'){
       $addsTotal = $addsTotal + 1;
@@ -219,7 +227,7 @@ foreach ($values as $key) {
               <div class="featured_profile-account-image" style="background-image: url('<?php echo $keyUser['user']['image']->src; ?>')">
                 <span class="featured_profile-account-image-number">123</span>
               </div>
-              <h3 class="featured_profile-account-name"><?php echo $keyUser['user']['userName']; echo ' '; echo $keyUser['user']['sirName']; ?></h3>
+              <h3 class="featured_profile-account-name"><?php echo $keyUser['user']['fullName'];?></h3>
               <div class="featured_profile-account-infoText">
                 <p>
                   <?php $text = $keyUser['description'];
@@ -245,7 +253,7 @@ foreach ($values as $key) {
           ?>
           <article class="recentAdds-element id<?php echo $array[$x]['id']; ?>">
             <div class="recentAdds-element_container">
-              <a class="full_url" href="<?php echo $nh->getLinkToCollection($cPage);?>"></a>
+              <a class="full_url" href="<?php echo $array[$x]['url'];?>"></a>
               <div class="recentAdds-element_image" style="background-image: url('<?php echo $array[$x]['user']['image']->src; ?>')" >
                 <span class="recentAdds-element_image-number">123</span>
               </div>
@@ -257,7 +265,7 @@ foreach ($values as $key) {
                   </div>
                   <div class="recentAdds-element_info-header-linkInfo">
                     <p class="recentAdds-element_info-header-links">
-                      <a href="<?php echo $nh->getLinkToCollection($cPage);?>" class="recentAdds-element_info-header-url category"><?php echo $array[$x]["category"]; ?></a>
+                      <a href="<?php echo $array[$x]['url']; ?>" class="recentAdds-element_info-header-url category"><?php echo $array[$x]["category"]; ?></a>
                     </p>
                   </div>
                 </div>
@@ -289,7 +297,7 @@ foreach ($values as $key) {
           ?>
           <article class="recentAdds-element adds id<?php echo $keyAdd['id']; ?>">
             <div class="recentAdds-element_container">
-              <a class="full_url" href="<?php echo $nh->getLinkToCollection($cPage);?>"></a>
+              <a class="full_url" href="<?php echo $keyAdd['url'];?>"></a>
               <div class="recentAdds-element_image" style="background-image: url('<?php echo $keyAdd['image']->src; ?>')" >
                 <span class="recentAdds-element_image-number">123</span>
               </div>

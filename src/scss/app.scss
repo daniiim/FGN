@@ -166,7 +166,7 @@ section{ width: 100vw; max-width: 100%;
     &-header{ display: flex; height: 50px; justify-content: space-between; align-items: center; width: 100%; padding: 0px grid(.25);
       @media #{$medium-down}{ padding: 0 grid(.5); }
       @media #{$small-only}{ padding: 0 grid(1); }
-      .navigation-results{ height: 100%; background: white; display: flex; align-items: center; justify-content: flex-start; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);
+      .navigation-results{ height: 100%; background: white; display: flex; align-items: center; justify-content: flex-start; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); border-radius: 5px 5px 0 0;
         a{ display: flex; font-size: rem(12); letter-spacing: .1px; color: $grey-black; font-weight: $font-light; padding: 0 15px; height: 100%; position: relative; align-items: center;
           &:after{ content: ''; display: block; position: absolute; bottom: 0; width: calc(100%); height: 4px; background-color: $feelgood; left: 0; height: 0; transition: $transition; }
           &.active:after{ height: 4px; }
@@ -208,6 +208,39 @@ section{ width: 100vw; max-width: 100%;
         @media #{$medium-down}{ padding: 0 grid(.5) grid(.5); }
         @media #{$small-only}{ padding: 0 grid(1) grid(1); }
       }
+      &.profile{ width: 100%; padding: 0 grid(.25);
+        @media #{$medium-down}{ padding: 0 grid(.5) grid(.5); }
+        @media #{$small-only}{ padding: 0 grid(1) grid(1); }
+        .profile-container{ padding: 25px; background: white; border-radius: 0 5px 5px 5px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); width: 100%; }
+        h2{ font-weight: $font-semibold; font-size: rem(18); line-height: 21px; letter-spacing: .2px; color: $black; padding: 10px 0; }
+        p{ font-size: rem(14); color: $black; letter-spacing: .1px; line-height: 20px; padding: 5px 0 15px; }
+        .contact_info{ display: flex; flex-wrap: wrap;
+          li{ width: 50%; padding: 5px 0 0;
+            @media #{$medium-down}{ width: 100%; }
+            a{ text-decoration: underline; transition: $transition;
+              &:hover{ font-weight: $font-semibold; }
+            }
+            &.phone{
+              &:before{ content: 'x'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+            &.mail{
+              &:before{ content: 'r'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+            &.website{
+              &:before{ content: 't'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+            &.facebook{
+              &:before{ content: 'c'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+            &.twitter{
+              &:before{ content: 'b'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+            &.LinkedIn{
+              &:before{ content: 'x'; display: inline-block; size: 15px; position: relative; font-family: $social-font; top: 2px; }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -215,4 +248,52 @@ section{ width: 100vw; max-width: 100%;
 html.sub_category{
   main{ background: $background; }
 }
+body.gebruiker{
+  main{ background: $background; }
+}
 button{ cursor: pointer; }
+
+.user_profile{ padding: 0 grid(.25); display: flex; flex-direction: column;
+  @media #{$medium-down}{ padding: 0 grid(.5); }
+  @media #{$small-only}{ padding: 0 grid(1); }
+  &-container{ background: white; padding: 35px; border-radius: 10px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); }
+  &-image{ display: block; size: 110px; margin: 0 auto; border-radius: 50%; background-position: center center; background-repeat: no-repeat; background-size: cover; position: relative;
+    span{ size: 35px; background: $feelgood; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
+  }
+  h2{ text-align: center; margin: 20px 0; display: block; width: 100%; font-weight: $font-semibold; font-size: rem(18); line-height: 21px; letter-spacing: .2px; color: $black; }
+  p{ text-align: center; margin: 15px 0; display: block; width: 100%; font-weight: $font-light; font-size: rem(16); line-height: 21px; letter-spacing: .1px; color: $black; }
+  form{ margin: 20px 0;
+    .form-group{ position: relative;
+      label{ display: none; }
+      textarea{ width: 100%; height: 80px; background: #f1f1f1; border-radius: 5px; padding: 15px; resize: none; border: none; font-weight: $font-light; font-size: rem(14); letter-spacing: .1px; color: $black;
+      }
+    }
+    input[type="submit"]{ width: 100%; margin: 15px 0; border: none; box-shadow: none; border-radius: 5px; background: $feelgood; color: white; font-weight: $font-regular; font-size: rem(14); letter-spacing: .1px; text-align: center; padding: 10px 0; cursor: pointer; transition: .3s ease-in-out;
+      &:hover{ background: darken($feelgood, 4%); }
+    }
+  }
+  .login-redirect{ margin: 20px 0;
+    a{ display: block; width: 100%; margin: 15px 0; border: none; box-shadow: none; border-radius: 5px; background: $feelgood; color: white; font-weight: $font-regular; font-size: rem(14); letter-spacing: .1px; text-align: center; padding: 10px 0; cursor: pointer; transition: .3s ease-in-out;
+      &:hover{ background: darken($feelgood, 4%); }
+    }
+  }
+}
+
+.row{ position: relative; }
+.tabs{ height: 50px; background: white; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); border-radius: 5px 5px 0 0; width: auto; position: absolute; top: 0; left: calc(100% / 3);
+  ul{ display: flex; align-items: center; justify-content: flex-start; height: 100%; width: auto;
+    li{ display: block; height: 100%; }
+  }
+    a{ display: flex; font-size: rem(12); letter-spacing: .1px; color: $grey-black; font-weight: $font-light; padding: 0 15px; height: 100%; position: relative; align-items: center;
+      &:after{ content: ''; display: block; position: absolute; bottom: 0; width: calc(100%); height: 4px; background-color: $feelgood; left: 0; height: 0; transition: $transition; }
+      &.active:after{ height: 4px; }
+      &:hover{
+        &:after{ height: 4px; background: $feelgood; }
+      }
+    }
+}
+body.gebruiker{
+  .results{ width: calc(100% / 3 * 2); }
+  section.request_section article{ display: flex; }
+}
+.tab-pane{ display: none; }

@@ -241,3 +241,39 @@ $(document).on('ready', function(){
     filterSystem.init();
   }
 });
+
+if(document.body.classList.contains('gebruiker')){
+  var tabs = document.querySelectorAll('.navigation-results a');
+  tabs.forEach(function(el){
+    el.addEventListener('click', function(e){
+      e.preventDefault();
+      tabs.forEach(function(all){
+        all.classList.remove('active');
+      });
+      e.target.classList.add('active');
+      var activeClass = e.target.classList[0];
+      console.log(activeClass);
+      var activeSection;
+      switch (activeClass) {
+        case 'profile':
+          activeSection = document.querySelector('.results section.profile');
+          break;
+        case 'request':
+          activeSection = document.querySelector('.results section.request_section');
+          break;
+        case 'adds':
+          activeSection = document.querySelector('.results section.add_section');
+          break;
+        case 'review':
+          activeSection = document.querySelector('.results section.review');
+          break;
+      }
+      var allSections = document.querySelectorAll('.results section');
+      console.log(activeSection);
+      allSections.forEach(function(section){
+        section.classList.remove('active');
+      });
+      activeSection.classList.add('active');
+    });
+  });
+}
