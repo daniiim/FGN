@@ -26,14 +26,170 @@ if ($user_can_place_free_add) {
 }
 $img = $c->getAttribute('header_image');
 if($img){
-    $thumb = $ih->getThumbnail($img, 9999, 9999, false);
-  }
+  $thumb = $ih->getThumbnail($img, 9999, 9999, false);
+}
+$uh = Loader::helper('url');
+$ih = Loader::helper('image');
+$nh = Loader::helper('navigation');
+$aih = new AddImagesHelper();
 $categories_home_page = page::getByID(997);
 $total_adds 	= $categories_home_page->getAttribute('nr_adds');
 $total_requests = $categories_home_page->getAttribute('nr_requests');
 $page = Page::getCurrentPage();
 $page->getCollectionID();
 $children = $page->getCollectionChildrenArray(1);
+$category = $page->getCollectionName();
+$allPosts = array();
+$i = 0;
+foreach ($children as $key) {
+  $p = page::getByID($key);
+  $childrenP = $p->getCollectionChildrenArray(1);
+  foreach ($childrenP as $lastPageSub) {
+    $i++;
+    if($i > -1){
+      $last = page::getByID($lastPageSub);
+      if($last->getAttribute('add_or_request') === "Advertentie"){
+        $ownerID = $last->getCollectionUserID();
+        $ui = UserInfo::getByID($ownerID);
+        $uiImage = $ui->getAttribute('profile_image');
+        $userUrl = $this->url('/gebruiker');
+        $userUrl .= '?gebruiker=';
+        $userUrl .= $ownerID;
+        $ed = $ui->getAttribute('education');
+        $carreerValues = array();
+        if(is_object($last->getAttribute('product_career_level'))){
+          $careeer = $last->getAttribute('product_career_level');
+          foreach ($careeer as $key) {
+            array_push($carreerValues, $key->value);
+          }
+        }
+        if(is_object($ed)){
+          $edOptions = $ed->getOptions();
+          $edValues = array();
+          foreach ($edOptions as $key) {
+            array_push($edValues, $key->value);
+          }
+        }
+        Loader::model('page_list');
+        $upla = new PageList();
+        $upla->filterByCollectionTypeHandle('product');
+        $upla->filterByUserID($ownerID);
+        $upla->filterByProductPaused(0);
+        $upagesa = $upla->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
+        $hasMoreThanOneAdd = false;
+        if (count($upagesa) > 0) {
+        $hasMoreThanOneAdd = true;
+        }
+
+        Loader::model('page_list');
+        $uplr = new PageList();
+        $uplr->filterByCollectionTypeHandle('request');
+        $uplr->filterByUserID($ownerID);
+        $uplr->filterByProductPaused(0);
+        $upagesr = $uplr->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
+        $hasMoreThanOneRequest = false;
+        if (count($upagesr) > 0) {
+        $hasMoreThanOneRequest = true;
+        }
+        $imgProduct = $aih->getFirstImageInSet($lastPageSub);
+        $thumbProduct = $ih->getThumbnail($imgProduct, 9999, 9999, false);
+        $fullName = $ui->getAttribute('first_name') . ' ';
+        if($ui->getAttribute('name_extra')){
+          $fullName .= $ui->getAttribute('name_extra') . ' ';
+        }
+        $fullName .= $ui->getAttribute('sir_name');
+        $smallArray = array(
+          "title" => $last->getCollectionName(),
+          "key" => $last->getAttribute('add_or_request'),
+          "id" => $lastPageSub,
+          "user" => array(
+            "userName" => $ui->getAttribute('first_name'),
+            "tussen" => $ui->getAttribute('name_extra'),
+            "sirName" => $ui->getAttribute('sir_name'),
+            "fullName" => $fullName,
+            "userBirth" => date('d/m/Y', strtotime($ui->getAttribute('birth'))),
+            "info" => $ui->getAttribute('user_about'),
+            "image" => $ih->getThumbnail($uiImage, 9999, 9999, false),
+            "educaton" => $edValues,
+            "url" => $userUrl,
+            "adds_amount" => count($upagesa),
+            "request_amount" => count($upagesr),
+          ),
+          "description" => $last->getAttribute('product_long_description'),
+          "activeDate" => $last->getAttribute('product_date_valid'),
+          "place" => $last->getAttribute('address_city'),
+          "date" => $last->getCollectionDateAdded('F j, Y'),
+          "activeCategory" => $last->getCollectionName(),
+          "category" => $category,
+          "categoryTop" => $categoryTopName,
+          "image" => $thumbProduct,
+          "careerLvl" => $carreerValues,
+          "url" => $nh->getLinkToCollection($last),
+          "price" => $last->getAttribute('product_price_value')
+        );
+        if ($last->getAttribute('add_or_request') == 'Advertentie'){
+          $addsTotal = $addsTotal + 1;
+          $totalAdd++;
+        }
+        elseif($last->getAttribute('add_or_request') == 'Opdracht'){
+          $reqTotal = $reqTotal + 1;
+          $totalReq++;
+        }
+        array_push($allPosts, $smallArray);
+        if($last->getAttribute('add_or_request') === 'Opdracht'){
+          $i++;
+        }
+        else{
+          $l++;
+        }
+      }
+    }
+    else{
+      break 2;
+    }
+  }
+}
+function debug($data){
+  print_r('<pre>');
+  print_r($data);
+  print_r('</pre>');
+}
+function array_sort($array, $on, $order=SORT_ASC)
+{
+    $new_array = array();
+    $sortable_array = array();
+
+    if (count($array) > 0) {
+        foreach ($array as $k => $v) {
+            if (is_array($v)) {
+                foreach ($v as $k2 => $v2) {
+                    if ($k2 == $on) {
+                        $sortable_array[$k] = $v2;
+                    }
+                }
+            } else {
+                $sortable_array[$k] = $v;
+            }
+        }
+
+        switch ($order) {
+            case SORT_ASC:
+                asort($sortable_array);
+            break;
+            case SORT_DESC:
+                arsort($sortable_array);
+            break;
+        }
+
+        foreach ($sortable_array as $k => $v) {
+            $new_array[$k] = $array[$k];
+        }
+    }
+
+    return $new_array;
+}
+
+$sortedArray = array_sort($allPosts, 'date', SORT_DESC);
 ?>
 <section class="discover">
   <?php  $this->inc('elements/breadcrumbs.php'); ?>
@@ -55,10 +211,19 @@ $children = $page->getCollectionChildrenArray(1);
     <h2>Ontdekken in <?php echo $title; ?></h2>
     <a href="<?php echo $this->url('/mijn_fgn/opdrachten/opdracht_categorie');?>">Opdracht</a>
   </div>
+  <?php
+  $allUrl = '';
+  foreach ($children as $childId) {
+    $child = Page::getByID($childId);
+    if($child->getCollectionName() == "All"){
+      $allUrl = $nh->getLinkToCollection($child);
+    }
+  }
+  ?>
   <div class="row category no-margin">
     <div class="item small-full medium-two-third columns first">
       <div class="category_single">
-        <a href="<?php echo $url; ?>" class="full_url"></a>
+        <a href="<?php echo $allUrl; ?>" class="full_url"></a>
         <div class="category_single-image"  style="background-image: url('<?php echo $thumb->src; ?>')">
         </div>
         <div class="category_single-footer">
@@ -67,7 +232,7 @@ $children = $page->getCollectionChildrenArray(1);
           </div>
           <div class="category_single-footer-text">
             <h3 class="category_single-footer-text-title"><?php echo $title; ?></h3>
-            <a href="<?php echo $url; ?>" class="category_single-footer-text-url">Categorie bekijken</a>
+            <a href="<?php echo $allUrl; ?>" class="category_single-footer-text-url">Categorie bekijken</a>
           </div>
         </div>
       </div>
@@ -77,10 +242,12 @@ $children = $page->getCollectionChildrenArray(1);
         <h3>Rubrieken in <?php echo $title; ?></h3>
         <?php foreach ($children as $childId) {
           $child = Page::getByID($childId);
-          $urlChild  = $nh->getLinkToCollection($child);
-          ?>
-          <a href="<?php echo $urlChild; ?>" class="category-view_url"><?php echo $child->getCollectionName(); ?></a>
-          <?php
+          if($child->getCollectionName() !== "All"){
+            $urlChild  = $nh->getLinkToCollection($child);
+            ?>
+            <a href="<?php echo $urlChild; ?>" class="category-view_url"><?php echo $child->getCollectionName(); ?></a>
+            <?php
+          }
         }?>
       </div>
     </div>
@@ -93,86 +260,53 @@ $children = $page->getCollectionChildrenArray(1);
         <p>
           Uitgelichte profilen in "<?php echo $title; ?>"
         </p>
-        <a href="<?php echo $url; ?>" class="featured_profile-header-url">Categorie bekijken</a>
+        <a href="<?php echo $allUrl; ?>" class="featured_profile-header-url">Categorie bekijken</a>
       </div>
     </div>
   </div>
   <div class="row no-margin">
-    <div class="columns small-full medium-third featured_profile-account">
-      <div class="featured_profile-account-container">
-        <div class="featured_profile-account-image">
-          <span class="featured_profile-account-image-number">123</span>
-        </div>
-        <h3 class="featured_profile-account-name">John Doe</h3>
-        <div class="featured_profile-account-accountInfo">
-          <p>
-            <a href="#" class="featured_profile-account-accountInfo_adds">2 advertenties</a> in <a href="#" class="featured_profile-account-accountInfo_place">plaatsnaam</a>
-          </p>
-        </div>
-        <div class="featured_profile-account-infoText">
-          <?php $text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+    <?php
+    $i = 0;
+    $userArray = array();
+    foreach ($sortedArray as $value) {
+      if(!in_array($value['user']['fullName'], $userArray)){
+        $i++;
+        array_push($userArray, $value['user']['fullName']);
+        if($i < 4){
+          $name = $value['category'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
           ?>
-          <p>
-            <?php if(strlen($text) > 80){
-              $text = substr($text, 0, 80) . '...';
-            }
-            echo $text;
-            ?>
-          </p>
-        </div>
-        <a class="featured_profile-account-url" href="#">Profiel bekijken</a>
-      </div>
-    </div>
-    <div class="columns small-full medium-third featured_profile-account">
-      <div class="featured_profile-account-container">
-        <div class="featured_profile-account-image">
-          <span class="featured_profile-account-image-number">123</span>
-        </div>
-        <h3 class="featured_profile-account-name">John Doe</h3>
-        <div class="featured_profile-account-accountInfo">
-          <p>
-            <a href="#" class="featured_profile-account-accountInfo_adds">2 advertenties</a> in <a href="#" class="featured_profile-account-accountInfo_place">plaatsnaam</a>
-          </p>
-        </div>
-        <div class="featured_profile-account-infoText">
-          <?php $text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-          ?>
-          <p>
-            <?php if(strlen($text) > 80){
-              $text = substr($text, 0, 80) . '...';
-            }
-            echo $text;
-            ?>
-          </p>
-        </div>
-        <a class="featured_profile-account-url" href="#">Profiel bekijken</a>
-      </div>
-    </div>
-    <div class="columns small-full medium-third featured_profile-account">
-      <div class="featured_profile-account-container">
-        <div class="featured_profile-account-image">
-          <span class="featured_profile-account-image-number">123</span>
-        </div>
-        <h3 class="featured_profile-account-name">John Doe</h3>
-        <div class="featured_profile-account-accountInfo">
-          <p>
-            <a href="#" class="featured_profile-account-accountInfo_adds">2 advertenties</a> in <a href="#" class="featured_profile-account-accountInfo_place">plaatsnaam</a>
-          </p>
-        </div>
-        <div class="featured_profile-account-infoText">
-          <?php $text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-          ?>
-          <p>
-            <?php if(strlen($text) > 80){
-              $text = substr($text, 0, 80) . '...';
-            }
-            echo $text;
-            ?>
-          </p>
-        </div>
-        <a class="featured_profile-account-url" href="#">Profiel bekijken</a>
-      </div>
-    </div>
+          <div class="columns small-full medium-third featured_profile-account <?php echo $name2; ?>">
+            <div class="featured_profile-account-container">
+              <a href="<?php echo $value['user']['url']; ?>" class="user_url-full"></a>
+              <div class="featured_profile-account-image" style="background-image: url('<?php echo $value['user']['image']->src; ?>')">
+                <span class="featured_profile-account-image-number">123</span>
+              </div>
+              <h3 class="featured_profile-account-name"><?php echo $value['user']['fullName'];?></h3>
+              <div class="featured_profile-account-accountInfo">
+                <p>
+                  <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-accountInfo_adds">
+                    <?php echo $value['user']['adds_amount']; ?> advertenties</a>
+                </p>
+              </div>
+              <div class="featured_profile-account-infoText">
+                <p>
+                  <?php $text = $value['description'];
+                  if(strlen($text) > 150){
+                    $text = substr($text, 0, 150) . '...';
+                  }
+                  echo $text;
+                  ?>
+                </p>
+              </div>
+              <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>
+            </div>
+          </div>
+        <?php }
+      }
+    }
+    ?>
   </div>
 </section>
 <section class="recentAdds-discover">
@@ -182,50 +316,64 @@ $children = $page->getCollectionChildrenArray(1);
         <p>
           Uitgelichte opdrachten in "<?php echo $title; ?>"
         </p>
-        <a href="<?php echo $url; ?>" class="featured_profile-header-url">Categorie bekijken</a>
+        <a href="<?php echo $allUrl; ?>" class="featured_profile-header-url">Categorie bekijken</a>
       </div>
     </div>
   </div>
   <div class="row no-margin">
     <?php
-    for ($x = 0; $x < 2; $x++) {
-    ?>
-    <div class="columns small-full medium-half recentAdds-container">
-      <div class="recentAdds-element">
-        <a class="full_url" href="#"></a>
-        <div class="recentAdds-element_image">
-          <span class="recentAdds-element_image-number">123</span>
-        </div>
-        <div class="recentAdds-element_info">
-          <div class="recentAdds-element_info-header">
-            <div class="recentAdds-element_info-header-top">
-              <span class="recentAdds-elements_info-header-cost">Gratis</span>
-              <h2 class="recentAdds-elements_info-header-title">FeelGood opdracht gevraagd</h2>
+    $i = 0;
+    foreach ($sortedArray as $value) {
+      $i++;
+      if($i < 3){
+        $name = $value['category'];
+        $nameArray = explode(" ", $name);
+        $name2 = strtolower($nameArray[0]);
+        ?>
+        <div class="columns small-full medium-two-third recentAdds-container <?php echo $name2; ?>">
+          <div class="recentAdds-element">
+            <a class="full_url" href="<?php echo $value['url'];?>"></a>
+            <div class="recentAdds-element_image" style="background-image: url('<?php echo $value['image']->src; ?>')" >
+              <span class="recentAdds-element_image-number">123</span>
             </div>
-            <div class="recentAdds-element_info-header-linkInfo">
-              <p class="recentAdds-element_info-header-links">
-                <a href="#" class="recentAdds-element_info-header-url category">Categorie</a> in <a href="#" class="recentAdds-element_info-header-url place">plaatsnaam</a>
-              </p>
+            <div class="recentAdds-element_info">
+              <div class="recentAdds-element_info-header">
+                <div class="recentAdds-element_info-header-top">
+                  <span class="recentAdds-elements_info-header-cost">
+                    <?php
+                    $price = 'gratis';
+                     if($value['price'] == 0){
+                      echo 'gratis'; }
+                      else{
+                        echo '€ ' . $value['price'];
+                      }?>
+                  </span>
+                  <h2 class="recentAdds-elements_info-header-title"><?php echo $value['title']; ?></h2>
+                </div>
+                <div class="recentAdds-element_info-header-linkInfo">
+                  <p class="recentAdds-element_info-header-links">
+                    <a href="<?php echo $value['url'];?>" class="recentAdds-element_info-header-url category"><?php echo $value['category']; ?></a>
+                  </p>
+                </div>
+              </div>
+              <div class="recentAdds-element_info-text">
+                <p class="recentAdds-element_info-text_information">
+                  <?php $text = $value['description'];
+                  if(strlen($text) > 150){
+                    $text = substr($text, 0, 150) . '...';
+                  }
+                  echo $text;
+                  ?>
+                </p>
+                <p class="recentAdds-element_info-text_date">
+                  <?php echo $value['date']; ?>
+                </p>
+              </div>
             </div>
           </div>
-          <div class="recentAdds-element_info-text">
-            <p class="recentAdds-element_info-text_information">
-              <?php $text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-              if(strlen($text) > 150){
-                $text = substr($text, 0, 150) . '...';
-              }
-              echo $text;
-              ?>
-            </p>
-            <p class="recentAdds-element_info-text_date">
-              Geplaatst op 1-1-2018
-            </p>
-          </div>
         </div>
-      </a>
-      </div>
-    </div>
-    <?php } ?>
+      <?php }
+    }?>
   </div>
 </section>
 <?php  $this->inc('elements/footer.php'); ?>

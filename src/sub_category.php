@@ -34,107 +34,110 @@ foreach ($children as $key) {
   $category = $subPage->getCollectionName();
   $i = 0;
   $l = 0;
-  foreach ($childrenSubPage as $subChildren) {
-    $subChildrenPage = page::getByID($subChildren);
-    $ownerID = $subChildrenPage->getCollectionUserID();
-    $ui = UserInfo::getByID($ownerID);
-    $uiImage = $ui->getAttribute('profile_image');
-    $userUrl = $this->url('/gebruiker');
-    $userUrl .= '?gebruiker=';
-    $userUrl .= $ownerID;
-    $ed = $ui->getAttribute('education');
-    $carreerValues = array();
-    if(is_object($subChildrenPage->getAttribute('product_career_level'))){
-      $careeer = $subChildrenPage->getAttribute('product_career_level');
-      foreach ($careeer as $key) {
-        array_push($carreerValues, $key->value);
+  if($category !== "All"){
+    foreach ($childrenSubPage as $subChildren) {
+      $subChildrenPage = page::getByID($subChildren);
+      $ownerID = $subChildrenPage->getCollectionUserID();
+      $ui = UserInfo::getByID($ownerID);
+      $uiImage = $ui->getAttribute('profile_image');
+      $userUrl = $this->url('/gebruiker');
+      $userUrl .= '?gebruiker=';
+      $userUrl .= $ownerID;
+      $ed = $ui->getAttribute('education');
+      $carreerValues = array();
+      if(is_object($subChildrenPage->getAttribute('product_career_level'))){
+        $careeer = $subChildrenPage->getAttribute('product_career_level');
+        foreach ($careeer as $key) {
+          array_push($carreerValues, $key->value);
+        }
       }
-    }
-    if(is_object($ed)){
-      $edOptions = $ed->getOptions();
-      $edValues = array();
-      foreach ($edOptions as $key) {
-        array_push($edValues, $key->value);
+      if(is_object($ed)){
+        $edOptions = $ed->getOptions();
+        $edValues = array();
+        foreach ($edOptions as $key) {
+          array_push($edValues, $key->value);
+        }
       }
-    }
-    Loader::model('page_list');
-    $upla = new PageList();
-    $upla->filterByCollectionTypeHandle('product');
-    $upla->filterByUserID($ownerID);
-    $upla->filterByProductPaused(0);
-    $upagesa = $upla->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
-    $hasMoreThanOneAdd = false;
-    if (count($upagesa) > 0) {
-    $hasMoreThanOneAdd = true;
-    }
+      Loader::model('page_list');
+      $upla = new PageList();
+      $upla->filterByCollectionTypeHandle('product');
+      $upla->filterByUserID($ownerID);
+      $upla->filterByProductPaused(0);
+      $upagesa = $upla->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
+      $hasMoreThanOneAdd = false;
+      if (count($upagesa) > 0) {
+      $hasMoreThanOneAdd = true;
+      }
 
-    Loader::model('page_list');
-    $uplr = new PageList();
-    $uplr->filterByCollectionTypeHandle('request');
-    $uplr->filterByUserID($ownerID);
-    $uplr->filterByProductPaused(0);
-    $upagesr = $uplr->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
-    $hasMoreThanOneRequest = false;
-    if (count($upagesr) > 0) {
-    $hasMoreThanOneRequest = true;
+      Loader::model('page_list');
+      $uplr = new PageList();
+      $uplr->filterByCollectionTypeHandle('request');
+      $uplr->filterByUserID($ownerID);
+      $uplr->filterByProductPaused(0);
+      $upagesr = $uplr->get($itemsToGet = 2, $offset = 0) ;	//we willen weten of er meer als 1 advertentie is
+      $hasMoreThanOneRequest = false;
+      if (count($upagesr) > 0) {
+      $hasMoreThanOneRequest = true;
+      }
+      $imgProduct = $aih->getFirstImageInSet($subChildren);
+      $thumbProduct = $ih->getThumbnail($imgProduct, 9999, 9999, false);
+      $fullName = $ui->getAttribute('first_name') . ' ';
+      if($ui->getAttribute('name_extra')){
+        $fullName .= $ui->getAttribute('name_extra') . ' ';
+      }
+      $fullName .= $ui->getAttribute('sir_name');
+      $smallArray = array(
+        "title" => $subChildrenPage->getCollectionName(),
+        "key" => $subChildrenPage->getAttribute('add_or_request'),
+        "id" => $subChildren,
+        "user" => array(
+          "userName" => $ui->getAttribute('first_name'),
+          "tussen" => $ui->getAttribute('name_extra'),
+          "sirName" => $ui->getAttribute('sir_name'),
+          "fullName" => $fullName,
+          "userBirth" => date('d/m/Y', strtotime($ui->getAttribute('birth'))),
+          "info" => $ui->getAttribute('user_about'),
+          "image" => $ih->getThumbnail($uiImage, 9999, 9999, false),
+          "educaton" => $edValues,
+          "url" => $userUrl,
+          "adds_amount" => count($upagesa),
+          "request_amount" => count($upagesr),
+        ),
+        "description" => $subChildrenPage->getAttribute('product_long_description'),
+        "activeDate" => $subChildrenPage->getAttribute('product_date_valid'),
+        "place" => $subChildrenPage->getAttribute('address_city'),
+        "date" => $subChildrenPage->getCollectionDateAdded('F j, Y'),
+        "activeCategory" => $subChildrenPage->getCollectionName(),
+        "category" => $category,
+        "categoryTop" => $categoryTopName,
+        "image" => $thumbProduct,
+        "careerLvl" => $carreerValues,
+        "url" => $nh->getLinkToCollection($subChildrenPage),
+        "price" => $subChildrenPage->getAttribute('product_price_value')
+      );
+      if ($subChildrenPage->getAttribute('add_or_request') == 'Advertentie'){
+        $addsTotal = $addsTotal + 1;
+        $totalAdd++;
+      }
+      elseif($subChildrenPage->getAttribute('add_or_request') == 'Opdracht'){
+        $reqTotal = $reqTotal + 1;
+        $totalReq++;
+      }
+      array_push($array, $smallArray);
+      if($subChildrenPage->getAttribute('add_or_request') === 'Opdracht'){
+        $i++;
+      }
+      else{
+        $l++;
+      }
     }
-    $imgProduct = $aih->getFirstImageInSet($subChildren);
-    $thumbProduct = $ih->getThumbnail($imgProduct, 9999, 9999, false);
-    $fullName = $ui->getAttribute('first_name') . ' ';
-    if($ui->getAttribute('name_extra')){
-      $fullName .= $ui->getAttribute('name_extra') . ' ';
-    }
-    $fullName .= $ui->getAttribute('sir_name');
-    $smallArray = array(
-      "title" => $subChildrenPage->getCollectionName(),
-      "key" => $subChildrenPage->getAttribute('add_or_request'),
-      "id" => $subChildren,
-      "user" => array(
-        "userName" => $ui->getAttribute('first_name'),
-        "tussen" => $ui->getAttribute('name_extra'),
-        "sirName" => $ui->getAttribute('sir_name'),
-        "fullName" => $fullName,
-        "userBirth" => date('d/m/Y', strtotime($ui->getAttribute('birth'))),
-        "info" => $ui->getAttribute('user_about'),
-        "image" => $ih->getThumbnail($uiImage, 9999, 9999, false),
-        "educaton" => $edValues,
-        "url" => $userUrl,
-        "adds_amount" => count($upagesa),
-        "request_amount" => count($upagesr),
-      ),
-      "description" => $subChildrenPage->getAttribute('product_long_description'),
-      "activeDate" => $subChildrenPage->getAttribute('product_date_valid'),
-      "place" => $subChildrenPage->getAttribute('address_city'),
-      "date" => $subChildrenPage->getCollectionDateAdded('F j, Y'),
-      "activeCategory" => $subChildrenPage->getCollectionName(),
-      "category" => $category,
-      "categoryTop" => $categoryTopName,
-      "image" => $thumbProduct,
-      "careerLvl" => $carreerValues,
-      "url" => $nh->getLinkToCollection($subChildrenPage),
+    $categoryArray = array(
+      "req" => $i,
+      "add" => $l,
+      "name" => $category,
     );
-    if ($subChildrenPage->getAttribute('add_or_request') == 'Advertentie'){
-      $addsTotal = $addsTotal + 1;
-      $totalAdd++;
-    }
-    elseif($subChildrenPage->getAttribute('add_or_request') == 'Opdracht'){
-      $reqTotal = $reqTotal + 1;
-      $totalReq++;
-    }
-    array_push($array, $smallArray);
-    if($subChildrenPage->getAttribute('add_or_request') === 'Opdracht'){
-      $i++;
-    }
-    else{
-      $l++;
-    }
+    array_push($allCategory, $categoryArray);
   }
-  $categoryArray = array(
-    "req" => $i,
-    "add" => $l,
-    "name" => $category,
-  );
-  array_push($allCategory, $categoryArray);
 }
 $cak = CollectionAttributeKey::getByHandle('product_career_level');
 $at = AttributeType::getByHandle('select');
@@ -220,8 +223,11 @@ foreach ($values as $key) {
       <?php
       foreach ($array as $keyUser) {
         if($keyUser['key'] == 'Advertentie'){
+          $name = $keyUser['categoryTop'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
           ?>
-          <article class="user small-full medium-full large-half featured_profile-account columns id<?php echo $keyUser['id']; ?>">
+          <article class="user small-full medium-full large-half featured_profile-account columns id<?php echo $keyUser['id']; ?> <?php echo $name2; ?>">
             <div class="featured_profile-account-container">
               <a href="<?php echo $keyUser['user']['url']; ?>" class="user_url-full"></a>
               <div class="featured_profile-account-image" style="background-image: url('<?php echo $keyUser['user']['image']->src; ?>')">
@@ -250,9 +256,12 @@ foreach ($values as $key) {
       <?php
       for ($x = 0; $x < count($array); $x++) {
         if($array[$x]['key'] == 'Opdracht'){
+          $name = $array[$x]['categoryTop'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
           ?>
           <article class="recentAdds-element id<?php echo $array[$x]['id']; ?>">
-            <div class="recentAdds-element_container">
+            <div class="recentAdds-element_container <?php echo $name2; ?>">
               <a class="full_url" href="<?php echo $array[$x]['url'];?>"></a>
               <div class="recentAdds-element_image" style="background-image: url('<?php echo $array[$x]['user']['image']->src; ?>')" >
                 <span class="recentAdds-element_image-number">123</span>
@@ -260,7 +269,15 @@ foreach ($values as $key) {
               <div class="recentAdds-element_info">
                 <div class="recentAdds-element_info-header">
                   <div class="recentAdds-element_info-header-top">
-                    <span class="recentAdds-elements_info-header-cost">Gratis</span>
+                    <span class="recentAdds-elements_info-header-cost">
+                      <?php
+                      $price = 'gratis';
+                       if($array[$x]['price'] == 0){
+                        echo 'gratis'; }
+                        else{
+                          echo '€ ' . $array[$x]['price'];
+                        }?>
+                    </span>
                     <h2 class="recentAdds-elements_info-header-title"><?php echo $array[$x]['title']; ?></h2>
                   </div>
                   <div class="recentAdds-element_info-header-linkInfo">
@@ -294,9 +311,12 @@ foreach ($values as $key) {
       <?php
       foreach ($array as $keyAdd) {
         if($keyAdd['key'] == 'Advertentie'){
+          $name = $keyAdd['categoryTop'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
           ?>
           <article class="recentAdds-element adds id<?php echo $keyAdd['id']; ?>">
-            <div class="recentAdds-element_container">
+            <div class="recentAdds-element_container <?php echo $name2; ?>">
               <a class="full_url" href="<?php echo $keyAdd['url'];?>"></a>
               <div class="recentAdds-element_image" style="background-image: url('<?php echo $keyAdd['image']->src; ?>')" >
                 <span class="recentAdds-element_image-number">123</span>
@@ -304,7 +324,15 @@ foreach ($values as $key) {
               <div class="recentAdds-element_info">
                 <div class="recentAdds-element_info-header">
                   <div class="recentAdds-element_info-header-top">
-                    <span class="recentAdds-elements_info-header-cost">Gratis</span>
+                    <span class="recentAdds-elements_info-header-cost">
+                      <?php
+                      $price = 'gratis';
+                       if($keyAdd['price'] == 0){
+                        echo 'gratis'; }
+                        else{
+                          echo '€ ' . $keyAdd['price'];
+                        }?>
+                    </span>
                     <h2 class="recentAdds-elements_info-header-title"><?php echo $keyAdd['title']; ?></h2>
                   </div>
                   <div class="recentAdds-element_info-header-linkInfo">

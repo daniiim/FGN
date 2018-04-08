@@ -3,20 +3,56 @@ section.request_section, section.recentAdds, section.recentAdds-discover, sectio
     &:hover{ box-shadow: 0px 1px 11.3px 0.7px rgba(0,0,0, .19); }
   }
   .row{ display: flex; flex-direction: column; align-items: center; }
-  .recentAdds-container{ padding: grid(.25); position: relative;
+  .recentAdds-container, .recentAdds-element_container{ padding: grid(.25); position: relative;
     @media #{$medium-down}{ padding: grid(.5); }
     @media #{$small-only}{ padding: grid(.5) grid(1); }
+    &.wonen{
+      .recentAdds-element_image-number{ background: $wonen; }
+      .recentAdds-elements_info-header-cost{ background: $wonen; }
+    }
+    &.zorg{
+      .recentAdds-element_image-number{ background: $zorg; }
+      .recentAdds-elements_info-header-cost{ background: $zorg; }
+    }
+    &.techniek{
+      .recentAdds-element_image-number{ background: $techniek; }
+      .recentAdds-elements_info-header-cost{ background: $techniek; }
+    }
+    &.sport{
+      .recentAdds-element_image-number{ background: $sport; }
+      .recentAdds-elements_info-header-cost{ background: $sport; }
+    }
+    &.body{
+      .recentAdds-element_image-number{ background: $body; }
+      .recentAdds-elements_info-header-cost{ background: $body; }
+    }
+    &.kunst{
+      .recentAdds-element_image-number{ background: $kunst; }
+      .recentAdds-elements_info-header-cost{ background: $kunst; }
+    }
+    &.cursus{
+      .recentAdds-element_image-number{ background: $cursus; }
+      .recentAdds-elements_info-header-cost{ background: $cursus; }
+    }
+    &.feest{
+      .recentAdds-element_image-number{ background: $feelgood; }
+      .recentAdds-elements_info-header-cost{ background: $feelgood; }
+    }
+    &.fashion{
+      .recentAdds-element_image-number{ background: $fashion; }
+      .recentAdds-elements_info-header-cost{ background: $fashion; }
+    }
   }
   .recentAdds-element{ background: #FFF;   box-shadow: none; border-radius: 10px; padding: grid(.25); display: flex; flex-direction: row; flex-shrink: 0; transition: .3s ease-in-out; position: relative;
     @media #{$medium-only}{ padding: grid(.5); }
     @media #{$small-only}{ padding: grid(1); }
     &_image{ size: 100px; display: block; background: #f1f1f1; border-radius: 50%; margin-top: 30px; position: relative; background-position: center center; background-size: cover; background-repeat: no-repeat;
-      &-number{ size: 35px; background: $zorg; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
+      &-number{ size: 35px; background: $feelgood; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
     }
     &_info{ position: relative; display: block; width: calc(100% - 100px); padding-left: grid(.5); display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
       &-header{
         &-top{
-          span{ background: $sport; border-radius: 10px; height: 23px; line-height: 17px; font-size: rem(10); letter-spacing: 0.1px; color: #FFF; text-transform: uppercase; padding: 5px 10px; position: relative; top: -2px; display: inline-block;
+          span{ background: $feelgood; border-radius: 10px; height: 23px; line-height: 17px; font-size: rem(10); letter-spacing: 0.1px; color: #FFF; text-transform: uppercase; padding: 5px 10px; position: relative; top: -2px; display: inline-block;
             @media #{$medium-down}{ margin-bottom: 5px;}
           }
           h2{ line-height: 23px; font-size: rem(18); letter-spacing: 0.2px; color: $black; font-weight: $font-semibold; padding: 5px 5px;

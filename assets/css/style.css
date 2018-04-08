@@ -6871,7 +6871,8 @@ ul.breadcrumbs {
         flex-direction: column;
         align-items: center;
         position: relative;
-        z-index: 1; }
+        z-index: 1;
+        min-width: 125px; }
         .whyFGN .categories_home .categories_list-item_url {
           position: absolute;
           left: 0;
@@ -6900,7 +6901,8 @@ ul.breadcrumbs {
           line-height: 21px;
           letter-spacing: 0.1px;
           padding-top: 10px;
-          color: #555555; }
+          color: #555555;
+          text-align: center; }
         .whyFGN .categories_home .categories_list-item.zorg span:after {
           background-image: url("../images/svg/013-sprout.svg"); }
         .whyFGN .categories_home .categories_list-item.wonen span:after {
@@ -6991,12 +6993,6 @@ ul.breadcrumbs {
       padding-left: 0px;
       top: 2px;
       color: #555555; }
-  .joinFGN .row .joinFGN-categorie:nth-of-type(1) .joinFGN-categorie_image, .joinFGN .row-small .joinFGN-categorie:nth-of-type(1) .joinFGN-categorie_image {
-    background-image: url("../images/Bannerfoto.jpg"); }
-  .joinFGN .row .joinFGN-categorie:nth-of-type(2) .joinFGN-categorie_image, .joinFGN .row-small .joinFGN-categorie:nth-of-type(2) .joinFGN-categorie_image {
-    background-image: url("../images/gelukt.jpg"); }
-  .joinFGN .row .joinFGN-categorie:nth-of-type(3) .joinFGN-categorie_image, .joinFGN .row-small .joinFGN-categorie:nth-of-type(3) .joinFGN-categorie_image {
-    background-image: url("../images/Bannerfoto3.jpg"); }
 
 section.request_section .full_url, section.recentAdds .full_url, section.recentAdds-discover .full_url, section.add_section .full_url {
   position: absolute;
@@ -7013,15 +7009,51 @@ section.request_section .row, section.recentAdds .row, section.recentAdds-discov
   flex-direction: column;
   align-items: center; }
 
-section.request_section .recentAdds-container, section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container, section.add_section .recentAdds-container {
+section.request_section .recentAdds-container, section.request_section .recentAdds-element_container, section.recentAdds .recentAdds-container, section.recentAdds .recentAdds-element_container, section.recentAdds-discover .recentAdds-container, section.recentAdds-discover .recentAdds-element_container, section.add_section .recentAdds-container, section.add_section .recentAdds-element_container {
   padding: 1.0416666667vw;
   position: relative; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
-    section.request_section .recentAdds-container, section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container, section.add_section .recentAdds-container {
+    section.request_section .recentAdds-container, section.request_section .recentAdds-element_container, section.recentAdds .recentAdds-container, section.recentAdds .recentAdds-element_container, section.recentAdds-discover .recentAdds-container, section.recentAdds-discover .recentAdds-element_container, section.add_section .recentAdds-container, section.add_section .recentAdds-element_container {
       padding: 2.0833333333vw; } }
   @media screen and (min-width: 0px) and (max-width: 800px) {
-    section.request_section .recentAdds-container, section.recentAdds .recentAdds-container, section.recentAdds-discover .recentAdds-container, section.add_section .recentAdds-container {
+    section.request_section .recentAdds-container, section.request_section .recentAdds-element_container, section.recentAdds .recentAdds-container, section.recentAdds .recentAdds-element_container, section.recentAdds-discover .recentAdds-container, section.recentAdds-discover .recentAdds-element_container, section.add_section .recentAdds-container, section.add_section .recentAdds-element_container {
       padding: 2.0833333333vw 4.1666666667vw; } }
+  section.request_section .recentAdds-container.wonen .recentAdds-element_image-number, section.request_section .recentAdds-element_container.wonen .recentAdds-element_image-number, section.recentAdds .recentAdds-container.wonen .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.wonen .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.wonen .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.wonen .recentAdds-element_image-number, section.add_section .recentAdds-container.wonen .recentAdds-element_image-number, section.add_section .recentAdds-element_container.wonen .recentAdds-element_image-number {
+    background: #69c1e5; }
+  section.request_section .recentAdds-container.wonen .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.wonen .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.wonen .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.wonen .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.wonen .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.wonen .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.wonen .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.wonen .recentAdds-elements_info-header-cost {
+    background: #69c1e5; }
+  section.request_section .recentAdds-container.zorg .recentAdds-element_image-number, section.request_section .recentAdds-element_container.zorg .recentAdds-element_image-number, section.recentAdds .recentAdds-container.zorg .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.zorg .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.zorg .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.zorg .recentAdds-element_image-number, section.add_section .recentAdds-container.zorg .recentAdds-element_image-number, section.add_section .recentAdds-element_container.zorg .recentAdds-element_image-number {
+    background: #81c784; }
+  section.request_section .recentAdds-container.zorg .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.zorg .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.zorg .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.zorg .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.zorg .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.zorg .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.zorg .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.zorg .recentAdds-elements_info-header-cost {
+    background: #81c784; }
+  section.request_section .recentAdds-container.techniek .recentAdds-element_image-number, section.request_section .recentAdds-element_container.techniek .recentAdds-element_image-number, section.recentAdds .recentAdds-container.techniek .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.techniek .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.techniek .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.techniek .recentAdds-element_image-number, section.add_section .recentAdds-container.techniek .recentAdds-element_image-number, section.add_section .recentAdds-element_container.techniek .recentAdds-element_image-number {
+    background: #41668a; }
+  section.request_section .recentAdds-container.techniek .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.techniek .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.techniek .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.techniek .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.techniek .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.techniek .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.techniek .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.techniek .recentAdds-elements_info-header-cost {
+    background: #41668a; }
+  section.request_section .recentAdds-container.sport .recentAdds-element_image-number, section.request_section .recentAdds-element_container.sport .recentAdds-element_image-number, section.recentAdds .recentAdds-container.sport .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.sport .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.sport .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.sport .recentAdds-element_image-number, section.add_section .recentAdds-container.sport .recentAdds-element_image-number, section.add_section .recentAdds-element_container.sport .recentAdds-element_image-number {
+    background: #65a0bd; }
+  section.request_section .recentAdds-container.sport .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.sport .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.sport .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.sport .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.sport .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.sport .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.sport .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.sport .recentAdds-elements_info-header-cost {
+    background: #65a0bd; }
+  section.request_section .recentAdds-container.body .recentAdds-element_image-number, section.request_section .recentAdds-element_container.body .recentAdds-element_image-number, section.recentAdds .recentAdds-container.body .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.body .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.body .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.body .recentAdds-element_image-number, section.add_section .recentAdds-container.body .recentAdds-element_image-number, section.add_section .recentAdds-element_container.body .recentAdds-element_image-number {
+    background: #a49688; }
+  section.request_section .recentAdds-container.body .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.body .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.body .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.body .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.body .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.body .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.body .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.body .recentAdds-elements_info-header-cost {
+    background: #a49688; }
+  section.request_section .recentAdds-container.kunst .recentAdds-element_image-number, section.request_section .recentAdds-element_container.kunst .recentAdds-element_image-number, section.recentAdds .recentAdds-container.kunst .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.kunst .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.kunst .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.kunst .recentAdds-element_image-number, section.add_section .recentAdds-container.kunst .recentAdds-element_image-number, section.add_section .recentAdds-element_container.kunst .recentAdds-element_image-number {
+    background: #7b685a; }
+  section.request_section .recentAdds-container.kunst .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.kunst .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.kunst .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.kunst .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.kunst .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.kunst .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.kunst .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.kunst .recentAdds-elements_info-header-cost {
+    background: #7b685a; }
+  section.request_section .recentAdds-container.cursus .recentAdds-element_image-number, section.request_section .recentAdds-element_container.cursus .recentAdds-element_image-number, section.recentAdds .recentAdds-container.cursus .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.cursus .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.cursus .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.cursus .recentAdds-element_image-number, section.add_section .recentAdds-container.cursus .recentAdds-element_image-number, section.add_section .recentAdds-element_container.cursus .recentAdds-element_image-number {
+    background: #55636a; }
+  section.request_section .recentAdds-container.cursus .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.cursus .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.cursus .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.cursus .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.cursus .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.cursus .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.cursus .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.cursus .recentAdds-elements_info-header-cost {
+    background: #55636a; }
+  section.request_section .recentAdds-container.feest .recentAdds-element_image-number, section.request_section .recentAdds-element_container.feest .recentAdds-element_image-number, section.recentAdds .recentAdds-container.feest .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.feest .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.feest .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.feest .recentAdds-element_image-number, section.add_section .recentAdds-container.feest .recentAdds-element_image-number, section.add_section .recentAdds-element_container.feest .recentAdds-element_image-number {
+    background: #f3997b; }
+  section.request_section .recentAdds-container.feest .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.feest .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.feest .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.feest .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.feest .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.feest .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.feest .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.feest .recentAdds-elements_info-header-cost {
+    background: #f3997b; }
+  section.request_section .recentAdds-container.fashion .recentAdds-element_image-number, section.request_section .recentAdds-element_container.fashion .recentAdds-element_image-number, section.recentAdds .recentAdds-container.fashion .recentAdds-element_image-number, section.recentAdds .recentAdds-element_container.fashion .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-container.fashion .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_container.fashion .recentAdds-element_image-number, section.add_section .recentAdds-container.fashion .recentAdds-element_image-number, section.add_section .recentAdds-element_container.fashion .recentAdds-element_image-number {
+    background: #af60a2; }
+  section.request_section .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost {
+    background: #af60a2; }
 
 section.request_section .recentAdds-element, section.recentAdds .recentAdds-element, section.recentAdds-discover .recentAdds-element, section.add_section .recentAdds-element {
   background: #FFF;
@@ -7051,7 +7083,7 @@ section.request_section .recentAdds-element, section.recentAdds .recentAdds-elem
     background-repeat: no-repeat; }
     section.request_section .recentAdds-element_image-number, section.recentAdds .recentAdds-element_image-number, section.recentAdds-discover .recentAdds-element_image-number, section.add_section .recentAdds-element_image-number {
       size: 35px;
-      background: #81c784;
+      background: #f3997b;
       border-radius: 50%;
       display: block;
       position: absolute;
@@ -7073,7 +7105,7 @@ section.request_section .recentAdds-element, section.recentAdds .recentAdds-elem
     justify-content: flex-start;
     align-items: flex-start; }
     section.request_section .recentAdds-element_info-header-top span, section.recentAdds .recentAdds-element_info-header-top span, section.recentAdds-discover .recentAdds-element_info-header-top span, section.add_section .recentAdds-element_info-header-top span {
-      background: #65a0bd;
+      background: #f3997b;
       border-radius: 10px;
       height: 23px;
       line-height: 17px;
@@ -7498,7 +7530,7 @@ section.discover .row.category .side, section.discover .row.category .item {
     background-size: cover; }
     .featured_profile .featured_profile-account-image-number {
       size: 35px;
-      background: #81c784;
+      background: #f3997b;
       border-radius: 50%;
       display: block;
       position: absolute;
@@ -7528,14 +7560,16 @@ section.discover .row.category .side, section.discover .row.category .item {
       .featured_profile .featured_profile-account-accountInfo p a {
         text-decoration: underline; }
   .featured_profile .featured_profile-account-infoText {
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px; }
     .featured_profile .featured_profile-account-infoText p {
       font-size: 0.75rem;
       line-height: 21px;
       letter-spacing: 0.1px;
       color: #555555;
       text-align: center;
-      padding: 20px 1.6666666667vw;
+      padding: 0 1.6666666667vw;
       margin: 0 auto; }
   .featured_profile .featured_profile-account-url {
     margin: 20px 0px 20px;
@@ -7548,6 +7582,24 @@ section.discover .row.category .side, section.discover .row.category .item {
     bottom: 30px; }
     .featured_profile .featured_profile-account-url:hover {
       text-decoration: underline; }
+  .featured_profile .featured_profile-account.wonen .featured_profile-account-image-number {
+    background: #69c1e5; }
+  .featured_profile .featured_profile-account.zorg .featured_profile-account-image-number {
+    background: #81c784; }
+  .featured_profile .featured_profile-account.techniek .featured_profile-account-image-number {
+    background: #41668a; }
+  .featured_profile .featured_profile-account.sport .featured_profile-account-image-number {
+    background: #65a0bd; }
+  .featured_profile .featured_profile-account.body .featured_profile-account-image-number {
+    background: #a49688; }
+  .featured_profile .featured_profile-account.kunst .featured_profile-account-image-number {
+    background: #7b685a; }
+  .featured_profile .featured_profile-account.cursus .featured_profile-account-image-number {
+    background: #55636a; }
+  .featured_profile .featured_profile-account.feest .featured_profile-account-image-number {
+    background: #f3997b; }
+  .featured_profile .featured_profile-account.fashion .featured_profile-account-image-number {
+    background: #af60a2; }
 
 .featured_profile .all_profiles {
   margin: 15px auto 40px; }
@@ -7602,7 +7654,6 @@ main {
 .landingPage {
   width: 100vw;
   height: 75vh;
-  background: linear-gradient(rgba(67, 67, 67, 0.4), rgba(67, 67, 67, 0.4)), url("../images/Bannerfoto.jpg");
   background-position: center center;
   background-size: cover;
   display: flex;
