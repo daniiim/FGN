@@ -188,8 +188,8 @@ section{ width: 100vw; max-width: 100%;
         h1{ line-height: 1; }
       }
       &.active{ z-index: 1; opacity: 1; pointer-events: all; display: flex; flex-wrap: wrap; }
-      article{ padding: grid(.25); display: none;
-        &:nth-of-type(1), &:nth-of-type(2){ padding-top: 0; }
+      article{ padding: 0 grid(.25) grid(.5); display: none;
+        // &:nth-of-type(1), &:nth-of-type(2){ padding-top: 0; }
         &.active{ display: block; }
         &.recentAdds-element{ background: transparent; border-radius: 0; width: 100%; padding: 0 grid(.25);
           @media #{$medium-down}{ padding: 0 grid(.5); }
@@ -211,7 +211,7 @@ section{ width: 100vw; max-width: 100%;
       &.profile{ width: 100%; padding: 0 grid(.25);
         @media #{$medium-down}{ padding: 0 grid(.5) grid(.5); }
         @media #{$small-only}{ padding: 0 grid(1) grid(1); }
-        .profile-container{ padding: 25px; background: white; border-radius: 0 5px 5px 5px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); width: 100%; }
+        .profile-container{ padding: 25px; background: white; border-radius: 0 10px 10px 10px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); width: 100%; }
         h2{ font-weight: $font-semibold; font-size: rem(18); line-height: 21px; letter-spacing: .2px; color: $black; padding: 10px 0; }
         p{ font-size: rem(14); color: $black; letter-spacing: .1px; line-height: 20px; padding: 5px 0 15px; }
         .contact_info{ display: flex; flex-wrap: wrap;
@@ -253,10 +253,10 @@ body.gebruiker{
 }
 button{ cursor: pointer; }
 
-.user_profile{ padding: 0 grid(.25); display: flex; flex-direction: column;
+.user_profile{ padding: 0 grid(.25); display: flex; flex-direction: column; height: 100%;
   @media #{$medium-down}{ padding: 0 grid(.5); }
   @media #{$small-only}{ padding: 0 grid(1); }
-  &-container{ background: white; padding: 35px; border-radius: 10px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); }
+  &-container{ background: white; padding: 35px; border-radius: 10px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); margin-bottom: 10px; }
   &-image{ display: block; size: 110px; margin: 0 auto; border-radius: 50%; background-position: center center; background-repeat: no-repeat; background-size: cover; position: relative;
     span{ size: 35px; background: $feelgood; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
   }
@@ -296,4 +296,44 @@ body.gebruiker{
   .results{ width: calc(100% / 3 * 2); }
   section.request_section article{ display: flex; }
 }
+html.product{
+  body{ background: $background; }
+}
 .tab-pane{ display: none; }
+
+section.add-page{ height: 100%; background: white; border-radius: 10px;
+  .add-page-container{ padding: 25px; background: white; border-radius: 0 5px 5px 5px; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); width: 100%;
+    .add-page{
+      &_header{ display: flex; flex-direction: row; padding-bottom: 35px; border-bottom: 1px solid $white-grey; flex-wrap: wrap; 
+        &-image{ width: calc(50% - 10px);
+          @media #{$medium-down}{ width: 100%; }
+          .full-image{ height: 200px; background-size: cover; background-position: center center; width: 100%; display: block; }
+        }
+        &-content{ width: calc(50% - 10px); margin-left: 20px;
+          @media #{$medium-down}{ width: 100%; margin: 0; }
+          h2{ font-size: rem(18); line-height: 21px; letter-spacing: .2px; color: $black; font-weight: $font-semibold; }
+          span{ background: $feelgood; border-radius: 10px; height: 23px; line-height: 17px; font-size: rem(10); letter-spacing: 0.1px; color: #FFF; text-transform: uppercase; padding: 5px 10px; position: relative; top: -2px; display: inline-block;
+            @media #{$medium-down}{ margin-bottom: 5px;}
+          }
+          &-category{ display: flex; align-items: center; margin-top: 15px;
+            a{ text-decoration: underline; }
+            p{ margin: 0; }
+            p,a{ font-size: 1rem; line-height: 1; letter-spacing: .2px; color: #565656; }
+          }
+          p{ margin: 10px 0 5px;  color: $black;
+            &.add-page_header-content-date{ margin: 5px 0; font-weight: $font-light; }
+          }
+        }
+      }
+      &_footer{ padding: 25px 0;
+        h2{ font-size: rem(18); line-height: 21px; letter-spacing: .2px; color: $black; font-weight: $font-semibold; }
+        p{ padding: 5px 0; color: $black; }
+        ul{ padding-left: 20px; padding-top: 10px;
+          li{
+            &:before{ content: '-'; padding-right: 10px; }
+          }
+        }
+      }
+    }
+  }
+}

@@ -215,7 +215,7 @@ $sortedArray = array_sort($allPosts, 'date', SORT_DESC);
   $allUrl = '';
   foreach ($children as $childId) {
     $child = Page::getByID($childId);
-    if($child->getCollectionName() == "All"){
+    if($child->getCollectionName() == "Alle resultaten"){
       $allUrl = $nh->getLinkToCollection($child);
     }
   }
@@ -240,13 +240,17 @@ $sortedArray = array_sort($allPosts, 'date', SORT_DESC);
     <div class="side small-full medium-third columns hide-small">
       <div class="category-view">
         <h3>Rubrieken in <?php echo $title; ?></h3>
+        <?php $i = 0; ?>
         <?php foreach ($children as $childId) {
-          $child = Page::getByID($childId);
-          if($child->getCollectionName() !== "All"){
-            $urlChild  = $nh->getLinkToCollection($child);
-            ?>
-            <a href="<?php echo $urlChild; ?>" class="category-view_url"><?php echo $child->getCollectionName(); ?></a>
-            <?php
+          $i++;
+          if($i < 10){
+            $child = Page::getByID($childId);
+            if($child->getCollectionName() !== "Alle resultaten"){
+              $urlChild  = $nh->getLinkToCollection($child);
+              ?>
+              <a href="<?php echo $urlChild; ?>" class="category-view_url"><?php echo $child->getCollectionName(); ?></a>
+              <?php
+            }
           }
         }?>
       </div>
@@ -330,7 +334,7 @@ $sortedArray = array_sort($allPosts, 'date', SORT_DESC);
         $nameArray = explode(" ", $name);
         $name2 = strtolower($nameArray[0]);
         ?>
-        <div class="columns small-full medium-two-third recentAdds-container <?php echo $name2; ?>">
+        <div class="columns small-full medium-half recentAdds-container <?php echo $name2; ?>">
           <div class="recentAdds-element">
             <a class="full_url" href="<?php echo $value['url'];?>"></a>
             <div class="recentAdds-element_image" style="background-image: url('<?php echo $value['image']->src; ?>')" >

@@ -69,19 +69,19 @@ module.exports = function(grunt) {
        }
      },
    },
-   browserSync: {
-     dev: {
-       options: {
-         files: [
-           'C:/MAMP/htdocs/concrete/themes/fgn/**/*',
-         ],
-          port: '3000',
-          open: 'local',
-          watchTask: true,
-          proxy: "localhost/concrete",
-       }
-     }
-   },
+   // browserSync: {
+   //   dev: {
+   //     options: {
+   //       files: [
+   //         'C:/MAMP/htdocs/concrete/themes/fgn/**/*',
+   //       ],
+   //        port: '3000',
+   //        open: 'local',
+   //        watchTask: true,
+   //        proxy: "localhost/concrete",
+   //     }
+   //   }
+   // },
    clean: {
      folder: ['C:/MAMP/htdocs/concrete/themes'],
      options: {
@@ -185,6 +185,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean'); //clean files
 
   //Register tasks
-  grunt.registerTask('default', ['clean', 'sass', 'postcss', 'uglify', 'copy', 'browserSync' , 'watch']);
+  grunt.registerTask('default', ['clean', 'sass', 'postcss', 'uglify', 'copy', 'watch']);
 
 };

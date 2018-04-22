@@ -34,7 +34,7 @@ foreach ($children as $key) {
   $category = $subPage->getCollectionName();
   $i = 0;
   $l = 0;
-  if($category !== "All"){
+  if($category !== "Alle resultaten" ){
     foreach ($childrenSubPage as $subChildren) {
       $subChildrenPage = page::getByID($subChildren);
       $ownerID = $subChildrenPage->getCollectionUserID();
