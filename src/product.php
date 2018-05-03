@@ -130,25 +130,22 @@ if ($_GET['favorite'] && $_GET['favorite'] == $page_id ) {
 }
 $this->inc('elements/breadcrumbs.php'); ?>
 
-<div class="save-button">
-  <?php
-  if ($logged_in && !in_array($page_id,$fh->get_favs())) { ?>
-    <form method="get">
-      <button type="submit" class="btn btn-block btn-red">Bewaar</button>
-      <?php print $form->hidden('favorite',$page_id);?>
-    </form>
-    <?php }
-    elseif ($logged_in) { ?>
-      <form method="get">
-        <a class="red" href="<?php echo $this->url('mijn_fgn/favorieten');?>" title="Favorieten beheren">Bewaard</a>
-      </form>
-    <?php
-    } else { ?>
-      <a href="<?php echo $this->url('/login/forward/'.$page_id);?>">Log in om op te slaan</a>
-    <?php } ?>
-</div>
-
 <div class="row extra-margin-top">
+  <div class="save-button">
+    <?php
+    if ($logged_in && !in_array($page_id,$fh->get_favs())) { ?>
+      <form method="get">
+        <button type="submit" class="save-button-link">Favoriet opslaan</button>
+        <?php print $form->hidden('favorite',$page_id);?>
+      </form>
+      <?php }
+      elseif ($logged_in) { ?>
+        <a class="save-button-link" href="<?php echo $this->url('mijn_fgn/favorieten');?>" title="Favorieten beheren">Favoriet bewaard</a>
+      <?php
+      } else { ?>
+        <a class="save-button-link" href="<?php echo $this->url('/login/forward/'.$page_id);?>">Log in om op te slaan</a>
+      <?php } ?>
+  </div>
   <?php
   $user_first_name = $ui->getAttribute('first_name');
   $user_sir_name = $ui->getAttribute('sir_name');
@@ -176,7 +173,7 @@ $this->inc('elements/breadcrumbs.php'); ?>
       <h2><?php echo $user['fullName']; ?></h2>
       <p>
         <?php
-        $text = $userAbout;
+        $text = $user['info'];
         if(strlen($text) > 130){
           $text = substr($text, 0, 130) . '...';
         }
@@ -184,7 +181,7 @@ $this->inc('elements/breadcrumbs.php'); ?>
         ?>
       </p>
       <?php
-        $a = new GlobalArea('Gebruiker Sidebar');
+        $a = new GlobalArea('Gebruiker Sidebar2');
         $a->display();
       ?>
       <?php  if ($user_website) : ?>
@@ -242,7 +239,7 @@ $this->inc('elements/breadcrumbs.php'); ?>
             <?php echo $c->getCollectionName();?>
           </h2>
           <div class="add-page_header-content-category">
-            <a href="#"><?php echo $parent_page_name;?></a> <p>in</p> <a href="#"><?php echo $product_city;?></a>
+            <a href="#"><?php echo $parent_page_name; ?></a><p>in</p><a href="#"><?php echo $product_city;?></a>
           </div>
           <p>
             <p>

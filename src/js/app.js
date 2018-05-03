@@ -62,9 +62,12 @@ $('.go-back').on('click', function(e){
   e.preventDefault();
   window.history.back();
 });
+
 $('.close-error').on('click', function(e){
   e.preventDefault();
+
   $('.error-popup').addClass('inactive');
+
 });
 
 $(document).on('ready', function(){
@@ -252,7 +255,6 @@ if(document.body.classList.contains('gebruiker')){
       });
       e.target.classList.add('active');
       var activeClass = e.target.classList[0];
-      console.log(activeClass);
       var activeSection;
       switch (activeClass) {
         case 'profile':
@@ -269,7 +271,6 @@ if(document.body.classList.contains('gebruiker')){
           break;
       }
       var allSections = document.querySelectorAll('.results section');
-      console.log(activeSection);
       allSections.forEach(function(section){
         section.classList.remove('active');
       });
