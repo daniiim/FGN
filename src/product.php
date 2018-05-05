@@ -187,8 +187,8 @@ $this->inc('elements/breadcrumbs.php'); ?>
       <?php  if ($user_website) : ?>
         <a href="<?php echo $user_website; ?>" title="Bezoek de website van <?php echo $user_first_name;?>" target="_blank">Bezoek de website van <?php echo $user_first_name;?></a>
       <?php endif;?>
-      <?php if ($userFacebook):?>
-        <?php echo $userFacebook;?>
+      <?php if ( $user_facebook):?>
+        <a href="<?php echo $user_facebook; ?>" target="_blank">Facebook pagina</a>
       <?php endif;?>
     </div>
   </section>

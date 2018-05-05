@@ -1,14 +1,14 @@
+.row.header{ display: flex; justify-content: space-between; align-items: center; padding: 0 grid(.25);
+  @media #{$medium-only}{ padding: 0 grid(.5); }
+  @media #{$small-only}{ padding: 0 grid(1); }
+  a{ display: block; line-height: 25px; border-radius: 5px; background-color: $feelgood; color: #fdfdfd; font-weight: $font-regular; letter-spacing: 0px; font-size: rem(12); text-align: center; position: relative; transition: $transition; padding: 5px 15px; text-transform: uppercase;  box-shadow: none; border: none; cursor: pointer;
+    &:before{ content: '+'; position: relative; text-transform: none; padding: 0 10px 0 0; font-size: 1.1rem; top: 2px; }
+    &:hover{ background: darken($feelgood, 4%); }
+  }
+  h2{ font-size: rem(26); line-height: 1; letter-spacing: .3px; color: #4e4e4e; }
+}
 section.discover{
   svg{ size: 60px; margin: 0 auto; display: block; fill: $techniek; }
-  .header{ display: flex; justify-content: space-between; align-items: center; padding: 0 grid(.25);
-    @media #{$medium-only}{ padding: 0 grid(.5); }
-    @media #{$small-only}{ padding: 0 grid(1); }
-    a{ display: block; line-height: 25px; border-radius: 5px; background-color: $feelgood; color: #fdfdfd; font-weight: $font-regular; letter-spacing: 0px; font-size: rem(12); text-align: center; position: relative; transition: $transition; padding: 5px 15px; text-transform: uppercase;  box-shadow: none; border: none; cursor: pointer;
-      &:before{ content: '+'; position: relative; text-transform: none; padding: 0 10px 0 0; font-size: 1.1rem; top: 2px; }
-      &:hover{ background: darken($feelgood, 4%); }
-    }
-    h2{ font-size: rem(26); line-height: 1; letter-spacing: .3px; color: #4e4e4e; }
-  }
   .row.category{
     &.no-margin{ margin-top: 0; margin-bottom: 0; }
     .side, .item{ padding: grid(.25);
