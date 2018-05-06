@@ -8154,9 +8154,7 @@ section {
       align-items: center;
       justify-content: flex-start;
       box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);
-      border-radius: 5px 5px 0 0;
-      width: 100%;
-      justify-content: space-between; }
+      border-radius: 5px 5px 0 0; }
       .row div.results-header .navigation-results a {
         display: flex;
         font-size: 0.75rem;
@@ -8361,6 +8359,33 @@ section {
             top: 2px; }
     .row div.results section.adds-overzicht .adds-container {
       width: 100%; }
+      .row div.results section.adds-overzicht .adds-container-top {
+        padding: 0 1.0416666667vw;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        margin-top: 35px;
+        width: 100%; }
+        .row div.results section.adds-overzicht .adds-container-top_container {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          border-radius: 10px 10px 0 0;
+          background: white;
+          border-bottom: #e9e9e9;
+          padding: 0 15px; }
+          .row div.results section.adds-overzicht .adds-container-top_container h4 {
+            font-size: 1rem;
+            line-height: 21px;
+            letter-spacing: .1px;
+            color: #282828; }
+        @media screen and (min-width: 0px) and (max-width: 960px) {
+          .row div.results section.adds-overzicht .adds-container-top {
+            padding: 0 2.0833333333vw; } }
+        @media screen and (min-width: 0px) and (max-width: 800px) {
+          .row div.results section.adds-overzicht .adds-container-top {
+            padding: 0 4.1666666667vw; } }
     .row div.results section.adds-overzicht article {
       position: relative;
       padding-bottom: 0; }
@@ -8472,8 +8497,12 @@ section {
 html.sub_category main {
   background: #f7f7f7; }
 
-body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main {
+body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main, body.mijn_favorieten main {
   background: #f7f7f7; }
+
+body.gebruiker .row div.results-header .navigation-results, body.mijn_fgn .row div.results-header .navigation-results, body.mijn_advertenties .row div.results-header .navigation-results, body.facturen .row div.results-header .navigation-results, body.mijn_opdrachten .row div.results-header .navigation-results, body.mijn_favorieten .row div.results-header .navigation-results {
+  width: 100%;
+  justify-content: space-between; }
 
 button {
   cursor: pointer; }
@@ -8644,10 +8673,10 @@ button {
       height: 4px;
       background: #f3997b; }
 
-body.gebruiker .results, body.mijn_fgn .results, body.mijn_advertenties .results, body.facturen .results, body.mijn_opdrachten .results {
+body.gebruiker .results, body.mijn_fgn .results, body.mijn_advertenties .results, body.facturen .results, body.mijn_opdrachten .results, body.mijn_favorieten .results {
   width: calc(100% / 3 * 2); }
 
-body.gebruiker section.request_section article, body.mijn_fgn section.request_section article, body.mijn_advertenties section.request_section article, body.facturen section.request_section article, body.mijn_opdrachten section.request_section article {
+body.gebruiker section.request_section article, body.mijn_fgn section.request_section article, body.mijn_advertenties section.request_section article, body.facturen section.request_section article, body.mijn_opdrachten section.request_section article, body.mijn_favorieten section.request_section article {
   display: flex; }
 
 html.product body {

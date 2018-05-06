@@ -167,7 +167,7 @@ section{ width: 100vw; max-width: 100%;
     &-header{ display: flex; height: 50px; justify-content: space-between; align-items: center; width: 100%; padding: 0px grid(.25);
       @media #{$medium-down}{ padding: 0 grid(.5); }
       @media #{$small-only}{ padding: 0 grid(1); }
-      .navigation-results{ height: 100%; background: white; display: flex; align-items: center; justify-content: flex-start; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); border-radius: 5px 5px 0 0; width: 100%; justify-content: space-between;
+      .navigation-results{ height: 100%; background: white; display: flex; align-items: center; justify-content: flex-start; box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); border-radius: 5px 5px 0 0;
         a{ display: flex; font-size: rem(12); letter-spacing: .1px; color: $grey-black; font-weight: $font-light; padding: 0 15px; height: 100%; position: relative; align-items: center;
           &:after{ content: ''; display: block; position: absolute; bottom: 0; width: calc(100%); height: 4px; background-color: $feelgood; left: 0; height: 0; transition: $transition; }
           &.active:after{ height: 4px; }
@@ -243,7 +243,15 @@ section{ width: 100vw; max-width: 100%;
         }
       }
       &.adds-overzicht{
-        .adds-container{ width: 100%; }
+        .adds-container{ width: 100%;
+          &-top{ padding: 0 grid(.25); height: 40px; display: flex; align-items: center;  margin-top: 35px; width: 100%;
+            &_container{ width: 100%; height: 100%; display: flex; align-items: center; border-radius: 10px 10px 0 0; background: white; border-bottom: $grey-white; padding: 0 15px;
+              h4{ font-size: rem(16); line-height: 21px; letter-spacing: .1px; color: $black;}
+            }
+            @media #{$medium-down}{ padding: 0 grid(.5); }
+            @media #{$small-only}{ padding: 0 grid(1); }
+          }
+        }
         article{ position: relative; padding-bottom: 0;
           &:last-of-type .adds-view_container{ border-radius: 0px 0px 5px 5px; }
           .adds-view_container{ padding: 25px; background: white;  box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); width: 100%; position: relative; display: flex; }
@@ -286,8 +294,9 @@ section{ width: 100vw; max-width: 100%;
 html.sub_category{
   main{ background: $background; }
 }
-body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten{
+body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten, body.mijn_favorieten{
   main{ background: $background; }
+  .row div.results-header .navigation-results{ width: 100%; justify-content: space-between; }
 }
 button{ cursor: pointer; }
 
@@ -332,7 +341,7 @@ button{ cursor: pointer; }
       }
     }
 }
-body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten{
+body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten, body.mijn_favorieten{
   .results{ width: calc(100% / 3 * 2); }
   section.request_section article{ display: flex; }
 }
