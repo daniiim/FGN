@@ -78,25 +78,22 @@ Loader::element('header_required');
                   <a class="dropdown_second-item_url user" href="<?php echo $this->url('/mijn_fgn')?>">Mijn FGN Overzicht</a>
                 </li>
                 <li class="dropdown_second-item split">
-                  <a class="dropdown_second-item_url adds"href="<?php echo $this->url('/advertenties')?>">Mijn advertenties</a>
+                  <a class="dropdown_second-item_url adds"href="<?php echo $this->url('/mijn_fgn/advertenties')?>">Mijn advertenties</a>
                 </li>
                 <li class="dropdown_second-item">
-                  <a class="dropdown_second-item_url adds"href="<?php echo $this->url('/advertenties')?>">Mijn advertenties</a>
+                  <a class="dropdown_second-item_url assignment"href="<?php echo $this->url('/mijn_fgn/opdrachten')?>">Mijn opdrachten</a>
                 </li>
                 <li class="dropdown_second-item">
-                  <a class="dropdown_second-item_url assignment"href="<?php echo $this->url('/opdrachten')?>">Mijn opdrachten</a>
+                  <a class="dropdown_second-item_url favorite"href="<?php echo $this->url('/mijn_fgn/favorieten')?>">Mijn favorieten</a>
                 </li>
                 <li class="dropdown_second-item">
-                  <a class="dropdown_second-item_url favorite"href="<?php echo $this->url('/favorieten')?>">Mijn favorieten</a>
-                </li>
-                <li class="dropdown_second-item">
-                  <a class="dropdown_second-item_url user2"href="<?php echo $this->url('/account')?>">Mijn account</a>
+                  <a class="dropdown_second-item_url user2"href="<?php echo $this->url('/mijn_fgn/account')?>">Mijn account</a>
                 </li>
                 <li class="dropdown_second-item super-split">
                   <a class="dropdown_second-item_url favorite"href="<?= View::url('/login','logout'); ?>">Account uitloggen</a>
                 </li>
                 <li class="dropdown_second-item">
-                  <a class="dropdown_second-item_url settings"href="<?php echo $this->url('/wachtwoord_wijzigen')?>">Wachtwoord wijzigen</a>
+                  <a class="dropdown_second-item_url settings"href="<?php echo $this->url('/mijn_fgn/wachtwoord_wijzigen')?>">Wachtwoord wijzigen</a>
                 </li>
               </ul>
             </li>

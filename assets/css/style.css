@@ -7724,6 +7724,8 @@ main {
     margin-bottom: 0; }
     .row.no-margin.header, .row-small.no-margin.header {
       margin-top: 60px; }
+  .row.proflie-margin, .row-small.proflie-margin {
+    margin-top: 25px; }
   @media screen and (min-width: 0px) and (max-width: 960px) {
     .row, .row-small {
       margin: 30px auto; } }
@@ -8152,7 +8154,9 @@ section {
       align-items: center;
       justify-content: flex-start;
       box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);
-      border-radius: 5px 5px 0 0; }
+      border-radius: 5px 5px 0 0;
+      width: 100%;
+      justify-content: space-between; }
       .row div.results-header .navigation-results a {
         display: flex;
         font-size: 0.75rem;
@@ -8355,11 +8359,120 @@ section {
             position: relative;
             font-family: "fontgood";
             top: 2px; }
+    .row div.results section.adds-overzicht .adds-container {
+      width: 100%; }
+    .row div.results section.adds-overzicht article {
+      position: relative;
+      padding-bottom: 0; }
+      .row div.results section.adds-overzicht article:last-of-type .adds-view_container {
+        border-radius: 0px 0px 5px 5px; }
+      .row div.results section.adds-overzicht article .adds-view_container {
+        padding: 25px;
+        background: white;
+        box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        position: relative;
+        display: flex; }
+      .row div.results section.adds-overzicht article .full_url {
+        position: absolute;
+        left: 0;
+        top: 0;
+        size: 100%;
+        z-index: 1;
+        transition: .2s ease-in-out; }
+        .row div.results section.adds-overzicht article .full_url:hover {
+          box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.19); }
+      .row div.results section.adds-overzicht article .adds-view_image {
+        size: 100px;
+        display: block;
+        background: #f1f1f1;
+        border-radius: 5px;
+        margin-top: 0px;
+        position: relative;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat; }
+        .row div.results section.adds-overzicht article .adds-view_image-number {
+          size: 35px;
+          background: #f3997b;
+          border-radius: 50%;
+          display: block;
+          position: absolute;
+          right: 0;
+          top: 0;
+          text-align: center;
+          line-height: 35px;
+          letter-spacing: 0.1px;
+          color: #fdfdfd;
+          font-weight: 500;
+          font-size: 0.875rem; }
+      .row div.results section.adds-overzicht article .adds-view_info {
+        position: relative;
+        display: block;
+        width: calc(80% - 100px);
+        padding-left: 2.0833333333vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start; }
+        .row div.results section.adds-overzicht article .adds-view_info-header-top span {
+          background: #f3997b;
+          border-radius: 10px;
+          height: 23px;
+          line-height: 17px;
+          font-size: 0.625rem;
+          letter-spacing: 0.1px;
+          color: #FFF;
+          text-transform: uppercase;
+          padding: 5px 10px;
+          position: relative;
+          top: -2px;
+          display: inline-block; }
+          @media screen and (min-width: 0px) and (max-width: 960px) {
+            .row div.results section.adds-overzicht article .adds-view_info-header-top span {
+              margin-bottom: 5px; } }
+        .row div.results section.adds-overzicht article .adds-view_info-header-top h2 {
+          line-height: 23px;
+          font-size: 1.125rem;
+          letter-spacing: 0.2px;
+          color: #282828;
+          padding: 5px 5px; }
+          @media screen and (min-width: 0px) and (max-width: 960px) {
+            .row div.results section.adds-overzicht article .adds-view_info-header-top h2 {
+              padding: 0;
+              display: block;
+              width: 100%; } }
+        .row div.results section.adds-overzicht article .adds-view_info-header p {
+          padding: 0;
+          font-size: 0.75rem;
+          line-height: 20px;
+          letter-spacing: 0.1px;
+          color: #565656; }
+          .row div.results section.adds-overzicht article .adds-view_info-header p a {
+            text-decoration: underline; }
+        .row div.results section.adds-overzicht article .adds-view_info-text {
+          margin-top: 5px; }
+          .row div.results section.adds-overzicht article .adds-view_info-text_information {
+            padding: 0;
+            font-size: 0.75rem;
+            line-height: 20px;
+            letter-spacing: 0.1px;
+            color: #282828; }
+          .row div.results section.adds-overzicht article .adds-view_info-text_date {
+            padding: 0;
+            font-size: 0.75rem;
+            line-height: 20px;
+            letter-spacing: 0.1px;
+            color: #282828;
+            font-weight: 300;
+            color: #565656; }
+      .row div.results section.adds-overzicht article.opdracht .adds-view_image {
+        border-radius: 50%; }
 
 html.sub_category main {
   background: #f7f7f7; }
 
-body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main {
+body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main {
   background: #f7f7f7; }
 
 button {
@@ -8531,10 +8644,10 @@ button {
       height: 4px;
       background: #f3997b; }
 
-body.gebruiker .results, body.mijn_fgn .results, body.mijn_advertenties .results {
+body.gebruiker .results, body.mijn_fgn .results, body.mijn_advertenties .results, body.facturen .results, body.mijn_opdrachten .results {
   width: calc(100% / 3 * 2); }
 
-body.gebruiker section.request_section article, body.mijn_fgn section.request_section article, body.mijn_advertenties section.request_section article {
+body.gebruiker section.request_section article, body.mijn_fgn section.request_section article, body.mijn_advertenties section.request_section article, body.facturen section.request_section article, body.mijn_opdrachten section.request_section article {
   display: flex; }
 
 html.product body {
@@ -8706,9 +8819,16 @@ section.add-page {
     width: 100%;
     background: white;
     padding: 25px;
-    margin: 10px 0;
+    margin: 0;
     border-radius: 5px;
-    position: relative; }
+    position: relative;
+    border-bottom: 1px solid #d2d2d2;
+    box-shadow: none;
+    transition: 0.3s; }
+    .profile-overzicht .overzicht-container:hover, .profile-overzicht .overzicht-container:focus-within {
+      box-shadow: 0px 1px 11.3px 0.7px rgba(0, 0, 0, 0.1); }
+    .profile-overzicht .overzicht-container:last-of-type {
+      border: none; }
     .profile-overzicht .overzicht-container h2 {
       color: #282828;
       font-size: 1.125rem;
@@ -8720,3 +8840,82 @@ section.add-page {
       top: 0;
       width: 100%;
       height: 100%; }
+
+.facturen-overzicht {
+  padding: 0px 1.0416666667vw;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 15px; }
+  @media screen and (min-width: 0px) and (max-width: 960px) {
+    .facturen-overzicht {
+      padding: 0 2.0833333333vw; } }
+  @media screen and (min-width: 0px) and (max-width: 800px) {
+    .facturen-overzicht {
+      padding: 0 4.1666666667vw; } }
+  .facturen-overzicht .facturen-overzicht-container {
+    width: 100%;
+    background: white;
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    position: relative;
+    border-bottom: 1px solid #d2d2d2;
+    box-shadow: none;
+    transition: 0.3s; }
+    .facturen-overzicht .facturen-overzicht-container ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      width: 100%;
+      justify-content: flex-start; }
+      .facturen-overzicht .facturen-overzicht-container ul li {
+        width: 20%;
+        font-size: 1rem;
+        line-height: 21px;
+        letter-spacing: .1px;
+        color: #282828; }
+        .facturen-overzicht .facturen-overzicht-container ul li span, .facturen-overzicht .facturen-overzicht-container ul li a {
+          font-size: 1rem;
+          line-height: 21px;
+          letter-spacing: .1px;
+          color: #282828;
+          color: red; }
+        .facturen-overzicht .facturen-overzicht-container ul li:nth-of-type(1) {
+          width: 30%; }
+        .facturen-overzicht .facturen-overzicht-container ul li:nth-of-type(2) {
+          width: 20%; }
+        .facturen-overzicht .facturen-overzicht-container ul li:nth-of-type(3) {
+          width: 17.5%; }
+        .facturen-overzicht .facturen-overzicht-container ul li:nth-of-type(4) {
+          width: 17.5%; }
+        .facturen-overzicht .facturen-overzicht-container ul li:nth-of-type(5) {
+          width: 15%; }
+  .facturen-overzicht .facturen-overzicht_header {
+    padding: 0 25px;
+    border-bottom: 1px solid #d2d2d2; }
+    .facturen-overzicht .facturen-overzicht_header ul {
+      height: 40px;
+      align-items: center; }
+      .facturen-overzicht .facturen-overzicht_header ul li {
+        font-size: 0.875rem;
+        color: #555555; }
+  .facturen-overzicht .facturen-overzicht_content {
+    padding: 0 25px;
+    border-bottom: 1px solid #d2d2d2; }
+    .facturen-overzicht .facturen-overzicht_content:last-of-type {
+      border: none; }
+    .facturen-overzicht .facturen-overzicht_content ul {
+      height: 80px;
+      align-items: center; }
+      .facturen-overzicht .facturen-overzicht_content ul li:nth-of-type(4) {
+        color: #009200; }
+      .facturen-overzicht .facturen-overzicht_content ul li a.btn {
+        background: #f3997b;
+        box-shadow: 0px 1px 10.8px 1.2px rgba(243, 153, 123, 0.4);
+        border-radius: 5px;
+        display: inline-block;
+        padding: 5px 10px;
+        color: white;
+        text-align: center;
+        font-size: 0.875rem; }
