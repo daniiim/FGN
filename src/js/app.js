@@ -278,3 +278,35 @@ if(document.body.classList.contains('gebruiker')){
     });
   });
 }
+
+var uploadFile = document.querySelector('.input-form.image input[type="file"]');
+if(uploadFile){
+  uploadFile.addEventListener('change', function(e){
+    if(e.target.value !== undefined){
+      var fileName = e.target.value.split( '\\' ).pop();
+      var urlTo = e;
+      var reader = new FileReader();
+      var resultElement = document.querySelector('#profile_image img');
+      reader.onload = function(el){
+        resultElement.setAttribute('src', reader.result);
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  });
+}
+
+var companyCheck = document.querySelector('.comapny-input');
+
+if(companyCheck){
+  var input = document.querySelector('.collapse-togle');
+  input.addEventListener('change', function(e){
+    var val = e.target.checked;
+    console.log(val);
+    if(val){
+      companyCheck.classList.add('active');
+    }
+    else{
+      companyCheck.classList.remove('active');
+    }
+  });
+}

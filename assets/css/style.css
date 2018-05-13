@@ -8497,10 +8497,10 @@ section {
 html.sub_category main {
   background: #f7f7f7; }
 
-body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main, body.mijn_favorieten main {
+body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main, body.mijn_favorieten main, body.mijn_profiel main, body.mijn_account main {
   background: #f7f7f7; }
 
-body.gebruiker .row div.results-header .navigation-results, body.mijn_fgn .row div.results-header .navigation-results, body.mijn_advertenties .row div.results-header .navigation-results, body.facturen .row div.results-header .navigation-results, body.mijn_opdrachten .row div.results-header .navigation-results, body.mijn_favorieten .row div.results-header .navigation-results {
+body.gebruiker .row div.results-header .navigation-results, body.mijn_fgn .row div.results-header .navigation-results, body.mijn_advertenties .row div.results-header .navigation-results, body.facturen .row div.results-header .navigation-results, body.mijn_opdrachten .row div.results-header .navigation-results, body.mijn_favorieten .row div.results-header .navigation-results, body.mijn_profiel .row div.results-header .navigation-results, body.mijn_account .row div.results-header .navigation-results {
   width: 100%;
   justify-content: space-between; }
 
@@ -8948,3 +8948,118 @@ section.add-page {
         color: white;
         text-align: center;
         font-size: 0.875rem; }
+
+.profile-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 25px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 10px; }
+  .profile-form .form-container {
+    width: 100%; }
+  .profile-form h2 {
+    font-size: 1.625rem;
+    line-height: 21px;
+    letter-spacing: .3px;
+    color: #282828;
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: center;
+    width: 100%; }
+  .profile-form h3 {
+    font-size: 1.125rem;
+    line-height: 21px;
+    letter-spacing: .2px;
+    color: #282828;
+    margin: 0 0 25px;
+    padding: 0;
+    text-align: center;
+    width: 100%; }
+  .profile-form .comapny-input {
+    display: none; }
+    .profile-form .comapny-input.active {
+      display: block; }
+  .profile-form .input-form {
+    margin: 35px 0 0;
+    position: relative; }
+    .profile-form .input-form input, .profile-form .input-form textarea, .profile-form .input-form select {
+      width: 100%;
+      border: none;
+      background: #f7f7f7;
+      box-shadow: none;
+      border-radius: 5px;
+      resize: none;
+      font-size: 1rem;
+      line-height: 21px;
+      left: .1px;
+      color: #282828;
+      padding: 10px 15px; }
+      .profile-form .input-form input:placeholder, .profile-form .input-form textarea:placeholder, .profile-form .input-form select:placeholder {
+        color: #979797; }
+    .profile-form .input-form input[type="checkbox"] {
+      -webkit-appearance: checkbox;
+      width: auto; }
+    .profile-form .input-form textarea {
+      height: 150px; }
+    .profile-form .input-form select {
+      width: 80%; }
+    .profile-form .input-form .arrow-down {
+      position: absolute;
+      top: 10px;
+      font-family: "fontgood";
+      right: calc(20% + 20px);
+      font-size: 1rem;
+      line-height: 21px;
+      display: block;
+      pointer-events: none; }
+    .profile-form .input-form #profile_image {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .profile-form .input-form #profile_image img {
+        margin: 0 auto;
+        width: 80%;
+        height: auto; }
+    .profile-form .input-form.image label {
+      position: absolute;
+      width: 80%;
+      left: 10%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
+      .profile-form .input-form.image label:after {
+        content: 'Klik op de foto om deze te wijzigen';
+        text-align: center;
+        color: white;
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.3s; }
+      .profile-form .input-form.image label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: 0.3s; }
+      .profile-form .input-form.image label input {
+        visibility: hidden; }
+      .profile-form .input-form.image label:hover:before, .profile-form .input-form.image label:hover:after {
+        opacity: 1; }
+  .profile-form .button {
+    box-shadow: none;
+    margin: 30px auto;
+    border: none; }
