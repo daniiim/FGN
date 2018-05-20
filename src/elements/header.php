@@ -108,8 +108,8 @@ Loader::element('header_required');
         Vorige
       </a>
   </nav>
-  <!-- <div class="navbar-search">
+  <div class="navbar-search">
     <?php  $this->inc('elements/search.php'); ?>
-  </div> -->
+  </div>
 </header>
 <main>

@@ -127,10 +127,10 @@ $(document).on('ready', function(){
         var rubriekenFilters = document.querySelectorAll('.fieldset_container input');
         this.uncheckAllInput(rubriekenFilters);
         var currentPageCategoryWithUnderscore = currentPageCategory.split(' ').join('_');
-        var inputSelected = document.querySelectorAll("#" + currentPageCategoryWithUnderscore);
-        inputSelected.forEach(function(e){
-            e.checked = true;
-        });
+        var inputSelected = document.getElementById(currentPageCategoryWithUnderscore);
+        if(inputSelected){
+          inputSelected.checked = true;
+        }
         var allInputFields = document.querySelectorAll('.rubic input');
         for(var i = 0; i < allInputFields.length; i++){
           allInputFields[i].addEventListener('change', function(){
@@ -161,9 +161,11 @@ $(document).on('ready', function(){
             break;
         }
         if(activeInputFields.length > 0){
+          console.log(allDataCategory);
           for(var l = 0; l < allDataCategory.length; l++){
             var element = allDataCategory[l];
             if(keyWord == element.key){
+              console.log(element);
               var categorySplitted = element.category.split(' ').join('_');
               activeInputFields.forEach(function(active){
                 if(active.id == categorySplitted){
@@ -200,7 +202,6 @@ $(document).on('ready', function(){
         }
       },
       toggleSections: function(){
-
         this.rubriekenFilter();
       },
       resetFilter: function(){

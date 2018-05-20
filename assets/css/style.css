@@ -8494,7 +8494,7 @@ section {
       .row div.results section.adds-overzicht article.opdracht .adds-view_image {
         border-radius: 50%; }
 
-html.sub_category main {
+html.sub_category main, body.zoeken_op_heel_feelgoodnederland main {
   background: #f7f7f7; }
 
 body.gebruiker main, body.mijn_fgn main, body.mijn_advertenties main, body.facturen main, body.mijn_opdrachten main, body.mijn_favorieten main, body.mijn_profiel main, body.mijn_account main {

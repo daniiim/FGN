@@ -17,6 +17,7 @@ $uh = Loader::helper('url');
 $ih = Loader::helper('image');
 $nh = Loader::helper('navigation');
 $aih = new AddImagesHelper();
+$getReq = $_GET['search_type'];
 $addsTotal = 0;
 $reqTotal = 0;
 function debug($data){
@@ -209,9 +210,9 @@ foreach ($values as $key) {
   <div class="results">
     <div class="results-header">
       <div class="navigation-results">
-        <a href="#" class="profiles active">Profielen (<?php echo $totalAdd; ?>)</a>
-        <a href="#" class="request">Opdrachten (<?php echo $totalReq; ?>)</a>
-        <a href="#" class="adds">Advertentie (<?php echo $totalAdd; ?>)</a>
+        <a href="#" class="profiles <?php if($getReq === 'request'){ echo 'active'; }?>">Profielen </a>
+        <a href="#" class="request <?php if($getReq !== 'request'){ echo 'active'; }?>">Opdrachten </a>
+        <a href="#" class="adds">Advertentie</a>
       </div>
       <a class="active add_add add_something" href="<?php echo $this->url('/mijn_fgn/advertenties/advertentie_categorie');?>">Advertentie</a>
       <a class="req_add add_something" href="<?php echo $this->url('/mijn_fgn/opdrachten/opdracht_categorie');?>">Opdracht</a>
@@ -219,7 +220,7 @@ foreach ($values as $key) {
     <section class="no-result">
       <h1>Geen resultaat</h1>
     </section>
-    <section class="featured_profile active">
+    <section class="featured_profile <?php if($getReq !== 'request'){ echo 'active'; }?>">
       <?php
       foreach ($array as $keyUser) {
         if($keyUser['key'] == 'Advertentie'){
@@ -252,7 +253,7 @@ foreach ($values as $key) {
       }
       ?>
     </section>
-    <section class="request_section">
+    <section class="request_section <?php if($getReq === 'request'){ echo 'active'; }?>">
       <?php
       for ($x = 0; $x < count($array); $x++) {
         if($array[$x]['key'] == 'Opdracht'){

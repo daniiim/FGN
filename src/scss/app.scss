@@ -291,10 +291,10 @@ section{ width: 100vw; max-width: 100%;
   }
 }
 
-html.sub_category{
+html.sub_category, body.zoeken_op_heel_feelgoodnederland{
   main{ background: $background; }
 }
-body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten, body.mijn_favorieten, body.mijn_profiel, body.mijn_account{
+body.gebruiker, body.mijn_fgn, body.mijn_advertenties, body.facturen, body.mijn_opdrachten, body.mijn_favorieten, body.mijn_profiel, body.mijn_account, {
   main{ background: $background; }
   .row div.results-header .navigation-results{ width: 100%; justify-content: space-between; }
 }
