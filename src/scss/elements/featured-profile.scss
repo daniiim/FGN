@@ -1,0 +1,71 @@
+.featured_profile{
+  // .row, .row-small{
+    .title{ font-size: rem(18); text-align: center; font-weight: $font-semibold; line-height: 21px; letter-spacing: 0.2px; color: $black; display: block; width: 100%; }
+    p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: center; padding: 20px grid(.25); margin: 0 auto; }
+    .featured_profile-header{ padding: 0 grid(.25);
+      &_container{ background: white; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; padding: 10px grid(.25); }
+      @media #{$medium-only}{ padding: 0 grid(.5); }
+      @media #{$small-only}{ padding: 0 grid(1); }
+      p{ display: inline; margin: 0; padding: 0; text-align: left; }
+      a{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black;
+        &:after{ content: 'k'; font-family: $social-font; position: relative; text-transform: none; padding-left: 5px; top: 2px; font-size: rem(12); color: inherit; }
+      }
+    }
+    .featured_profile-account{ padding: grid(.25); position: relative;
+      @media #{$medium-only}{ padding: grid(.5); }
+      @media #{$small-only}{ padding: grid(.5) grid(1); }
+      &-container{ background: #FFF; display: flex; flex-direction: column; align-items: center; border-radius: 5px; height: 100%; }
+      &-image{ size: 100px; display: block; background: #f1f1f1; border-radius: 50%; margin-top: 30px; position: relative; background-position: center center; background-size: cover;
+        &-number{ size: 35px; background: $feelgood; border-radius: 50%; display: block; position: absolute; right: 0; top: 0; text-align: center; line-height: 35px; letter-spacing: 0.1px; color: #fdfdfd; font-weight: $font-regular; font-size: rem(14); }
+      }
+      &-name{ font-size: rem(18); margin-top: 10px; font-weight: $font-semibold; color: $black; letter-spacing: .2px; line-height: 21px; }
+      &-accountInfo{ display: flex; flex-wrap: nowrap;
+        p{ padding: 0; font-size: rem(12); line-height: 20px; letter-spacing: 0.1px; color: #565656;
+          a{ text-decoration: underline; }
+        }
+      }
+      &-infoText{ margin-bottom: 40px; padding-top: 20px;  padding-bottom: 20px;
+        p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: center; padding: 0 grid(.4); margin: 0 auto; }
+      }
+      &-url{ margin: 20px 0px 20px; font-size: rem(12); letter-spacing: 0.1px; color: #979797; font-weight: $font-regular; transition: $transition; position: absolute; bottom: 30px;
+        &:hover{ text-decoration: underline; }
+      }
+      &.wonen{
+        .featured_profile-account-image-number{ background: $wonen; }
+      }
+      &.zorg{
+        .featured_profile-account-image-number{ background: $zorg; }
+      }
+      &.techniek{
+        .featured_profile-account-image-number{ background: $techniek; }
+      }
+      &.sport{
+        .featured_profile-account-image-number{ background: $sport; }
+      }
+      &.body{
+        .featured_profile-account-image-number{ background: $body; }
+      }
+      &.kunst{
+        .featured_profile-account-image-number{ background: $kunst; }
+      }
+      &.cursus{
+        .featured_profile-account-image-number{ background: $cursus; }
+      }
+      &.feest{
+        .featured_profile-account-image-number{ background: $feelgood; }
+      }
+      &.fashion{
+        .featured_profile-account-image-number{ background: $fashion; }
+      }
+    }
+  .all_profiles{ margin: 15px auto 40px; }
+}
+.featured_profile-header{ padding: 0 grid(.25);
+  &_container{ background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; padding: 10px grid(.25); }
+  @media #{$medium-only}{ padding: 0 grid(.5); }
+  @media #{$small-only}{ padding: 0 grid(1); }
+  p{ display: inline; margin: 0; padding: 0; text-align: left; }
+  a{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black;
+    &:after{ content: 'k'; font-family: $social-font; position: relative; text-transform: none; padding-left: 5px; top: 2px; font-size: rem(12); color: inherit; }
+  }
+}

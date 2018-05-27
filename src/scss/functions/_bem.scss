@@ -1,0 +1,46 @@
+@function slugify($value,$accepted: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'){
+ $slug: null;
+ $value: to-string($value);
+ $list: str-to-list($value);
+ $sum: length($list);
+ $return: nth($list,$sum);
+ @return $return;
+}
+
+// Usage:
+// In list use  $c:c($c); to capture values
+// recall by using example:  #{map-get($c,'bg-holder')}
+
+$c: ();
+@function c($map){
+ $value: to-string(&);
+ $new: (slugify($value) : $value); //
+ $map: map-merge($map,$new);
+ @return $map;
+}
+
+@function get-c($value,$c){
+  @return map-get($c,$value);
+}
+
+// @mixin at-root($root,$selector,$state){
+//
+//   $string: to-string($root);
+//   $list: str-to-list($string,' ');
+//   $selectors: ();
+//   @each $item in $root{
+//     @debug $item;
+//     @debug nth(to-string($item),to-string($selector), 1;
+//     @if to-string($item) == to-string($selector) or str-index(to-string($item),to-string($selector)) > -1{
+//       $newMap: ($item);
+//       $selectors: prepend($selectors,$newMap);
+//     }
+//   }
+//   @for $i from 1 through length($selectors) {
+//     // @debug nth($selectors, $i);
+//     @if nth($selectors, $i) == $selector {
+//     }
+// }
+//   @content;
+// }
+// werkt nog niet, maar kom een heel eind

@@ -1,0 +1,24 @@
+section{
+  &.vision_fgn{
+    .container{ padding: 0px grid(.25); display: flex; flex-direction: row; position: relative; flex-wrap: wrap;
+      &.vision .container_img{ background-image: url('../images/Bannerfoto.jpg'); }
+      &.mision .container_img{ background-image: url('../images/Bannerfoto2.jpg'); }
+      &.ideas .container_img{ background-image: url('../images/Bannerfoto3.jpg'); }
+      &:nth-of-type(2n){ flex-direction: row-reverse;
+        @media #{$medium-down}{ padding: 0px grid(.5); flex-direction: column-reverse; }
+      }
+      @media #{$medium-down}{ padding: 0px grid(.5); flex-direction: column-reverse; }
+      @media #{$small-only}{ padding: 0px grid(1); }
+      .number{ position: absolute; left: 50%; size: 50px; line-height: 50px; font-size: rem(18); font-weight: $font-semibold; letter-spacing: 0.2px; color: white; background: $feelgood; border-radius: 50%; text-align: center; top: -25px; transform: translateX(-50%); }
+      &_text{ background: white; padding: grid(1); }
+      &_img{ background-position: center center; background-size: cover; min-height: 400px; }
+    }
+  }
+  .subText{ margin-top: 50px; padding: 0px grid(.25); max-width: 780px; margin: 50px auto 0;
+    @media #{$medium-down}{ margin-top: 40px; padding: 0px grid(.5); }
+    @media #{$small-only}{ padding: 0px grid(1); }
+    h3{ font-size: rem(18); line-height: 21px; letter-spacing: 0.2px; color: $black; padding-bottom: 20px; font-weight: $font-semibold; text-align: center; }
+    p{ font-size: rem(12); line-height: 21px; letter-spacing: 0.1px; color: $grey-black; text-align: center; }
+    a{ max-width: 150px; margin: 40px auto; }
+  }
+}

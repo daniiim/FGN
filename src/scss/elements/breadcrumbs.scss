@@ -1,0 +1,18 @@
+ul.breadcrumbs{ width: 100%; max-width: 1280px; padding: 0px grid(.25); margin: 30px auto 0; display: flex;
+  @media #{$medium-only}{ padding: 0px grid(.5); }
+  @media #{$small-only}{ padding: 0px grid(1); }
+  li{ font-size: rem(14); font-weight: $font-regular; line-height: 26px; letter-spacing: .1px; color: #636363; text-decoration: underline; transition: $transition;
+    a{ color: #636363;
+      &:hover{ color: $feelgood; }
+    }
+    &.active{ text-decoration: none; }
+    &:before{ content: 'k'; font-family: $social-font; position: relative; text-transform: none; padding: 5px; top: 1px; font-size: rem(11); }
+    &.previous{ padding: 0; font-weight: $font-semibold; text-decoration: none;
+      &:before{ content: 'j'; padding: 0;}
+      &:after{ content: '|'; }
+      & + li{ padding-left: 5px;
+        &:before{ content: none; }
+      }
+    }
+  }
+}
