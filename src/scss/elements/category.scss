@@ -93,10 +93,10 @@ section.discover{
           &:hover{ color: $feelgood; }
         }
       }
-      &.first{
+      &:nth-of-type(1), &:nth-of-type(2){
         .category_single{ height: 100%; }
-        .category_single-image{ height: calc(100% - 150px); }
-        .category_single-footer{ height: 150px; }
+        .category_single-image{ height: calc(100% - 150px); min-height: 250px; }
+        .category_single-footer{ height: 125px; }
       }
     }
   }

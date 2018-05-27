@@ -42,6 +42,9 @@ section.request_section, section.recentAdds, section.recentAdds-discover, sectio
       .recentAdds-element_image-number{ background: $fashion; }
       .recentAdds-elements_info-header-cost{ background: $fashion; }
     }
+    &.adds{
+      .recentAdds-element_image{ border-radius: 5px; }
+    }
   }
   .recentAdds-element{ background: #FFF; box-shadow: none; border-radius: 10px; padding: grid(.25); display: flex; flex-direction: row; flex-shrink: 0; transition: .3s ease-in-out; position: relative;
     @media #{$medium-only}{ padding: grid(.5); }
@@ -72,6 +75,11 @@ section.request_section, section.recentAdds, section.recentAdds-discover, sectio
 }
 section.recentAdds-discover{
   .row:last-of-type{ display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; margin-bottom: 60px; }
+}
+.main_category{
+  section.recentAdds-discover{
+    .row:last-of-type{ display: flex; flex-direction: row; justify-content: flex-start; align-items: flex-start; margin-bottom: 0; }
+  }
 }
 section.add_section{
   .recentAdds-element_container{

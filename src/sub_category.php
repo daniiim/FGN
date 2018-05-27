@@ -103,6 +103,7 @@ foreach ($children as $key) {
           "url" => $userUrl,
           "adds_amount" => count($upagesa),
           "request_amount" => count($upagesr),
+          'userID' => $ownerID,
         ),
         "description" => $subChildrenPage->getAttribute('product_long_description'),
         "activeDate" => $subChildrenPage->getAttribute('product_date_valid'),
@@ -210,8 +211,8 @@ foreach ($values as $key) {
   <div class="results">
     <div class="results-header">
       <div class="navigation-results">
-        <a href="#" class="profiles <?php if($getReq === 'request'){ echo 'active'; }?>">Profielen </a>
-        <a href="#" class="request <?php if($getReq !== 'request'){ echo 'active'; }?>">Opdrachten </a>
+        <a href="#" class="profiles <?php if($getReq !== 'request'){ echo 'active'; }?>">Profielen </a>
+        <a href="#" class="request <?php if($getReq === 'request'){ echo 'active'; }?>">Opdrachten </a>
         <a href="#" class="adds">Advertentie</a>
       </div>
       <a class="active add_add add_something" href="<?php echo $this->url('/mijn_fgn/advertenties/advertentie_categorie');?>">Advertentie</a>
@@ -222,33 +223,37 @@ foreach ($values as $key) {
     </section>
     <section class="featured_profile <?php if($getReq !== 'request'){ echo 'active'; }?>">
       <?php
+      $usersUsed = array();
       foreach ($array as $keyUser) {
         if($keyUser['key'] == 'Advertentie'){
-          $name = $keyUser['categoryTop'];
-          $nameArray = explode(" ", $name);
-          $name2 = strtolower($nameArray[0]);
-          ?>
-          <article class="user small-full medium-full large-half featured_profile-account columns id<?php echo $keyUser['id']; ?> <?php echo $name2; ?>">
-            <div class="featured_profile-account-container">
-              <a href="<?php echo $keyUser['user']['url']; ?>" class="user_url-full"></a>
-              <div class="featured_profile-account-image" style="background-image: url('<?php echo $keyUser['user']['image']->src; ?>')">
-                <span class="featured_profile-account-image-number">123</span>
+          if(!in_array($keyUser['user']['userID'], $usersUsed)){
+            array_push($usersUsed, $keyUser['user']['userID']);
+            $name = $keyUser['categoryTop'];
+            $nameArray = explode(" ", $name);
+            $name2 = strtolower($nameArray[0]);
+            ?>
+            <article class="user small-full medium-full large-half featured_profile-account columns id<?php echo $keyUser['id']; ?> <?php echo $name2; ?>">
+              <div class="featured_profile-account-container">
+                <a href="<?php echo $keyUser['user']['url']; ?>" class="user_url-full"></a>
+                <div class="featured_profile-account-image" style="background-image: url('<?php echo $keyUser['user']['image']->src; ?>')">
+                  <span class="featured_profile-account-image-number">123</span>
+                </div>
+                <h3 class="featured_profile-account-name"><?php echo $keyUser['user']['fullName'];?></h3>
+                <div class="featured_profile-account-infoText">
+                  <p>
+                    <?php $text = $keyUser['description'];
+                    if(strlen($text) > 150){
+                      $text = substr($text, 0, 150) . '...';
+                    }
+                    echo $text;
+                    ?>
+                  </p>
+                </div>
+                <a href="<?php echo $keyUser['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>
               </div>
-              <h3 class="featured_profile-account-name"><?php echo $keyUser['user']['fullName'];?></h3>
-              <div class="featured_profile-account-infoText">
-                <p>
-                  <?php $text = $keyUser['description'];
-                  if(strlen($text) > 150){
-                    $text = substr($text, 0, 150) . '...';
-                  }
-                  echo $text;
-                  ?>
-                </p>
-              </div>
-              <a href="<?php echo $keyUser['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>
-            </div>
-          </article>
-        <?php
+            </article>
+          <?php
+          }
         }
       }
       ?>

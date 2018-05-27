@@ -48,7 +48,7 @@ foreach ($children as $key) {
     $i++;
     if($i > -1){
       $last = page::getByID($lastPageSub);
-      if($last->getAttribute('add_or_request') === "Advertentie"){
+      // if($last->getAttribute('add_or_request') === "Advertentie"){
         $ownerID = $last->getCollectionUserID();
         $ui = UserInfo::getByID($ownerID);
         $uiImage = $ui->getAttribute('profile_image');
@@ -142,7 +142,7 @@ foreach ($children as $key) {
         else{
           $l++;
         }
-      }
+      // }
     }
     else{
       break 2;
@@ -273,41 +273,43 @@ $sortedArray = array_sort($allPosts, 'date', SORT_DESC);
     $i = 0;
     $userArray = array();
     foreach ($sortedArray as $value) {
-      if(!in_array($value['user']['fullName'], $userArray)){
-        $i++;
-        array_push($userArray, $value['user']['fullName']);
-        if($i < 4){
-          $name = $value['category'];
-          $nameArray = explode(" ", $name);
-          $name2 = strtolower($nameArray[0]);
-          ?>
-          <div class="columns small-full medium-third featured_profile-account <?php echo $name2; ?>">
-            <div class="featured_profile-account-container">
-              <a href="<?php echo $value['user']['url']; ?>" class="user_url-full"></a>
-              <div class="featured_profile-account-image" style="background-image: url('<?php echo $value['user']['image']->src; ?>')">
-                <span class="featured_profile-account-image-number">123</span>
+      if($value['key'] === 'Advertentie'){
+        if(!in_array($value['user']['fullName'], $userArray)){
+          $i++;
+          array_push($userArray, $value['user']['fullName']);
+          if($i < 4){
+            $name = $value['category'];
+            $nameArray = explode(" ", $name);
+            $name2 = strtolower($nameArray[0]);
+            ?>
+            <div class="columns small-full medium-third featured_profile-account <?php echo $name2; ?>">
+              <div class="featured_profile-account-container">
+                <a href="<?php echo $value['user']['url']; ?>" class="user_url-full"></a>
+                <div class="featured_profile-account-image" style="background-image: url('<?php echo $value['user']['image']->src; ?>')">
+                  <span class="featured_profile-account-image-number">123</span>
+                </div>
+                <h3 class="featured_profile-account-name"><?php echo $value['user']['fullName'];?></h3>
+                <div class="featured_profile-account-accountInfo">
+                  <p>
+                    <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-accountInfo_adds">
+                      <?php echo $value['user']['adds_amount']; ?> advertenties</a>
+                  </p>
+                </div>
+                <div class="featured_profile-account-infoText">
+                  <p>
+                    <?php $text = $value['description'];
+                    if(strlen($text) > 150){
+                      $text = substr($text, 0, 150) . '...';
+                    }
+                    echo $text;
+                    ?>
+                  </p>
+                </div>
+                <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>
               </div>
-              <h3 class="featured_profile-account-name"><?php echo $value['user']['fullName'];?></h3>
-              <div class="featured_profile-account-accountInfo">
-                <p>
-                  <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-accountInfo_adds">
-                    <?php echo $value['user']['adds_amount']; ?> advertenties</a>
-                </p>
-              </div>
-              <div class="featured_profile-account-infoText">
-                <p>
-                  <?php $text = $value['description'];
-                  if(strlen($text) > 150){
-                    $text = substr($text, 0, 150) . '...';
-                  }
-                  echo $text;
-                  ?>
-                </p>
-              </div>
-              <a href="<?php echo $value['user']['url']; ?>" class="featured_profile-account-url">Profiel bekijken</a>
             </div>
-          </div>
-        <?php }
+          <?php }
+        }
       }
     }
     ?>
@@ -328,56 +330,128 @@ $sortedArray = array_sort($allPosts, 'date', SORT_DESC);
     <?php
     $i = 0;
     foreach ($sortedArray as $value) {
-      $i++;
-      if($i < 3){
-        $name = $value['category'];
-        $nameArray = explode(" ", $name);
-        $name2 = strtolower($nameArray[0]);
-        ?>
-        <div class="columns small-full medium-half recentAdds-container <?php echo $name2; ?>">
-          <div class="recentAdds-element">
-            <a class="full_url" href="<?php echo $value['url'];?>"></a>
-            <div class="recentAdds-element_image" style="background-image: url('<?php echo $value['image']->src; ?>')" >
-              <span class="recentAdds-element_image-number">123</span>
-            </div>
-            <div class="recentAdds-element_info">
-              <div class="recentAdds-element_info-header">
-                <div class="recentAdds-element_info-header-top">
-                  <span class="recentAdds-elements_info-header-cost">
-                    <?php
-                    $price = 'gratis';
-                     if($value['price'] == 0){
-                      echo 'gratis'; }
-                      else{
-                        echo '€ ' . $value['price'];
-                      }?>
-                  </span>
-                  <h2 class="recentAdds-elements_info-header-title"><?php echo $value['title']; ?></h2>
+      if($value['key'] === 'Opdracht'){
+        $i++;
+        if($i < 3){
+          $name = $value['category'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
+          ?>
+          <div class="columns small-full medium-half recentAdds-container <?php echo $name2; ?>">
+            <div class="recentAdds-element">
+              <a class="full_url" href="<?php echo $value['url'];?>"></a>
+              <div class="recentAdds-element_image" style="background-image: url('<?php echo $value['image']->src; ?>')" >
+                <span class="recentAdds-element_image-number">123</span>
+              </div>
+              <div class="recentAdds-element_info">
+                <div class="recentAdds-element_info-header">
+                  <div class="recentAdds-element_info-header-top">
+                    <span class="recentAdds-elements_info-header-cost">
+                      <?php
+                      $price = 'gratis';
+                       if($value['price'] == 0){
+                        echo 'gratis'; }
+                        else{
+                          echo '€ ' . $value['price'];
+                        }?>
+                    </span>
+                    <h2 class="recentAdds-elements_info-header-title"><?php echo $value['title']; ?></h2>
+                  </div>
+                  <div class="recentAdds-element_info-header-linkInfo">
+                    <p class="recentAdds-element_info-header-links">
+                      <a href="<?php echo $value['url'];?>" class="recentAdds-element_info-header-url category"><?php echo $value['category']; ?></a>
+                    </p>
+                  </div>
                 </div>
-                <div class="recentAdds-element_info-header-linkInfo">
-                  <p class="recentAdds-element_info-header-links">
-                    <a href="<?php echo $value['url'];?>" class="recentAdds-element_info-header-url category"><?php echo $value['category']; ?></a>
+                <div class="recentAdds-element_info-text">
+                  <p class="recentAdds-element_info-text_information">
+                    <?php $text = $value['description'];
+                    if(strlen($text) > 150){
+                      $text = substr($text, 0, 150) . '...';
+                    }
+                    echo $text;
+                    ?>
+                  </p>
+                  <p class="recentAdds-element_info-text_date">
+                    <?php echo $value['date']; ?>
                   </p>
                 </div>
               </div>
-              <div class="recentAdds-element_info-text">
-                <p class="recentAdds-element_info-text_information">
-                  <?php $text = $value['description'];
-                  if(strlen($text) > 150){
-                    $text = substr($text, 0, 150) . '...';
-                  }
-                  echo $text;
-                  ?>
-                </p>
-                <p class="recentAdds-element_info-text_date">
-                  <?php echo $value['date']; ?>
-                </p>
-              </div>
             </div>
           </div>
-        </div>
-      <?php }
+        <?php }
+      }
     }?>
   </div>
 </section>
+<section class="recentAdds-discover">
+  <div class="row no-margin">
+    <div class="columns small-full featured_profile-header">
+      <div class="featured_profile-header_container">
+        <p>
+          Uitgelichte opdrachten in "<?php echo $title; ?>"
+        </p>
+        <a href="<?php echo $allUrl; ?>" class="featured_profile-header-url">Categorie bekijken</a>
+      </div>
+    </div>
+  </div>
+  <div class="row no-margin">
+    <?php
+    $i = 0;
+    foreach ($sortedArray as $value) {
+      if($value['key'] === 'Advertentie'){
+        $i++;
+        if($i < 3){
+          $name = $value['category'];
+          $nameArray = explode(" ", $name);
+          $name2 = strtolower($nameArray[0]);
+          ?>
+          <div class="columns small-full medium-half recentAdds-container adds <?php echo $name2; ?>">
+            <div class="recentAdds-element">
+              <a class="full_url" href="<?php echo $value['url'];?>"></a>
+              <div class="recentAdds-element_image" style="background-image: url('<?php echo $value['image']->src; ?>')" >
+                <span class="recentAdds-element_image-number">123</span>
+              </div>
+              <div class="recentAdds-element_info">
+                <div class="recentAdds-element_info-header">
+                  <div class="recentAdds-element_info-header-top">
+                    <span class="recentAdds-elements_info-header-cost">
+                      <?php
+                      $price = 'gratis';
+                       if($value['price'] == 0){
+                        echo 'gratis'; }
+                        else{
+                          echo '€ ' . $value['price'];
+                        }?>
+                    </span>
+                    <h2 class="recentAdds-elements_info-header-title"><?php echo $value['title']; ?></h2>
+                  </div>
+                  <div class="recentAdds-element_info-header-linkInfo">
+                    <p class="recentAdds-element_info-header-links">
+                      <a href="<?php echo $value['url'];?>" class="recentAdds-element_info-header-url category"><?php echo $value['category']; ?></a>
+                    </p>
+                  </div>
+                </div>
+                <div class="recentAdds-element_info-text">
+                  <p class="recentAdds-element_info-text_information">
+                    <?php $text = $value['description'];
+                    if(strlen($text) > 150){
+                      $text = substr($text, 0, 150) . '...';
+                    }
+                    echo $text;
+                    ?>
+                  </p>
+                  <p class="recentAdds-element_info-text_date">
+                    <?php echo $value['date']; ?>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php }
+      }
+    }?>
+  </div>
+</section>
+
 <?php  $this->inc('elements/footer.php'); ?>

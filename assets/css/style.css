@@ -5956,7 +5956,8 @@ body header {
         top: 0px;
         height: 50px;
         margin-left: 0px;
-        padding-left: 0px; }
+        padding-left: 0px;
+        background: white; }
         @media screen and (min-width: 0px) and (max-width: 800px) {
           body header nav .navigation .logo {
             width: 150px; } }
@@ -5971,17 +5972,21 @@ body header {
           font-family: "Montserrat"; }
           body header nav .navigation .logo a:after {
             content: none; }
-        body header nav .navigation .logo img {
+        body header nav .navigation .logo svg {
           position: absolute;
           left: 0;
           top: 0;
           width: 160px;
           height: 50px; }
           @media screen and (min-width: 0px) and (max-width: 800px) {
-            body header nav .navigation .logo img {
+            body header nav .navigation .logo svg {
               width: auto;
               top: -7px;
               height: 45px; } }
+          body header nav .navigation .logo svg .st0 {
+            fill: #01a5fc; }
+          body header nav .navigation .logo svg .st1 {
+            fill: #D8D8D8; }
       body header nav .navigation .right {
         margin: 0 0 0 auto; }
       @media screen and (min-width: 0px) and (max-width: 960px) {
@@ -6109,7 +6114,8 @@ body header {
             overflow: hidden;
             transition: 0.3s;
             max-width: 100%;
-            box-shadow: none; }
+            box-shadow: none;
+            z-index: 1; }
             body header nav .navigation .left li.discover .discover_area_container, body header nav .navigation .right li.discover .discover_area_container {
               max-width: 1280px;
               margin: 0 auto;
@@ -6247,7 +6253,8 @@ body header {
             transition: 0.3s;
             max-height: 0px;
             max-width: 100%;
-            box-shadow: none; }
+            box-shadow: none;
+            z-index: 1; }
             body header nav .navigation .left li.about .about_area_container, body header nav .navigation .right li.about .about_area_container {
               max-width: 1280px;
               margin: 0 auto;
@@ -6385,7 +6392,8 @@ body header {
                 body header nav .navigation .left li.dropdown ul .dropdown_second-item:after, body header nav .navigation .right li.dropdown ul .dropdown_second-item:after {
                   content: none; }
                 body header nav .navigation .left li.dropdown ul .dropdown_second-item a, body header nav .navigation .right li.dropdown ul .dropdown_second-item a {
-                  padding: 5px 15px; }
+                  padding: 5px 15px;
+                  color: inherit; }
                   body header nav .navigation .left li.dropdown ul .dropdown_second-item a:after, body header nav .navigation .right li.dropdown ul .dropdown_second-item a:after {
                     content: none; }
                   body header nav .navigation .left li.dropdown ul .dropdown_second-item a:before, body header nav .navigation .right li.dropdown ul .dropdown_second-item a:before {
@@ -6395,7 +6403,7 @@ body header {
                     text-transform: none;
                     padding-left: 0px;
                     top: 0px;
-                    color: #555555;
+                    color: inherit;
                     font-size: 0.75rem;
                     padding-right: 5px; }
                   body header nav .navigation .left li.dropdown ul .dropdown_second-item a.user:before, body header nav .navigation .right li.dropdown ul .dropdown_second-item a.user:before {
@@ -6974,6 +6982,8 @@ section.request_section .recentAdds-container, section.request_section .recentAd
     background: #af60a2; }
   section.request_section .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.request_section .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.recentAdds .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.recentAdds-discover .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost, section.add_section .recentAdds-container.fashion .recentAdds-elements_info-header-cost, section.add_section .recentAdds-element_container.fashion .recentAdds-elements_info-header-cost {
     background: #af60a2; }
+  section.request_section .recentAdds-container.adds .recentAdds-element_image, section.request_section .recentAdds-element_container.adds .recentAdds-element_image, section.recentAdds .recentAdds-container.adds .recentAdds-element_image, section.recentAdds .recentAdds-element_container.adds .recentAdds-element_image, section.recentAdds-discover .recentAdds-container.adds .recentAdds-element_image, section.recentAdds-discover .recentAdds-element_container.adds .recentAdds-element_image, section.add_section .recentAdds-container.adds .recentAdds-element_image, section.add_section .recentAdds-element_container.adds .recentAdds-element_image {
+    border-radius: 5px; }
 
 section.request_section .recentAdds-element, section.recentAdds .recentAdds-element, section.recentAdds-discover .recentAdds-element, section.add_section .recentAdds-element {
   background: #FFF;
@@ -7082,6 +7092,13 @@ section.recentAdds-discover .row:last-of-type {
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 60px; }
+
+.main_category section.recentAdds-discover .row:last-of-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 0; }
 
 section.add_section .recentAdds-element_container .recentAdds-element_image {
   border-radius: 10px; }
@@ -7363,12 +7380,13 @@ section.discover .row.category .side, section.discover .row.category .item {
       transition: 0.3s; }
       section.discover .row.category .side .category-view a:hover, section.discover .row.category .item .category-view a:hover {
         color: #01a5fc; }
-  section.discover .row.category .side.first .category_single, section.discover .row.category .item.first .category_single {
+  section.discover .row.category .side:nth-of-type(1) .category_single, section.discover .row.category .side:nth-of-type(2) .category_single, section.discover .row.category .item:nth-of-type(1) .category_single, section.discover .row.category .item:nth-of-type(2) .category_single {
     height: 100%; }
-  section.discover .row.category .side.first .category_single-image, section.discover .row.category .item.first .category_single-image {
-    height: calc(100% - 150px); }
-  section.discover .row.category .side.first .category_single-footer, section.discover .row.category .item.first .category_single-footer {
-    height: 150px; }
+  section.discover .row.category .side:nth-of-type(1) .category_single-image, section.discover .row.category .side:nth-of-type(2) .category_single-image, section.discover .row.category .item:nth-of-type(1) .category_single-image, section.discover .row.category .item:nth-of-type(2) .category_single-image {
+    height: calc(100% - 150px);
+    min-height: 250px; }
+  section.discover .row.category .side:nth-of-type(1) .category_single-footer, section.discover .row.category .side:nth-of-type(2) .category_single-footer, section.discover .row.category .item:nth-of-type(1) .category_single-footer, section.discover .row.category .item:nth-of-type(2) .category_single-footer {
+    height: 125px; }
 
 .featured_profile .title {
   font-size: 1.125rem;
@@ -7611,7 +7629,6 @@ main {
       height: 40px;
       border-radius: 5px 0px 0px 5px;
       background-color: #FFF;
-      box-shadow: 0px 8px 9.2px 0.8px rgba(0, 0, 0, 0.19);
       border: none;
       padding: 0px 20px;
       font-family: "Montserrat";
@@ -7628,12 +7645,18 @@ main {
       display: block;
       height: 100%;
       line-height: 40px;
-      box-shadow: 0px 8px 9.2px 0.8px rgba(0, 0, 0, 0.19);
       padding: 0 10px; }
       .landingPage form button:hover {
         background: white;
         color: #01a5fc;
         text-decoration: underline; }
+    .landingPage form .extra {
+      box-shadow: 0px 8px 9.2px 0.8px rgba(0, 0, 0, 0.19);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap; }
 
 .row, .row-small {
   margin: 60px auto; }

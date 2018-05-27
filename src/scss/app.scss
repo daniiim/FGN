@@ -30,13 +30,14 @@ main{ margin-top: 136px; width: 100vw; overflow: hidden; max-width: 100%; }
   form{ display: block; display: flex; align-items: center; justify-content: center; width: 100%; margin-top: 70px; max-width: 780px; padding: 0px grid(.25); flex-wrap: nowrap;
     @media #{$medium-only}{ padding: 0px grid(.5); }
     @media #{$small-only}{ padding: 0px grid(1); }
-    input{ width: calc(100% - 40px); height: 40px; border-radius: 5px 0px 0px 5px ; background-color: #FFF; box-shadow: 0px 8px 9.2px 0.8px rgba(0,0,0, 0.19); border: none; padding: 0px 20px; font-family: $main-font; font-size: rem(14);
+    input{ width: calc(100% - 40px); height: 40px; border-radius: 5px 0px 0px 5px ; background-color: #FFF; border: none; padding: 0px 20px; font-family: $main-font; font-size: rem(14);
       &::placeholder{ color: #585858;
       }
     }
-    button{ box-shadow: none; border: none; border-radius: 0 5px 5px 0; background: white; color: $feelgood; border-left: 1px solid rgba(black, .3); display: block; height: 100%; line-height: 40px; box-shadow: 0px 8px 9.2px 0.8px rgba(0,0,0, 0.19); padding: 0 10px;
+    button{ box-shadow: none; border: none; border-radius: 0 5px 5px 0; background: white; color: $feelgood; border-left: 1px solid rgba(black, .3); display: block; height: 100%; line-height: 40px; padding: 0 10px;
       &:hover{ background: white; color: $feelgood; text-decoration: underline; }
     }
+    .extra{ box-shadow: 0px 8px 9.2px 0.8px rgba(0,0,0, 0.19); width: 100%; display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; }
   }
 }
 

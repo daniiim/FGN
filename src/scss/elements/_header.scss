@@ -40,14 +40,16 @@ body header{ height: 136; background: #FFF; width: 100%; position: fixed; top: 0
       }
       @media #{$medium-only}{ left: - grid(.5); padding: grid(.5); }
       @media #{$small-only}{ left: - grid(1); padding: grid(1); }
-      .logo{ width: 160px; align-self: flex-start; top: 0px; height: 50px; margin-left: 0px; padding-left: 0px;
+      .logo{ width: 160px; align-self: flex-start; top: 0px; height: 50px; margin-left: 0px; padding-left: 0px; background: white;
         @media #{$small-only}{ width: 150px; }
         &:after{ content: none; }
         a{ width: 160px; height: 50px; position: absolute; left: 0; top: 0; font-family: $main-font;
           &:after{ content: none; }
         }
-        img{ position: absolute; left: 0; top: 0; width: 160px; height: 50px;
+        svg{ position: absolute; left: 0; top: 0; width: 160px; height: 50px;
           @media #{$small-only}{ width: auto; top: -7px; height: 45px; }
+          .st0{fill: $feelgood;}
+	        .st1{fill:#D8D8D8;}
         }
       }
       .right{ margin: 0 0 0 auto; }
@@ -88,7 +90,7 @@ body header{ height: 136; background: #FFF; width: 100%; position: fixed; top: 0
             }
           }
           &.discover{
-            .discover_area{ display: block; position: fixed; width: 100vw; left: 0; top: 65px; background: #efefef; max-height: 0px; overflow: hidden; transition: $transition; max-width: 100%; box-shadow: none;
+            .discover_area{ display: block; position: fixed; width: 100vw; left: 0; top: 65px; background: #efefef; max-height: 0px; overflow: hidden; transition: $transition; max-width: 100%; box-shadow: none; z-index: 1;
               &_container{ max-width: 1280px; margin: 0 auto; display: flex; flex-direction: row; justify-content: space-between; flex: 1 1 100%;
                 li{ padding-top: 40px; max-width: 33%; height: auto;
                   h3{ color: $black; text-transform: none; letter-spacing: 0.2px; font-size: rem(18); line-height: 21px; font-weight: $font-semibold; padding-bottom: 20px; }
@@ -169,7 +171,7 @@ body header{ height: 136; background: #FFF; width: 100%; position: fixed; top: 0
             }
           }
           &.about{
-            .about_area{ display: block; position: fixed; width: 100vw; left: 0; top: 65px; background: #efefef; overflow: hidden; transition: $transition; max-height: 0px; max-width: 100%; box-shadow: none;
+            .about_area{ display: block; position: fixed; width: 100vw; left: 0; top: 65px; background: #efefef; overflow: hidden; transition: $transition; max-height: 0px; max-width: 100%; box-shadow: none; z-index: 1;
               &_container{ max-width: 1280px; margin: 0 auto; display: flex; flex-direction: row; justify-content: space-between; flex: 1 1 100%;
                 li{ width: calc(100% / 3); margin: 20px 0px; display: block; height: 195px; padding: 0px grid(.25);
                   &:after{ content: none; }
@@ -222,9 +224,9 @@ body header{ height: 136; background: #FFF; width: 100%; position: fixed; top: 0
               .dropdown_second-item{ margin: 0; white-space: nowrap; height: auto; font-size: rem(12); line-height: 26px; letter-spacing: 0.1px; color: $grey-black; transition: $transition;
                 &:hover{ color: $feelgood; }
                 &:after{ content: none; }
-                a{ padding: 5px 15px;
+                a{ padding: 5px 15px; color: inherit;
                   &:after{ content: none; }
-                  &:before{ content: 'K'; font-family: $social-font; position: relative; text-transform: none; padding-left: 0px; top: 0px; color: $grey-black; font-size: rem(12); padding-right: 5px; }
+                  &:before{ content: 'K'; font-family: $social-font; position: relative; text-transform: none; padding-left: 0px; top: 0px; color: inherit; font-size: rem(12); padding-right: 5px; }
                   &.user:before{ content: 'y'; }
                   &.question:before{}
                   &.star:before{ content: 'y';}
