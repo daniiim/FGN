@@ -311,13 +311,3 @@ if(companyCheck){
     }
   });
 }
-
-$('.search_icon').on('click', function(e){
-  e.preventDefault();
-  $('.search-popup').addClass('active');
-});
-
-
-$('.close-search').on('click', function(){
-  $('.search-popup').removeClass('active');
-});
