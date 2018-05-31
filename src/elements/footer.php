@@ -9,35 +9,35 @@ $path = str_replace("/concrete/concrete", "/concrete", $this->getThemePath());
   <div class="row">
     <ul class="footer_head">
       <li class="footer_head-discover">
-        <h2>Ontdekken</h2>
         <ul class="footer_head-sub">
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Bekijk profielen</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Bekijk opdrachten</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Bekijk advertenties</a></li>
+            <?php
+          $a = new GlobalArea('Footer Discover');
+          $a->display();
+          ?>
         </ul>
       </li>
       <li class="footer_head-about">
-        <h2>Over FeelGood</h2>
         <ul class="footer_head-sub">
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Over ons</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Hoe werkt het</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Overzicht kosten</a></li>
+          <?php
+          $a = new GlobalArea('Footer About');
+          $a->display();
+          ?>
         </ul>
       </li>
       <li class="footer_head-participate">
-        <h2>Meedoen</h2>
         <ul class="footer_head-sub">
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Wordt gratis lid</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Plaats advertentie</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Plaats een opdracht</a></li>
+          <?php
+          $a = new GlobalArea('Footer Participate');
+          $a->display();
+          ?>
         </ul>
       </li>
       <li class="footer_head-support">
-        <h2>Support</h2>
         <ul class="footer_head-sub">
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Online kennisbank</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Veel gestelde vragen</a></li>
-          <li class="footer_head-item"><a href="#" class="footer_head-item_url">Uw chat starten</a></li>
+          <?php
+          $a = new GlobalArea('Footer Support');
+          $a->display();
+          ?>
         </ul>
       </li>
     </ul>
@@ -85,5 +85,13 @@ $path = str_replace("/concrete/concrete", "/concrete", $this->getThemePath());
   </div>
 </footer>
 <script src="<?php echo $path; ?>/js/app.js"></script>
+<!-- Begin of Chaport Live Chat code -->
+<script type="text/javascript">
+(function(w,d,v2){
+w.chaport = { app_id : '5a5de79ea1e8df39a25639cc' };
+
+v2=w.chaport;v2._q=[];v2._l={};v2.q=function(){v2._q.push(arguments)};v2.on=function(e,fn){if(!v2._l[e])v2._l[e]=[];v2._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+</script>
+<!-- End of Chaport Live Chat code -->
 <?php Loader::element('footer_required'); ?>
 </body></html>
